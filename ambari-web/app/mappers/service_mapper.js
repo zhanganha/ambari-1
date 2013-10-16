@@ -35,7 +35,8 @@ App.servicesMapper = App.QuickDataMapper.create({
     'ZOOKEEPER',
     'PIG',
     'SQOOP',
-    'HUE'
+    'HUE',
+    'SPARK'
   ],
   sortByOrder: function (sortOrder, array) {
     var sorted = [];

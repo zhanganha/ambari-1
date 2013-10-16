@@ -82,6 +82,7 @@ require('views/main/dashboard/service/hive');
 require('views/main/dashboard/service/zookeeper');
 require('views/main/dashboard/service/oozie');
 require('views/main/dashboard/service/flume');
+require('views/main/dashboard/service/spark');
 require('views/main/dashboard/cluster_metrics/cpu');
 require('views/main/dashboard/cluster_metrics/load');
 require('views/main/dashboard/cluster_metrics/memory');
@@ -150,6 +151,7 @@ require('views/main/service/info/metrics/flume/gc');
 require('views/main/service/info/metrics/flume/jvm_heap');
 require('views/main/service/info/metrics/flume/jvm_threads_runnable');
 require('views/main/service/info/metrics/flume/cpu_user');
+/*TODO(alex): add spar-related metrics server URLs here*/
 require('views/main/service/add_view');
 require('views/main/service/reassign_view');
 require('views/main/charts/menu');

@@ -88,6 +88,9 @@
         {{#if view.serviceStatus.flume}}
           {{view App.MainDashboardServiceFlumeView showOnlyRows=true serviceBinding="view.service"}}
         {{/if}}
+        {{#if view.serviceStatus.spark}}
+          {{view App.MainDashboardServiceSparkView showOnlyRows=true serviceBinding="view.service"}}
+        {{/if}}
       </tbody>
     </table>
     {{!view view.moreStatsView}}

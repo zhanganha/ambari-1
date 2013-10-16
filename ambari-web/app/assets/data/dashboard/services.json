@@ -1861,6 +1861,63 @@
 	      ]
 	    }
 	  ]
+	},
+    {
+	  "href" : "http://nflabs.compute-0.amazonaws.com:8080/api/v1/clusters/spc/services/FLUME?fields=components/ServiceComponentInfo,components/host_components,components/host_components/HostRoles",
+	  "ServiceInfo" : {
+	    "cluster_name" : "spc",
+	    "service_name" : "SPARK"
+	  },
+	  "components" : [
+	    {
+	      "href" : "http://nflabs.compute-0.amazonaws.com:8080/api/v1/clusters/spc/services/FLUME/components/FLUME_SERVER",
+	      "ServiceComponentInfo" : {
+	        "cluster_name" : "spc",
+	        "component_name" : "SPARK_SERVER",
+	        "service_name" : "SPARK",
+	        "state" : "STARTED",
+	        "desired_configs" : { }
+	      },
+	      "host_components" : [
+	        {
+	          "href" : "http://nflabs.compute-0.amazonaws.com:8080/api/v1/clusters/spc/hosts/ip-66-66-6-665.ec2.internal/host_components/FLUME_SERVER",
+	          "HostRoles" : {
+	            "cluster_name" : "spc",
+	            "component_name" : "SPARK_SERVER",
+	            "desired_stack_id" : "HDP-1.3.2",
+	            "desired_state" : "STARTED",
+	            "ha_status" : "passive",
+	            "host_name" : "ip-66-66-6-665.ec2.internal",
+	            "service_name" : "SPARK",
+	            "stack_id" : "HDP-1.3.2",
+	            "state" : "STARTED",
+	            "configs" : { },
+	            "desired_configs" : { }
+	          },
+	          "metrics" : {
+		      }
+	        },
+	        {
+	          "href" : "http://nflabs.compute-0.amazonaws.com:8080/api/v1/clusters/spc/hosts/ip-66-66-6-6666.ec2.internal/host_components/FLUME_SERVER",
+	          "HostRoles" : {
+	            "cluster_name" : "spc",
+	            "component_name" : "SPARK_SERVER",
+	            "desired_stack_id" : "HDP-1.3.2",
+	            "desired_state" : "STARTED",
+	            "ha_status" : "passive",
+	            "host_name" : "ip-66-66-6-6666.ec2.internal",
+	            "service_name" : "SPARK",
+	            "stack_id" : "HDP-1.3.2",
+	            "state" : "STARTED",
+	            "configs" : { },
+	            "desired_configs" : { }
+	          },
+	          "metrics" : {
+              }
+	        }
+	      ]
+	    }
+	  ]
 	}
   ]
 }

@@ -154,5 +154,13 @@ module.exports = [
     isSelected: App.supports.hue,
     canBeSelected: App.supports.hue,
     isHidden: !App.supports.hue
+  },
+  {
+    serviceName: 'SPARK',
+    displayName: 'Spark',
+    isDisabled: false,
+    isSelected: App.supports.spark,
+    canBeSelected: App.supports.spark,
+    isHidden: !App.supports.spark
   }
 ]
