@@ -29,9 +29,22 @@ App.MainDashboardServiceSparkView = App.MainDashboardServiceView.extend({
   }.property('service.nodes'),
 */
 
+  liveWorkerNodes: function () {
+    return App.HostComponent.find().filterProperty('componentName', 'SPARK_WORKER').filterProperty("workStatus","STARTED");
+  }.property(),
+  
+
+  workerNodesText: function () {
+    if(this.get('service.workerNodes').get("length") > 1){
+      return Em.I18n.t('services.service.summary.viewHosts');
+    }else{
+      return Em.I18n.t('services.service.summary.viewHost');
+    }
+  }.property("service"),
+
+
   sparkServerComponent: function () {
-    return App.HostComponent.find().findProperty('componentName', 'SPARK'); 
-    //TODO(alex) should be SPARK_SERVER later on
-  }.property()
+    return App.HostComponent.find().findProperty('componentName', 'SPARK_SERVER'); 
+  }.property(),
 
 });

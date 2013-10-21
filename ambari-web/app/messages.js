@@ -726,6 +726,7 @@ Em.I18n.translations = {
   'services.service.summary.TrackersLive':'Trackers Live',
   'services.service.summary.RegionServersLIVE':'RegionServers Live',
   'services.service.summary.GangliaMonitorsLIVE':'Ganglia Monitors Live',
+  'services.service.summary.SparkWorkersLIVE':'Spark Workers Live',
   'services.service.summary.nameNode':'NameNode Web UI',
   'services.service.summary.nameNodeUptime':'NameNode Uptime',
   'services.service.summary.nameNodeHeap':'NameNode Heap',
@@ -1160,6 +1161,9 @@ Em.I18n.translations = {
   'dashboard.services.flume.channels': 'Channels',
   'dashboard.services.flume.sources': 'Sources',
   'dashboard.services.flume.sinks': 'Sinks',
+
+
+  'dashboard.services.spark.workers':'Spark Workers',
   
   
   'dashboard.services.hbase.summary':'{0} region servers with {1} average load',

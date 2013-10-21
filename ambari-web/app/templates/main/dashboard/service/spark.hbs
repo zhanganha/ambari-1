@@ -16,6 +16,7 @@
 * limitations under the License.
 }}
 
+{{#unless view.showOnlyRows}}
 <div class="clearfix">
   <div class="name span2">
     <i class="pull-left icon-empty"></i>
@@ -27,12 +28,36 @@
       </a>
     {{/if}}
   </div>
-  <p>View Text!</p>
   <div class="summary span">
-    {{#each component in view.sparkServerComponents}}
-      <a href="#" {{action showDetails component.host}}>{{component.displayName}}</a>,
-    {{/each}}
-
-    <a href="#" {{action filterHosts view.clients.component}}>{{view.clients.title}}</a>
+    <!--{view.summaryHeader}-->
   </div>
 </div>
+<div class="service-body">
+  <div class="span4">
+    <table class="table no-borders">
+      <tbody>
+    {{/unless}}
+      <!-- Spark Master Server -->
+
+      {{view view.dashboardMasterComponentView}}
+
+      <!-- Spark workers -->
+      <tr>
+        <td>{{t dashboard.services.spark.workers}}</td>
+        <td>
+          <span class="green-live">
+            {{view.liveWorkerNodes.length}}/{{view.service.workerNodes.length}} 
+          </span> {{t services.service.summary.SparkWorkersLIVE}}
+          <div class="summary-view-host">
+            <a href="#" {{action filterHosts view.regionServerComponent}}>
+            {{view.workerNodesText}}</a>
+          </div>
+         </td>
+      </tr>
+
+    {{#unless view.showOnlyRows}}
+      </tbody>
+    </table>
+  </div>
+</div>
+    {{/unless}}
