@@ -437,7 +437,7 @@ App.servicesMapper = App.QuickDataMapper.create({
     var finalConfig = jQuery.extend({}, this.config);
     var sparkConfig = this.sparkConfig;
     item.components.forEach(function (component) {
-      if (component.ServiceComponentInfo && component.ServiceComponentInfo.component_name == "SPARK_MASTER") {
+      if (component.ServiceComponentInfo && component.ServiceComponentInfo.component_name == "SPARK_SERVER") {
         item.masterComponent = component;
         finalConfig = jQuery.extend(finalConfig, sparkConfig);
       }

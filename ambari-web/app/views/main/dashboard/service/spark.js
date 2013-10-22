@@ -35,16 +35,27 @@ App.MainDashboardServiceSparkView = App.MainDashboardServiceView.extend({
   
 
   workerNodesText: function () {
-    if(this.get('service.workerNodes').get("length") > 1){
+    if(this.get('service.workerNodes').get("length") > 1) {
       return Em.I18n.t('services.service.summary.viewHosts');
     }else{
       return Em.I18n.t('services.service.summary.viewHost');
     }
   }.property("service"),
 
+  sparkWorkerComponent: function () {
+    return App.HostComponent.find().findProperty('componentName', 'SPARK_WORKER');
+  }.property(),
+
 
   sparkServerComponent: function () {
     return App.HostComponent.find().findProperty('componentName', 'SPARK_SERVER'); 
   }.property(),
+
+/*  sparkServerWebUrl: function () {
+    if (this.get('activeMaster.host') && this.get('activeMaster.host').get('publicHostName')) {
+      return "http://" + (App.singleNodeInstall ? App.singleNodeAlias : this.get('activeMaster.host').get('publicHostName')) + ":60010";
+    }
+  }.property('activeMaster'),
+*/
 
 });
