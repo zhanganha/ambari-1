@@ -200,6 +200,15 @@
       "configurations" : [ ]
     },
     {
+      "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/SPARK",
+      "StackServices" : {
+        "stack_version" : "1.3.0",
+        "service_name" : "SPARK",
+        "stack_name" : "HDP",
+      }
+      "configurations" : [ ]
+    },
+    {
       "href" : "http://dev.hortonworks.com:8080/api/v1/stacks2/HDP/versions/1.3.0/stackServices/MAPREDUCE",
       "StackServices" : {
         "stack_version" : "1.3.0",

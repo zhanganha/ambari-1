@@ -13,6 +13,18 @@
       }
     },
     {
+      "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/SPARK",
+      "StackServices" : {
+        "user_name" : "root",
+        "stack_version" : "2.0.1",
+        "service_name" : "SPARK",
+        "stack_name" : "HDP",
+        "comments" : "Lightning-fast cluster computing",
+        "service_version" : "0.8.0"
+      }
+    },
+
+    {
       "href" : "http://192.168.56.101:8080/api/v1/stacks2/HDP/versions/2.0.1/stackServices/OOZIE",
       "StackServices" : {
         "user_name" : "root",
