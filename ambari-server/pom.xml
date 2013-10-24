@@ -313,6 +313,9 @@
               <filemode>755</filemode>
               <sources>
                 <source>
+                  <location>src/main/resources/scripts/install_spark.sh</location>
+                </source>
+                <source>
                   <location>src/main/resources/scripts/install_flume.sh</location>
                 </source>
                 <source>
@@ -353,6 +356,14 @@
               <sources>
                 <source>
                   <location>src/main/resources/stacks/HDP</location>
+                </source>
+              </sources>
+            </mapping>
+            <mapping>
+              <directory>/var/lib/ambari-server/resources/stacks/NFL</directory>
+              <sources>
+                <source>
+                  <location>src/main/resources/stacks/NFL</location>
                 </source>
               </sources>
             </mapping>

@@ -526,6 +526,32 @@ define service {
 }
 <%end-%>
 
+<%if scope.function_hdp_nagios_members_exist('spark-server')-%>
+# SPARK Checks
+define service {
+        hostgroup_name          spark-server
+        use                     hadoop-service
+        service_description     SPARK::Spark Server process down
+        servicegroups           SPARK
+        check_command           check_tcp!<%=scope.function_hdp_template_var("spark_port")%>!-w 1 -c 1
+        normal_check_interval   1
+        retry_check_interval    0.5
+        max_check_attempts      3
+}
+
+# SPARK::WORKER Checks
+define service {
+        hostgroup_name          spark-workers
+        use                     hadoop-service
+        service_description     SPARK::Spark Worker process down
+        servicegroups           SPARK
+        check_command           check_tcp!<%=scope.function_hdp_template_var("spark_worker_port")%>!-w 1 -c 1
+        normal_check_interval   1
+        retry_check_interval    0.5
+        max_check_attempts      3
+}
+<%end-%>
+
 
 <%if scope.function_hdp_nagios_members_exist('zookeeper-servers')-%>
 # ZOOKEEPER Checks

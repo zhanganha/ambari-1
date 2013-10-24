@@ -90,6 +90,11 @@ class hdp::params()
 
   $flume_port = hdp_default("flume_port", "4159")
 
+  $spark_server_port = hdp_default("spark_server_port", "7077")
+  $spark_worker_port = hdp_default("spark_worker_port", "8081")
+  $spark_server_host = hdp_default("spark_server_host")
+  $spark_worker_hosts = hdp_default("spark_worker_hosts", $slave_hosts)
+
   $hbase_master_hosts = hdp_default("hbase_master_hosts", "")
 
   #if hbase_rs_hosts not given it is assumed that region servers on same nodes as slaves

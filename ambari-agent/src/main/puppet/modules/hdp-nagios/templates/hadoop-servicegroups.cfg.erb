@@ -31,6 +31,12 @@ define servicegroup {
   servicegroup_name  HBASE
   alias  HBASE Checks
 }
+<%if scope.function_hdp_nagios_members_exist('spark-server') ||
+  scope.function_hdp_nagios_members_exist('spark-workers') -%>
+define servicegroup {
+  servicegroup_name  SPARK
+  alias  SPARK Checks
+}
 <% end -%>
 <%if scope.function_hdp_nagios_members_exist('oozie-server')-%>
 define servicegroup {
