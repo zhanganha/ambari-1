@@ -97,6 +97,7 @@ class Controller(threading.Thread):
         # try a reconnect only after a certain amount of random time
         delay = randint(0, self.range)
         logger.info("Unable to connect to: " + self.registerUrl, exc_info = True)
+        logger.info("Server responeded with:\n{0}".format(response))
         """ Sleeping for {0} seconds and then retrying again """.format(delay)
         time.sleep(delay)
         pass
