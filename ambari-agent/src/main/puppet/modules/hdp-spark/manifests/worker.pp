@@ -18,7 +18,7 @@
 # under the License.
 #
 #
-class hdp-spark::client(
+class hdp-spark::worker(
   $service_state = $hdp::params::cluster_client_state
 ) inherits hdp::params
 {
