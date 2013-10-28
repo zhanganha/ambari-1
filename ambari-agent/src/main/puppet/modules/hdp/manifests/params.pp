@@ -332,6 +332,7 @@ class hdp::params()
     $hcat_mysql_host = hdp_default("hcat_mysql_host")
     $hue_conf_dir = "/etc/hue/conf"
     $hive_conf_dir = "/etc/hive/conf"
+    $spark_conf_dir = "/etc/spark/conf"
 
   } elsif ($packages == 'bigtop') {  
    
@@ -365,6 +366,7 @@ class hdp::params()
     $hcat_server_host = hdp_default("hive_server_host")
     $hcat_mysql_host = hdp_default("hive_mysql_host")
     $hue_conf_dir = "/etc/hue/conf"
+    $spark_conf_dir = "/etc/spark/conf"
 
 
     $pathes = {

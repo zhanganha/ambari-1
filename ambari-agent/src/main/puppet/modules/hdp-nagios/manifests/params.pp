@@ -85,8 +85,8 @@ class hdp-nagios::params() inherits hdp::params
     hue-server => {host_member_info => 'hue_server_host'},
     resorcemanager => {host_member_info => 'rm_host'},
     nodemanagers => {host_member_info => 'nm_hosts'},
-    historyserver2 => {host_member_info => 'hs_host'}
+    historyserver2 => {host_member_info => 'hs_host'},
     spark-server => {host_member_info => 'spark_server_host'},
-    spark-workers => {host_member_info => 'spark_worker_hosts'},
+    spark-workers => {host_member_info => 'spark_worker_hosts'}
   }
 }

@@ -55,11 +55,9 @@ class hdp-spark(
       override_owner => true
     }
 
-   hdp-spark::configfile { ['spark-env.sh','hadoop-metrics.properties']: 
-      type => $type
-    }
+    hdp-spark::configfile { 'spark-env.sh' : conf_dir => $config_dir}
 
-    hdp-spark::configfile { 'spark-workers':}
+    #hdp-spark::configfile { 'spark-workers':}
 
     Anchor['hdp-spark::begin'] -> Hdp::Package['spark'] -> Hdp::Directory[$config_dir] -> 
     Hdp-spark::Configfile<||> ->  Anchor['hdp-spark::end']

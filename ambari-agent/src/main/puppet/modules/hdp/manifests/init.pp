@@ -177,6 +177,14 @@ class hdp(
       Anchor['hdp::begin'] -> Hdp::Group['hdp_user_group'] -> Hdp::User['hive_user'] -> Anchor['hdp::end']  
     }
 
+    if ($hdp::params::spark_server_host != "") {
+      hdp::user{ 'spark_user':
+        user_name => $hdp::params::spark_user
+      }
+
+      Anchor['hdp::begin'] -> Hdp::Group['hdp_user_group'] -> Hdp::User['spark_user'] -> Anchor['hdp::end']  
+    }
+
 }
 
 class hdp::pre_install_pkgs
