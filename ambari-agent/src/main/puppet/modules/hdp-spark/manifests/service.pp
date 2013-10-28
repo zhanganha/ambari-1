@@ -18,10 +18,12 @@
 # under the License.
 #
 #
-class hdp-spark::service(
-  $ensure = $hdp::params::cluster_service_state
+define hdp-spark::service(
+  $ensure = 'running',
 )
 {
+  include hdp-spark::params
+
 }
 
 
