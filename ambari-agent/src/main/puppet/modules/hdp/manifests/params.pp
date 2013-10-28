@@ -516,6 +516,10 @@ class hdp::params()
       'ALL' => {64 => {'ALL' => 'hbase'}}
     },
 
+    spark=> {
+      'ALL' => {'ALL' => {'ALL' => ['spark.noarch']}}
+    },
+
     pig=> { 
       'ALL' => {'ALL' => {'ALL'=>['pig.noarch']}}
     },
