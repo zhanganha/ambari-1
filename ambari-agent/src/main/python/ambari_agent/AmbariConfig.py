@@ -160,7 +160,7 @@ servicesToPidNames = {
   'GANGLIA_MONITOR': 'gmond.pid',
   'HBASE_MASTER': 'hbase-{USER}-master.pid',
   'HBASE_REGIONSERVER': 'hbase-{USER}-regionserver.pid',
-  'SPARK_SERVER': 'spark-server.pid',
+  'SPARK_SERVER': 'spark-master.pid',
   'SPARK_WORKER': 'spark-worker.pid',
   'HCATALOG_SERVER': 'webhcat.pid',
   'KERBEROS_SERVER': 'kadmind.pid',

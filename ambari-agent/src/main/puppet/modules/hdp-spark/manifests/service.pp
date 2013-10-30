@@ -24,7 +24,23 @@ define hdp-spark::service(
 {
   include hdp-spark::params
 
+  $role = $name
+
+  if ($ensure == 'running') {
+    $daemon_cmd = "su - ${user} -c  '${cmd} start ${role}'"
+    $no_op_test = "ls ${pid_file} >/dev/null 2>&1 && ps `cat ${pid_file}` >/dev/null 2>&1"
+  } elsif ($ensure == 'stopped') {
+    $daemon_cmd = "su - ${user} -c  '${cmd} stop ${role}'"
+    $no_op_test = undef
+  } else {
+    $daemon_cmd = undef
+  }
+
+
+    # service spark-master start
+    if ($ensure in [ 'running', 'stopped' ]){
+        service { "spark-${role}" :
+            ensure => $ensure
+        }
+    }
 }
-
-
-

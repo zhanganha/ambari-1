@@ -35,13 +35,13 @@ class hdp-spark::server(
     }
 
     #Hdp-spark::Configfile<||>{spark_server_hosts => $hdp::params::host_address}
-  
-    hdp-spark::service{ 'server':
+
+    hdp-spark::service{ 'master':
       ensure => $service_state
     }
 
     #top level does not need anchors
-    Class['hdp-spark'] -> Hdp-spark::Service['server'] 
+    Class['hdp-spark'] -> Hdp-spark::Service['master'] 
     } else {
     hdp_fail("TODO not implemented yet: service_state = ${service_state}")
   }

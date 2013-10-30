@@ -22,5 +22,9 @@ class hdp-spark::worker(
   $service_state = $hdp::params::cluster_client_state
 ) inherits hdp::params
 {
+ 
+    hdp-spark::service{ 'worker':
+      ensure => $service_state
+    }
 
 }
