@@ -18,24 +18,24 @@
 # under the License.
 #
 #
-class hdp-shark::params() inherits hdp::params
-{
-  ####### users
-  $shark_user = $hdp::params::shark_user
-  
-  ### shark-env
-  $hadoop_conf_dir = hdp_default("hadoop_conf_dir")
-  # $conf_dir = $hdp::params::shark_conf_dir
-  $conf_dir = hdp_default("shark_conf_dir","/usr/lib/shark/conf")
-
-  $shark_log_dir = hdp_default("shark_log_dir","/var/log/shark")
-
-  $shark_server_heapsize = hdp_default("shark_server_heapsize","1000m")
-
-  $shark_pid_dir = hdp_default("shark_pid_dir","/var/run/shark")
-
-  $shark_worker_heapsize = hdp_default("shark_worker_heapsize","1000m")
-
-  $shark_worker_xmn_size = hdp_calc_xmn_from_xms("$shark_worker_heapsize","0.2","512")
-
+class hdp-shark::client(
+  $service_state = $hdp::params::cluster_client_state,
+  $shark_server = undef
+) inherits hdp::params
+{ 
+  if ($service_state == 'no_op') {
+   } elsif ($service_state in ['installed_and_configured','uninstalled']) {
+     if ($hdp::params::service_exists['hdp-shark::server'] != true) {
+       #installs package, creates user, sets configuration
+       class { 'hdp-shark' :
+         type => 'client',
+         service_state => $service_state
+       }
+      if ($shark_server != undef) {
+        Hdp-Shark::Configfile<||>{shark_server => $shark_server}
+      }
+    }
+  } else {
+    hdp_fail("TODO not implemented yet: service_state = ${service_state}")
+  }
 }
