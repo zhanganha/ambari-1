@@ -115,7 +115,7 @@ rolesToClass = {
   'HUE_SERVER': 'hdp-hue::server',
   'SPARK_SERVER': 'hdp-spark::server',
   'SPARK_WORKER': 'hdp-spark::worker',
-  'SPARK_SERVER': 'hdp-spark::server',
+  'SHARK_SERVER': 'hdp-shark::server',
   'HDFS_SERVICE_CHECK': 'hdp-hadoop::hdfs::service_check',
   'MAPREDUCE_SERVICE_CHECK': 'hdp-hadoop::mapred::service_check',
   'ZOOKEEPER_SERVICE_CHECK': 'hdp-zookeeper::zookeeper::service_check',
