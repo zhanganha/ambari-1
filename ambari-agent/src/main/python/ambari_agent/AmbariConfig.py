@@ -162,6 +162,7 @@ servicesToPidNames = {
   'HBASE_REGIONSERVER': 'hbase-{USER}-regionserver.pid',
   'SPARK_SERVER': 'spark-master.pid',
   'SPARK_WORKER': 'spark-worker.pid',
+  'SHARK_SERVER': 'shark-server.pid',
   'HCATALOG_SERVER': 'webhcat.pid',
   'KERBEROS_SERVER': 'kadmind.pid',
   'HIVE_SERVER': 'hive-server.pid',
