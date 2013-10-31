@@ -18,15 +18,15 @@
 # under the License.
 #
 ##################################################
-# Script to define, install and start FLUME service
+# Script to define, install and start SPARK service
 # after Ambari installer finishes.
 #
-# Flume service is defined, installed and started 
+# Spark service is defined, installed and started 
 # via API calls.
 ##################################################
 
 if (($# != 4)); then
-  echo "Usage: $0: <AMBARI_HOST> <FLUME1_INTERNAL_HOST> <FLUME2_INTERNAL_HOST> <CLUSTER_NAME>";
+  echo "Usage: $0: <AMBARI_HOST> <SPARK_HOST> <COMPONENT: SPARK_SERVER or SPARK_WORKER> <CLUSTER_NAME>";
   exit 1;
 fi
 
@@ -35,54 +35,53 @@ USERID="admin"
 PASSWD="admin"
 
 defineService () {
-  if curl -s -u $USERID:$PASSWD "$AMBARIURL/api/v1/clusters/$1/services" | grep service_name | cut -d : -f 2 | grep -q FLUME ; then
-    echo "FLUME service already defined.";
+  if curl -s -u $USERID:$PASSWD "$AMBARIURL/api/v1/clusters/$1/services" | grep service_name | cut -d : -f 2 | grep -q SPARK ; then
+    echo "SPARK service already defined.";
   else
-    echo "Defining FLUME";
-    curl -u $USERID:$PASSWD -X POST "$AMBARIURL/api/v1/clusters/$1/services" --data "[{\"ServiceInfo\":{\"service_name\":\"FLUME\"}}]";
+    echo "Defining SPARK";
+    curl -u $USERID:$PASSWD -X POST "$AMBARIURL/api/v1/clusters/$1/services" --data "[{\"ServiceInfo\":{\"service_name\":\"SPARK\"}}]";
   fi
 }
 
 defineServiceComponent () {
-  if curl -s -u $USERID:$PASSWD "$AMBARIURL/api/v1/clusters/$1/services/FLUME" | grep components | cut -d : -f 2 | grep -q "\[ \]" ; then
-    echo "Defining FLUME_SERVER service component"
-    curl -u $USERID:$PASSWD -X POST "$AMBARIURL/api/v1/clusters/$1/services?ServiceInfo/service_name=FLUME" --data "{\"components\":[{\"ServiceComponentInfo\":{\"component_name\":\"FLUME_SERVER\"}}]}";
+  if curl -s -u $USERID:$PASSWD "$AMBARIURL/api/v1/clusters/$1/services/SPARK" | grep components | cut -d : -f 2 | grep -q "\[ \]" ; then
+    echo "Defining $2 service component"
+    curl -u $USERID:$PASSWD -X POST "$AMBARIURL/api/v1/clusters/$1/services?ServiceInfo/service_name=SPARK" --data "{\"components\":[{\"ServiceComponentInfo\":{\"component_name\":\"$2\"}}]}";
   else
-    echo "FLUME_SERVER service component already defined."
+    echo "$2 service component already defined."
   fi
 }
 
 defineHostComponent () {
-  if ! curl -s -u $USERID:$PASSWD "$AMBARIURL/api/v1/clusters/$2/hosts/$1" | grep component_name | cut -d : -f 2 | grep -q "FLUME_SERVER" ; then
-    echo "Defining FLUME_SERVER host component on $1"
-    curl -u $USERID:$PASSWD -X POST "$AMBARIURL/api/v1/clusters/$2/hosts?Hosts/host_name=$1" --data "{\"host_components\":[{\"HostRoles\":{\"component_name\":\"FLUME_SERVER\"}}]}";
+  if ! curl -s -u $USERID:$PASSWD "$AMBARIURL/api/v1/clusters/$2/hosts/$1" | grep component_name | cut -d : -f 2 | grep -q "SPARK_SERVER" ; then
+    echo "Defining $3 host component on $1"
+    curl -u $USERID:$PASSWD -X POST "$AMBARIURL/api/v1/clusters/$2/hosts?Hosts/host_name=$1" --data "{\"host_components\":[{\"HostRoles\":{\"component_name\":\"$3\"}}]}";
   else
-    echo "FLUME_SERVER host component already defined on $1."
+    echo "$3 host component already defined on $1."
   fi
 }
 
 installService () {
-  if curl -s -u $USERID:$PASSWD "$AMBARIURL/api/v1/clusters/$1/services/FLUME" | grep state | cut -d : -f 2 | grep -q "INIT" ; then
-    echo "Installing FLUME_SERVER service"
-    curl -u $USERID:$PASSWD -X PUT "$AMBARIURL/api/v1/clusters/$1/services?ServiceInfo/state=INIT&ServiceInfo/service_name=FLUME" --data "{\"RequestInfo\": {\"context\" :\"Install Flume Service\"}, \"Body\": {\"ServiceInfo\": {\"state\": \"INSTALLED\"}}}";
+  if curl -s -u $USERID:$PASSWD "$AMBARIURL/api/v1/clusters/$1/services/SPARK" | grep state | cut -d : -f 2 | grep -q "INIT" ; then
+    echo "Installing $2 service"
+    curl -u $USERID:$PASSWD -X PUT "$AMBARIURL/api/v1/clusters/$1/services?ServiceInfo/state=INIT&ServiceInfo/service_name=SPARK" --data "{\"RequestInfo\": {\"context\" :\"Install SPARK Service\"}, \"Body\": {\"ServiceInfo\": {\"state\": \"INSTALLED\"}}}";
   else
-    echo "FLUME_SERVER already installed."
+    echo "$2 already installed."
   fi
 }
 
 startService () {
-  if curl -s -u $USERID:$PASSWD "$AMBARIURL/api/v1/clusters/$1/services/FLUME" | grep state | cut -d : -f 2 | grep -q "STARTED" ; then
-    echo "FLUME_SERVER already started."
+  if curl -s -u $USERID:$PASSWD "$AMBARIURL/api/v1/clusters/$1/services/SPARK" | grep state | cut -d : -f 2 | grep -q "STARTED" ; then
+    echo "$2 already started."
   else
-    echo "Starting FLUME_SERVER service"
-    curl -u $USERID:$PASSWD -X PUT "$AMBARIURL/api/v1/clusters/$1/services?ServiceInfo/state=INSTALLED&ServiceInfo/service_name=FLUME" --data "{\"RequestInfo\": {\"context\" :\"Start Flume Service\"}, \"Body\": {\"ServiceInfo\": {\"state\": \"STARTED\"}}}";
+    echo "Starting $2 service"
+    curl -u $USERID:$PASSWD -X PUT "$AMBARIURL/api/v1/clusters/$1/services?ServiceInfo/state=INSTALLED&ServiceInfo/service_name=SPARK" --data "{\"RequestInfo\": {\"context\" :\"Start SPARK Service\"}, \"Body\": {\"ServiceInfo\": {\"state\": \"STARTED\"}}}";
   fi
 }
 
 
 defineService $4
-defineServiceComponent  $4
-defineHostComponent $2 $4
-defineHostComponent $3 $4
-installService $4
-startService $4
+defineServiceComponent  $4 $3
+defineHostComponent $2 $4 $3
+installService $4 $3
+startService $4 $3
