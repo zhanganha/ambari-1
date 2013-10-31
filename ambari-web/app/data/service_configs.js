@@ -180,6 +180,7 @@ module.exports = [
     configs: []
   },
   /*TODO(alex): add spark-related configs here*/
+  /*TODO(alex): add shark-related configs here*/
   {
     serviceName: 'MISC',
     displayName: 'Misc',

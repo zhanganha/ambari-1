@@ -375,6 +375,13 @@ App.WizardStep5Controller = Em.Controller.extend({
           "31" : 2,
           "else" : 3
         }).host_name;
+    case 'SHARK_SERVER':
+        return this.getHostForComponent(noOfHosts, {
+          "3" : 1,
+          "6" : 1,
+          "31" : 2,
+          "else" : 4
+        }).host_name;
       case 'OOZIE_SERVER':
         return this.getHostForComponent(noOfHosts, {
           "3" : 1,

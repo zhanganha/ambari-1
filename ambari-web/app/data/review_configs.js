@@ -151,6 +151,16 @@ module.exports = [
         ]
       }),
       Ember.Object.create({
+        service_name: 'SHARK',
+        display_name: 'Shark',
+        service_components: [
+          Ember.Object.create({
+            display_name: 'Server',
+            component_value: ''
+          }),
+        ]
+      }),
+      Ember.Object.create({
         service_name: 'ZOOKEEPER',
         display_name: 'ZooKeeper',
         service_components: [

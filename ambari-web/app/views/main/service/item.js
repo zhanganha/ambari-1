@@ -58,6 +58,8 @@ App.MainServiceItemView = Em.View.extend({
         break;
       case 'SPARK':
         break;
+      case 'SHARK':
+        break; //TODO(alex) runSmokeTest ?
       default:
         var components = this.get('controller.content.hostComponents');
         options.push({action: 'runSmokeTest', 'label': Em.I18n.t('services.service.actions.run.smoke')});

@@ -358,6 +358,12 @@ App.format = {
         return 'Spark Server';
       case 'SPARK_WORKER':
         return 'Spark Worker';
+      case 'SHARK_CLIENT':
+        return 'Shark Client';
+      case 'SHARK_SERVER':
+        return 'Shark Server';
+      case 'SHARK_SERVICE_CHECK':
+        return 'Shark Check';
 
     }
   },

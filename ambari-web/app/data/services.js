@@ -162,5 +162,14 @@ module.exports = [
     isSelected: App.supports.spark,
     canBeSelected: App.supports.spark,
     isHidden: !App.supports.spark
+  },
+  {
+    serviceName: 'SHARK',
+    displayName: 'Shark',
+    isDisabled: false,
+    isSelected: App.supports.shark,
+    canBeSelected: App.supports.shark,
+    isHidden: !App.supports.shark
   }
+
 ]

@@ -85,6 +85,9 @@
         {{#if view.serviceStatus.hue}}
           {{template "templates/main/service/info/summary/hue"}}
         {{/if}}
+        {{#if view.serviceStatus.shark}}
+          {{template "templates/main/service/info/summary/shark"}}
+        {{/if}}
         {{#if view.serviceStatus.flume}}
           {{view App.MainDashboardServiceFlumeView showOnlyRows=true serviceBinding="view.service"}}
         {{/if}}

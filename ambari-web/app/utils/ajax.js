@@ -286,6 +286,7 @@ var urls = {
     'testInProduction': true
   },
   /*TODO(alex): add spark-related metrics server URLs here*/
+  /*TODO(alex): add shark-related metrics server URLs here*/
   'service.metrics.hbase.cluster_requests': {
     'real': '/clusters/{clusterName}/services/HBASE/components/HBASE_MASTER?fields=metrics/hbase/master/cluster_requests[{fromSeconds},{toSeconds},{stepSeconds}]',
     'mock': '/data/services/metrics/hbase/cluster_requests.json',

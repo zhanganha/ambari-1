@@ -151,7 +151,8 @@ require('views/main/service/info/metrics/flume/gc');
 require('views/main/service/info/metrics/flume/jvm_heap');
 require('views/main/service/info/metrics/flume/jvm_threads_runnable');
 require('views/main/service/info/metrics/flume/cpu_user');
-/*TODO(alex): add spar-related metrics server URLs here*/
+/*TODO(alex): add spark-related metrics server URLs here*/
+/*TODO(alex): add shark-related metrics server URLs here*/
 require('views/main/service/add_view');
 require('views/main/service/reassign_view');
 require('views/main/charts/menu');
