@@ -116,6 +116,7 @@ rolesToClass = {
   'SPARK_SERVER': 'hdp-spark::server',
   'SPARK_WORKER': 'hdp-spark::worker',
   'SHARK_SERVER': 'hdp-shark::server',
+  'SHARK_CLIENT': 'hdp-shark::client',
   'HDFS_SERVICE_CHECK': 'hdp-hadoop::hdfs::service_check',
   'MAPREDUCE_SERVICE_CHECK': 'hdp-hadoop::mapred::service_check',
   'ZOOKEEPER_SERVICE_CHECK': 'hdp-zookeeper::zookeeper::service_check',
