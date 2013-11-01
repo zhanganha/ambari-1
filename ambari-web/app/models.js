@@ -32,6 +32,7 @@ require('models/service/hdfs');
 require('models/service/mapreduce');
 require('models/service/hbase');
 require('models/service/flume');
+require('models/service/spark');
 require('models/alert');
 require('models/user');
 require('models/host');

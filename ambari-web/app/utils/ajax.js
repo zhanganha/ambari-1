@@ -285,6 +285,7 @@ var urls = {
     'mock': '/data/services/metrics/flume/sourceEventAccepted.json',
     'testInProduction': true
   },
+  /*TODO(alex): add spark-related metrics server URLs here*/
   'service.metrics.hbase.cluster_requests': {
     'real': '/clusters/{clusterName}/services/HBASE/components/HBASE_MASTER?fields=metrics/hbase/master/cluster_requests[{fromSeconds},{toSeconds},{stepSeconds}]',
     'mock': '/data/services/metrics/hbase/cluster_requests.json',

@@ -90,6 +90,11 @@ class hdp::params()
 
   $flume_port = hdp_default("flume_port", "4159")
 
+  $spark_server_port = hdp_default("spark_server_port", "7077")
+  $spark_worker_port = hdp_default("spark_worker_port", "8081")
+  $spark_server_host = hdp_default("spark_server_host")
+  $spark_worker_hosts = hdp_default("spark_worker_hosts", $slave_hosts)
+
   $hbase_master_hosts = hdp_default("hbase_master_hosts", "")
 
   #if hbase_rs_hosts not given it is assumed that region servers on same nodes as slaves
@@ -327,6 +332,7 @@ class hdp::params()
     $hcat_mysql_host = hdp_default("hcat_mysql_host")
     $hue_conf_dir = "/etc/hue/conf"
     $hive_conf_dir = "/etc/hive/conf"
+    $spark_conf_dir = "/etc/spark/conf"
 
   } elsif ($packages == 'bigtop') {  
    
@@ -360,6 +366,7 @@ class hdp::params()
     $hcat_server_host = hdp_default("hive_server_host")
     $hcat_mysql_host = hdp_default("hive_mysql_host")
     $hue_conf_dir = "/etc/hue/conf"
+    $spark_conf_dir = "/etc/spark/conf"
 
 
     $pathes = {
@@ -509,6 +516,10 @@ class hdp::params()
 
     hbase=> {
       'ALL' => {64 => {'ALL' => 'hbase'}}
+    },
+
+    spark=> {
+      'ALL' => {'ALL' => {'ALL' => ['spark.noarch']}}
     },
 
     pig=> { 

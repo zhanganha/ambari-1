@@ -56,6 +56,7 @@ App.HostComponent = DS.Model.extend({
       case 'HUE_SERVER':
       case 'HISTORYSERVER':
       case 'FLUME_SERVER':
+      case 'SPARK_SERVER':
         return true;
       default:
         return false;
@@ -67,6 +68,7 @@ App.HostComponent = DS.Model.extend({
       case 'TASKTRACKER':
       case 'HBASE_REGIONSERVER':
       case 'GANGLIA_MONITOR':
+      case 'SPARK_WORKER':
         return true;
       default:
         return false;

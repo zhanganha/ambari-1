@@ -106,6 +106,7 @@ public interface Service {
     ZOOKEEPER,
     PIG,
     HCATALOG,
-    FLUME
+    FLUME,
+    SPARK
   }
 }

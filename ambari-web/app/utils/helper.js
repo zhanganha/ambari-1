@@ -354,6 +354,11 @@ App.format = {
         return 'HCFS Service Check';
       case 'FLUME_SERVER':
         return 'Flume Agent';
+      case 'SPARK_SERVER':
+        return 'Spark Server';
+      case 'SPARK_WORKER':
+        return 'Spark Worker';
+
     }
   },
 

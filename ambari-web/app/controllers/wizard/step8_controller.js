@@ -407,6 +407,9 @@ App.WizardStep8Controller = Em.Controller.extend({
           case 'HBASE':
             this.loadHbase(serviceObj);
             break;
+          case 'SPARK':
+            this.loadSpark(serviceObj);
+            break;
           case 'ZOOKEEPER':
             this.loadZk(serviceObj);
             break;
@@ -614,6 +617,43 @@ App.WizardStep8Controller = Em.Controller.extend({
       dbComponent.set('component_value', db.value + ' (' + hiveDb.value + ')');
     }
   },
+
+  /**
+   * Load all info about Spark
+   * @param sparkObj
+   */
+  loadSpark: function (sparkObj) {
+    sparkObj.service_components.forEach(function (_component) {
+      switch (_component.display_name) {
+        case 'Server':
+          this.loadSparkServerValue(_component);
+          break;
+        case 'Worker':
+          this.loadSparkWorkerValue(_component);
+          break;
+        default:
+      }
+    }, this);
+    this.get('services').pushObject(sparkObj);
+  },
+
+  loadSparkServerValue: function (sparkServer) {
+    var sparkHostName = this.get('content.masterComponentHosts').filterProperty('display_name', 'Spark Server');
+    if (sparkHostName.length == 1) {
+      sparkServer.set('component_value', sparkHostName[0].hostName);
+    } else {
+      sparkServer.set('component_value', sparkHostName[0].hostName + Em.I18n.t('installer.step8.other').format(sparkHostName.length - 1));
+    }
+  },
+
+  loadSparkWorkerValue: function (worker) {
+    /*thats wired but saving slave display_names at wizard.js:623 .saveSlaveComponentHosts() 
+     * they filter out whitespace */
+    var workerNodes = this.get('content.slaveComponentHosts').findProperty('displayName', 'SparkWorker');
+    var totalWorkerNodes = workerNodes.hosts.length;
+    worker.set('component_value', totalWorkerNodes + Em.I18n.t('installer.step8.hosts'));
+  },
+
 
   /**
    * Load all info about Hbase

@@ -45,15 +45,18 @@ module.exports = Em.Application.create({
    */
   stack2VersionURL:function(){
     var stackVersion = this.get('currentStackVersion') || this.get('defaultStackVersion');
-    if(stackVersion.indexOf('HDPLocal') !== -1){
-      return '/stacks2/HDPLocal/versions/' + stackVersion.replace(/HDPLocal-/g, '');
-    }
-    return '/stacks2/HDP/versions/' + stackVersion.replace(/HDP-/g, '');
+    //assume naming convention <name>-<version> i.e NFL-1.3.2 or HDP-1.4.0
+    var stackVersionNumber = stackVersion.substring(stackVersion.indexOf('-') + 1, stackVersion.length);
+    var stackName = stackVersion.substring(0, stackVersion.indexOf('-'));
+    return '/stacks2/' + stackName +'/versions/' + stackVersionNumber;
   }.property('currentStackVersion'),
   clusterName: null,
   currentStackVersion: '',
   currentStackVersionNumber: function(){
-    return this.get('currentStackVersion').replace(/HDP(Local)?-/, '');
+    var stackVersion = this.get('currentStackVersion') || this.get('defaultStackVersion');
+    //assume naming convention <name>-<version> i.e NFL-1.3.2 or HDP-1.4.0
+    var stackVersionNumber = stackVersion.substring(stackVersion.indexOf('-') + 1, stackVersion.length);
+    return stackVersionNumber;
   }.property('currentStackVersion')
 });
 

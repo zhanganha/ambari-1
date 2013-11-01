@@ -45,7 +45,8 @@ App.MainServiceInfoSummaryView = Em.View.extend({
     ganglia:false,
     nagios:false,
     hue: false,
-    flume: false
+    flume: false,
+    spark: false,
   },
 
   sumMasterComponentView : Em.View.extend({
@@ -97,7 +98,7 @@ App.MainServiceInfoSummaryView = Em.View.extend({
   servers: function () {
     var result = [];
     var service = this.get('controller.content');
-    if (service.get("id") == "ZOOKEEPER" || service.get("id") == "FLUME") {
+    if (service.get("id") == "ZOOKEEPER" || service.get("id") == "FLUME" || service.get("id") == "SPARK") {
       var servers = service.get('hostComponents').filterProperty('isMaster');
       if (servers.length > 0) {
         result = [{
@@ -173,7 +174,7 @@ App.MainServiceInfoSummaryView = Em.View.extend({
    */
   serversHost: function() {
     var service = this.get('controller.content');
-    if (service.get("id") == "ZOOKEEPER" || service.get("id") == "FLUME") {
+    if (service.get("id") == "ZOOKEEPER" || service.get("id") == "FLUME"  || service.get("id") == "SPARK") {
       var servers = service.get('hostComponents').filterProperty('isMaster');
       if (servers.length > 0) {
         return servers[0];
@@ -276,6 +277,9 @@ App.MainServiceInfoSummaryView = Em.View.extend({
         case 'flume':
           svc = App.FlumeService.find().objectAt(0);
           break;
+        case 'spark':
+          svc = App.SparkService.find().objectAt(0);
+          break;
         default:
           break;
       }
@@ -349,6 +353,7 @@ App.MainServiceInfoSummaryView = Em.View.extend({
               //App.ChartServiceMetricsFlume_JVMThreadsRunnable.extend(),
               App.ChartServiceMetricsFlume_CPUUser.extend()]];
           break;
+        /*TODO(alex): add spark-related metrics applications here*/
         default:
           break;
       }

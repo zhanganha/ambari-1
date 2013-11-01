@@ -179,7 +179,7 @@ module.exports = [
     sites: ['hue-site'],
     configs: []
   },
-
+  /*TODO(alex): add spark-related configs here*/
   {
     serviceName: 'MISC',
     displayName: 'Misc',

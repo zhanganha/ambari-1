@@ -35,7 +35,8 @@ App.servicesMapper = App.QuickDataMapper.create({
     'ZOOKEEPER',
     'PIG',
     'SQOOP',
-    'HUE'
+    'HUE',
+    'SPARK'
   ],
   sortByOrder: function (sortOrder, array) {
     var sorted = [];
@@ -121,6 +122,17 @@ App.servicesMapper = App.QuickDataMapper.create({
     heap_memory_used: 'masterComponent.ServiceComponentInfo.HeapMemoryUsed',
     heap_memory_max: 'masterComponent.ServiceComponentInfo.HeapMemoryMax'
   },
+  sparkConfig: {
+    version: 'masterComponent.ServiceComponentInfo.Version',
+    master_id: 'masterComponent.host_components[0].HostRoles.host_name',
+    worker_nodes: 'worker_nodes',
+    master_start_time: 'masterComponent.ServiceComponentInfo.MasterStartTime',
+    master_active_time: 'masterComponent.ServiceComponentInfo.MasterActiveTime',
+    average_load: 'masterComponent.ServiceComponentInfo.AverageLoad',
+    revision: 'masterComponent.ServiceComponentInfo.Revision',
+    heap_memory_used: 'masterComponent.ServiceComponentInfo.HeapMemoryUsed',
+    heap_memory_max: 'masterComponent.ServiceComponentInfo.HeapMemoryMax'
+  },
 
   model3: App.HostComponent,
   config3: {
@@ -170,6 +182,11 @@ App.servicesMapper = App.QuickDataMapper.create({
           finalJson.rand = Math.random();
           result.push(finalJson);
           App.store.load(App.HBaseService, finalJson);
+        }else if (item && item.ServiceInfo && item.ServiceInfo.service_name == "SPARK") {
+          finalJson = this.sparkMapper(item);
+          finalJson.rand = Math.random();
+          result.push(finalJson);
+          App.store.load(App.SparkService, finalJson);
         }else if (item && item.ServiceInfo && item.ServiceInfo.service_name == "FLUME") {
           finalJson = this.flumeMapper(item);
           finalJson.rand = Math.random();
@@ -412,6 +429,32 @@ App.servicesMapper = App.QuickDataMapper.create({
     // Map
     finalJson = this.parseIt(item, finalConfig);
     finalJson.quick_links = [13, 14, 15, 16, 17, 18];
+    return finalJson;
+  },
+
+  sparkMapper: function (item) {
+    // Change the JSON so that it is easy to map
+    var finalConfig = jQuery.extend({}, this.config);
+    var sparkConfig = this.sparkConfig;
+    item.components.forEach(function (component) {
+      if (component.ServiceComponentInfo && component.ServiceComponentInfo.component_name == "SPARK_SERVER") {
+        item.masterComponent = component;
+        finalConfig = jQuery.extend(finalConfig, sparkConfig);
+      }
+      if (component.ServiceComponentInfo && component.ServiceComponentInfo.component_name == "SPARK_WORKER") {
+        if (!item.worker_nodes) {
+          item.worker_nodes = [];
+        }
+        if (component.host_components) {
+          component.host_components.forEach(function (hc) {
+            item.worker_nodes.push(hc.HostRoles.host_name);
+          });
+        }
+      }
+    });
+    // Map
+    finalJson = this.parseIt(item, finalConfig);
+    finalJson.quick_links = [19, 20, 21, 22, 23, 24];
     return finalJson;
   },
   

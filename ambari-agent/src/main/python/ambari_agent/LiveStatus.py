@@ -33,7 +33,7 @@ class LiveStatus:
     "HDFS", "MAPREDUCE", "GANGLIA", "HBASE",
     "NAGIOS", "ZOOKEEPER", "OOZIE", "HCATALOG",
     "KERBEROS", "TEMPLETON", "HIVE", "WEBHCAT",
-    "YARN", "MAPREDUCE2", "FLUME"
+    "YARN", "MAPREDUCE2", "FLUME", "SPARK"
   ]
 
   COMPONENTS = [
@@ -64,6 +64,11 @@ class LiveStatus:
 
       {"serviceName" : "FLUME",
        "componentName" : "FLUME_SERVER"},
+
+      {"serviceName" : "SPARK",
+       "componentName" : "SPARK_SERVER"},
+      {"serviceName" : "SPARK",
+       "componentName" : "SPARK_WORKER"},
 
       {"serviceName" : "ZOOKEEPER",
        "componentName" : "ZOOKEEPER_SERVER"},

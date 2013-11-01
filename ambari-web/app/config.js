@@ -56,7 +56,8 @@ App.supports = {
   customizeSmokeTestUser: true,
   hue: false,
   ldapGroupMapping: false,
-  localRepositories: false
+  localRepositories: false,
+  spark: true
 };
 
 if (App.enableExperimental) {

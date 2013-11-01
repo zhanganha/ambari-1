@@ -38,6 +38,8 @@ define hdp::configfile(
   $hbase_rs_hosts = $hdp::params::hbase_rs_hosts,
   $zookeeper_hosts = $hdp::params::zookeeper_hosts,
   $flume_hosts = $hdp::params::flume_hosts,
+  $spark_server_host = $hdp::params::spark_server_host,
+  $spark_worker_hosts = $hdp::params::spark_worker_hosts,
   $hbase_master_hosts = $hdp::params::hbase_master_hosts,
   $hcat_server_host = $hdp::params::hcat_server_host,
   $hive_server_host = $hdp::params::hive_server_host,

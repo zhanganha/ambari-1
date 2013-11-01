@@ -27,7 +27,7 @@
         </component>
 
         <component>
-            <name>SPARK_NODE</name>
+            <name>SPARK_WORKER</name>
             <category>SLAVE</category>
         </component>
     </components>

@@ -163,6 +163,22 @@ module.exports = new Ember.Set([
     description: 'The slave for HBase'
   },
   {
+    service_name: 'SPARK',
+    component_name: 'SPARK_SERVER',
+    display_name: 'Spark Server',
+    isMaster: true,
+    isClient: false,
+    description: 'The server for Spark'
+  },
+  {
+    service_name: 'SPARK',
+    component_name: 'SPARK_WORKER',
+    display_name: 'Spark Worker',
+    isMaster: false,
+    isClient: false,
+    description: 'The worker for Spark'
+  },
+  {
     service_name: 'PIG',
     component_name: 'PIG',
     display_name: 'Pig',

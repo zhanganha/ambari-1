@@ -986,76 +986,6 @@
       ]
     },
     {
-      "href" : "http://ec2-23-20-184-220.compute-1.amazonaws.com:8080/api/v1/clusters/tdk/services/HUE",
-      "ServiceInfo" : {
-        "cluster_name" : "tdk",
-        "service_name" : "HUE"
-      },
-      "components" : [
-        {
-          "href" : "http://ec2-23-20-184-220.compute-1.amazonaws.com:8080/api/v1/clusters/tdk/services/HUE/components/HUE_SERVER",
-          "ServiceComponentInfo" : {
-            "cluster_name" : "tdk",
-            "state" : "INSTALLED",
-            "component_name" : "HUE_SERVER",
-            "service_name" : "HUE",
-            "desired_configs" : { }
-          },
-          "host_components" : [
-            {
-              "href" : "http://ec2-23-20-184-220.compute-1.amazonaws.com:8080/api/v1/clusters/tdk/hosts/ip-10-147-169-187.ec2.internal/host_components/HUE_SERVER",
-              "HostRoles" : {
-                "cluster_name" : "tdk",
-                "ha_status" : "passive",
-                "desired_state" : "INSTALLED",
-                "state" : "STARTED",
-                "component_name" : "HUE_SERVER",
-                "service_name" : "HUE",
-                "host_name" : "ip-10-147-169-187.ec2.internal",
-                "configs" : { },
-                "desired_configs" : { }
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "href" : "http://ec2-23-20-184-220.compute-1.amazonaws.com:8080/api/v1/clusters/tdk/services/HUE",
-      "ServiceInfo" : {
-        "cluster_name" : "tdk",
-        "service_name" : "HUE"
-      },
-      "components" : [
-        {
-          "href" : "http://ec2-23-20-184-220.compute-1.amazonaws.com:8080/api/v1/clusters/tdk/services/HUE/components/HUE_SERVER",
-          "ServiceComponentInfo" : {
-            "cluster_name" : "tdk",
-            "state" : "INSTALLED",
-            "component_name" : "HUE_SERVER",
-            "service_name" : "HUE",
-            "desired_configs" : { }
-          },
-          "host_components" : [
-            {
-              "href" : "http://ec2-23-20-184-220.compute-1.amazonaws.com:8080/api/v1/clusters/tdk/hosts/ip-10-147-169-187.ec2.internal/host_components/HUE_SERVER",
-              "HostRoles" : {
-                "cluster_name" : "tdk",
-                "ha_status" : "passive",
-                "desired_state" : "INSTALLED",
-                "state" : "STARTED",
-                "component_name" : "HUE_SERVER",
-                "service_name" : "HUE",
-                "host_name" : "ip-10-147-169-187.ec2.internal",
-                "configs" : { },
-                "desired_configs" : { }
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
       "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/WEBHCAT",
       "ServiceInfo" : {
         "cluster_name" : "cl1",
@@ -1084,78 +1014,6 @@
                 "desired_state" : "STARTED",
                 "state" : "STARTED",
                 "component_name" : "WEBHCAT_SERVER",
-                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HUE",
-      "ServiceInfo" : {
-        "cluster_name" : "cl1",
-        "service_name" : "HUE"
-      },
-      "components" : [
-        {
-          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HUE/components/HUE_SERVER",
-          "ServiceComponentInfo" : {
-            "cluster_name" : "cl1",
-            "desired_configs" : { },
-            "state" : "STARTED",
-            "component_name" : "HUE_SERVER",
-            "service_name" : "HUE"
-          },
-          "host_components" : [
-            {
-              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/HUE_SERVER",
-              "HostRoles" : {
-                "configs" : {
-                  "global" : "version1",
-                  "hue-site" : "version1"
-                },
-                "cluster_name" : "cl1",
-                "desired_configs" : { },
-                "desired_state" : "STARTED",
-                "state" : "STARTED",
-                "component_name" : "HUE_SERVER",
-                "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HUE",
-      "ServiceInfo" : {
-        "cluster_name" : "cl1",
-        "service_name" : "HUE"
-      },
-      "components" : [
-        {
-          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/services/HUE/components/HUE_SERVER",
-          "ServiceComponentInfo" : {
-            "cluster_name" : "cl1",
-            "desired_configs" : { },
-            "state" : "STARTED",
-            "component_name" : "HUE_SERVER",
-            "service_name" : "HUE"
-          },
-          "host_components" : [
-            {
-              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/cl1/hosts/domU-12-31-39-0E-E6-01.compute-1.internal/host_components/HUE_SERVER",
-              "HostRoles" : {
-                "configs" : {
-                  "global" : "version1",
-                  "hue-site" : "version1"
-                },
-                "cluster_name" : "cl1",
-                "desired_configs" : { },
-                "desired_state" : "STARTED",
-                "state" : "STARTED",
-                "component_name" : "HUE_SERVER",
                 "host_name" : "domU-12-31-39-0E-E6-01.compute-1.internal"
               }
             }
@@ -1860,6 +1718,98 @@
 	        }
 	      ]
 	    }
+	  ]
+	},
+    {
+	  "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/spc/services/SPARK?fields=components/ServiceComponentInfo,components/host_components,components/host_components/HostRoles",
+	  "ServiceInfo" : {
+	    "cluster_name" : "spc",
+	    "service_name" : "SPARK"
+	  },
+	  "components" : [
+	    {
+	      "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/spc/services/SPARK/components/SPARK_SERVER",
+	      "ServiceComponentInfo" : {
+	        "cluster_name" : "spc",
+	        "component_name" : "SPARK_SERVER",
+	        "service_name" : "SPARK",
+	        "state" : "STARTED",
+	        "desired_configs" : { }
+	      },
+	      "host_components" : [
+	        {
+	          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/spc/hosts/ip-66-66-6-665.ec2.internal/host_components/SPARK_SERVER",
+	          "HostRoles" : {
+	            "cluster_name" : "spc",
+	            "component_name" : "SPARK_SERVER",
+	            "desired_stack_id" : "HDP-1.3.2",
+	            "desired_state" : "STARTED",
+	            "host_name" : "ip-66-66-6-665.ec2.internal",
+	            "service_name" : "SPARK",
+	            "stack_id" : "HDP-1.3.2",
+	            "state" : "STARTED",
+	            "configs" : { },
+	            "desired_configs" : { }
+	          },
+	          "metrics" : {
+		      }
+	        }
+	      ]
+	    },
+        {
+          "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/spc/services/SPARK/components/SPARK_WORKER",
+          "ServiceComponentInfo" : {
+            "cluster_name" : "spc",
+            "desired_configs" : { },
+            "state" : "STARTED",
+            "component_name" : "SPARK_WORKER",
+            "service_name" : "SPARK"
+          },
+          "host_components" : [
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/spc/hosts/ip-66-66-6-666.ec2.internal/host_components/SPARK_WORKER",
+              "HostRoles" : {
+                "configs" : {
+                  "hdfs-site" : "version1",
+                  "global" : "version1",
+                  "core-site" : "version1"
+                },
+                "actual_configs" : {
+                  "hdfs-site" : "version1",
+                  "global" : "version1",
+                  "core-site" : "version1"
+                },
+                "cluster_name" : "spc",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "SPARK_WORKER",
+                "host_name" : "ip-66-66-6-666.ec2.internal"
+              }
+            },
+            {
+              "href" : "http://ec2-184-73-46-113.compute-1.amazonaws.com:8080/api/v1/clusters/spc/hosts/ip-66-66-6-667.ec2.internal/host_components/SPARK_WORKER",
+              "HostRoles" : {
+                "configs" : {
+                  "hdfs-site" : "version1",
+                  "global" : "version1",
+                  "core-site" : "version1"
+                },
+                "actual_configs" : {
+                  "hdfs-site" : "version4",
+                  "global" : "version1",
+                  "core-site" : "version1"
+                },
+                "cluster_name" : "spc",
+                "desired_configs" : { },
+                "desired_state" : "STARTED",
+                "state" : "STARTED",
+                "component_name" : "SPARK_WORKER",
+                "host_name" : "ip-66-66-6-667.ec2.internal"
+              }
+            }
+          ]
+        }   
 	  ]
 	}
   ]
