@@ -515,6 +515,7 @@ Em.I18n.translations = {
   'installer.step10.master.resourceManager':'Resource Manager installed on ',
   'installer.step10.master.zooKeeper':'ZooKeeper installed on ',
   'installer.step10.master.hbase':'HBase Master installed on ',
+  'installer.step10.master.spark':'Spark Server installed on ',
   'installer.step10.master.hiveMetastore':'Hive Metastore installed on ',
   'installer.step10.master.oozie':'Oozie Server installed on ',
   'installer.step10.master.ganglia':'Ganglia Server installed on ',

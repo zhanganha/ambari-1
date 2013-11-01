@@ -180,6 +180,9 @@ App.WizardStep10Controller = Em.Controller.extend({
         case 'HBASE_MASTER':
           this.loadHb(component);
           break;
+        case 'SPARK_SERVER':
+          this.loadSparkServer(component);
+          break;
         case 'HIVE_SERVER':
           this.loadHiveServer(component);
           break;
@@ -192,7 +195,7 @@ App.WizardStep10Controller = Em.Controller.extend({
         case 'NAGIOS_SERVER':
           this.loadNagios(component);
           break;
-      }
+      } 
     }, this);
     return true;
   },
@@ -294,7 +297,18 @@ App.WizardStep10Controller = Em.Controller.extend({
       console.log('ERROR: no host name assigned to HBase Master component');
     }
   },
-
+  loadSparkServer: function (component) {
+    if (component.get('hostName')) {
+      var statement = Em.I18n.t('installer.step10.master.spark') + component.get('hostName');
+      this.get('clusterInfo').findProperty('id', 2).get('status').pushObject(Ember.Object.create({
+        id: 1,
+        color: 'text-info',
+        displayStatement: statement
+      }));
+    } else {
+      console.log('ERROR: no host name assigned to Spark Server component');
+    }
+  },
   loadHiveServer: function (component) {
     if (component.get('hostName')) {
       var statement = Em.I18n.t('installer.step10.master.hiveMetastore') + component.get('hostName');
