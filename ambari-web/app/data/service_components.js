@@ -178,6 +178,24 @@ module.exports = new Ember.Set([
     isClient: false,
     description: 'The worker for Spark'
   },
+
+  {
+    service_name: 'SHARK',
+    component_name: 'SHARK_SERVER',
+    display_name: 'Shark Server',
+    isMaster: true,
+    isClient: false,
+    description: 'The server for Shark'
+  },
+  {
+    service_name: 'SHARK',
+    component_name: 'SHARK_CLIENT',
+    display_name: 'Shark Client',
+    isMaster: false,
+    isClient: true,
+    description: 'The client for Shark'
+  },
+
   {
     service_name: 'PIG',
     component_name: 'PIG',

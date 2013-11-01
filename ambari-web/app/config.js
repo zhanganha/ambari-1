@@ -57,7 +57,8 @@ App.supports = {
   hue: false,
   ldapGroupMapping: false,
   localRepositories: false,
-  spark: true
+  spark: true,
+  shark: true
 };
 
 if (App.enableExperimental) {

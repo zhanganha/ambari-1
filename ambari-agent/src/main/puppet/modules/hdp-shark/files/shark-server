@@ -1,0 +1,207 @@
+#!/bin/bash
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+#
+#
+# Starts a Shark Server
+#
+# chkconfig: 345 90 10
+# description: Starts a Shark Server
+# processname: shark-server
+# pidfile: /var/run/shark-server/shark-server.pid
+### BEGIN INIT INFO
+# Provides:          shark-server
+# Required-Start:    $syslog $remote_fs
+# Should-Start:
+# Required-Stop:     $syslog $remote_fs
+# Should-Stop:
+# Default-Start:     3 4 5
+# Default-Stop:      0 1 2 6
+# Short-Description: Starts a Shark Server
+### END INIT INFO
+
+source /lib/lsb/init-functions
+
+RETVAL_SUCCESS=0
+
+STATUS_RUNNING=0
+STATUS_DEAD=1
+STATUS_DEAD_AND_LOCK=2
+STATUS_NOT_RUNNING=3
+STATUS_ALREADY_RUNNING=5
+
+ERROR_PROGRAM_NOT_INSTALLED=5
+ERROR_PROGRAM_NOT_CONFIGURED=6
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+NAME="shark-server"
+DESC="Shark Server daemon"
+SYS_FILE="/etc/default/${NAME}"
+[ -f $SYS_FILE ] && . $SYS_FILE
+EXE_FILE="${SHARK_HOME}/bin/shark"
+PID_FILE="/var/run/shark/${NAME}.pid"
+LOCKFILE="${SHARK_HOME}/${NAME}"
+LOG_FILE="/var/log/shark/${NAME}.log"
+SHARK_USER="root"
+SHARK_USER_HOME="`eval echo ~$SHARK_USER`"
+NICENESS="+0"
+TIMEOUT=3
+
+[ -f $SYS_FILE ] && . $SYS_FILE
+
+# Autodetect JAVA_HOME if not defined
+. /usr/lib/bigtop-utils/bigtop-detect-javahome
+
+shark_server_start() {
+    [ -x $EXE_FILE ] || exit $ERROR_PROGRAM_NOT_INSTALLED
+
+    if [ -f $PID_FILE ]; then 
+        pidofproc -p $PID_FILE > /dev/null
+        status=$?
+
+        case "$status" in
+          $STATUS_RUNNING)
+            log_success_msg "${NAME} is already running"
+            return $STATUS_ALREADY_RUNNING
+            ;;
+          *)
+            ;;
+        esac
+    fi
+
+    exec_env="SHARK_PORT=${SHARK_PORT}"
+    service_name="sharkserver"
+
+    if [ -x /sbin/runuser ]; then
+      SU="runuser -s /bin/bash $SHARK_USER"
+    else
+      SU="su -s /bin/sh $SHARK_USER"
+    fi
+
+    log_success_msg "Starting $desc (${NAME}): "
+      $SU -c "cd $SHARK_HOME ; $exec_env nohup \
+               $EXE_FILE --service $service_name ${SHARK_PORT} \
+             > $LOG_FILE 2>&1 < /dev/null & "'echo $! '"> $PID_FILE"
+    RETVAL=$?
+    [ $RETVAL -eq $RETVAL_SUCCESS ] && touch $LOCKFILE
+    return $RETVAL
+}
+
+pidtree() {
+    local _pid=$1
+    local _pids="$_pid"
+    for _child in $(ps -o pid --no-headers --ppid ${_pid}); do
+        local pl=$(pidtree ${_child})
+        _pids="$_pids $pl"
+    done
+    echo "$_pids"
+    #return "$_pids"
+    #kill -${_sig} ${_pid}
+}
+
+killtree() {
+    local _pid=$1
+    local _sig=${2-TERM}
+    kill -stop ${_pid} # needed to stop quickly forking parent from producing child between child killing and parent killing
+    for _child in $(ps -o pid --no-headers --ppid ${_pid}); do
+        killtree ${_child} ${_sig}
+    done
+    kill -${_sig} ${_pid}
+}
+
+shark_server_stop() {
+    log_success_msg "Stopping $desc (${NAME}): "
+    #killtree `cat $PID_FILE`
+    RETVAL=0
+    if [ -f $PID_FILE ] ; then
+        local pids=$(pidtree `cat $PID_FILE` 2>/dev/null)
+        kill -stop $pids
+        kill -kill $pids
+        RETVAL=$?
+    fi
+
+    [ $RETVAL -eq $RETVAL_SUCCESS ] && rm -f $LOCKFILE $PID_FILE
+    return $RETVAL
+}
+
+shark_server_restart() {
+    shark_server_stop
+    [ -n "$TIMEOUT" ] && sleep $TIMEOUT
+    shark_server_start
+}
+
+shark_server_status() {
+    echo -n "Checking for service $desc: "
+    pidofproc -p $PID_FILE > /dev/null
+    status=$?
+
+    case "$status" in
+      $STATUS_RUNNING)
+        log_success_msg "${NAME} is runnings"
+        local pids=$(pidtree `cat $PID_FILE` 2>/dev/null)
+        echo " with all derived pids: $pids"
+        ;;
+      $STATUS_DEAD)
+        log_failure_msg "${NAME} is dead and pid file exists"
+        ;;
+      $STATUS_DEAD_AND_LOCK)
+        log_failure_msg "${NAME} is dead and lock file exists"
+        ;;
+      $STATUS_NOT_RUNNING)
+        log_failure_msg "${NAME} is not running"
+        ;;
+      *)
+        log_failure_msg "${NAME} status is unknown"
+        ;;
+    esac
+    RETVAL=$status
+    return $status
+}
+
+RETVAL=0
+
+case "$1" in
+    start)
+      shark_server_start
+      ;;
+
+    stop|force-stop)
+      shark_server_stop
+      ;; 
+
+    force-reload|condrestart|try-restart)
+      [ -e $LOCKFILE ] && shark_server_restart || :
+      ;;
+
+    restart|reload)
+      shark_server_restart
+      ;;
+  
+    status)
+      shark_server_status
+      ;;
+
+    *)
+	N=/etc/init.d/$NAME
+	echo "Usage: $N {start|stop|restart|reload|condrestart|try-restart|force-reload|status|force-stop}" >&2
+
+	exit 1
+	;;
+esac
+
+exit $RETVAL
+

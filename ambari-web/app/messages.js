@@ -516,6 +516,7 @@ Em.I18n.translations = {
   'installer.step10.master.zooKeeper':'ZooKeeper installed on ',
   'installer.step10.master.hbase':'HBase Master installed on ',
   'installer.step10.master.spark':'Spark Server installed on ',
+  'installer.step10.master.shark':'Shark Server installed on ',
   'installer.step10.master.hiveMetastore':'Hive Metastore installed on ',
   'installer.step10.master.oozie':'Oozie Server installed on ',
   'installer.step10.master.ganglia':'Ganglia Server installed on ',
@@ -900,6 +901,9 @@ Em.I18n.translations = {
 
   'services.hive.client': 'Hive Client',
   'services.hive.clients': 'Hive Clients',
+
+  'services.shark.client': 'Shark Client',
+  'services.shark.clients': 'Shark Clients',
 
   'services.oozie.client': 'Oozie Client',
   'services.oozie.clients': 'Oozie Clients',

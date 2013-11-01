@@ -125,6 +125,7 @@ App.Service = DS.Model.extend({
       "NAGIOS",
       "HUE",
       "SPARK",
+      "SHARK",
     ];
     return configurableServices.contains(this.get('serviceName'));
   }.property('serviceName'),
@@ -167,7 +168,8 @@ App.Service = DS.Model.extend({
         return 'Flume';
       case 'spark':
         return 'Spark';
-
+      case 'shark':
+        return 'Shark';
     }
     return this.get('serviceName');
   }.property('serviceName'),

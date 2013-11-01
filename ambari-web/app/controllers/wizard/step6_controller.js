@@ -470,5 +470,4 @@ App.WizardStep6Controller = Em.Controller.extend({
     return !isError;
   }
 
-})
-;
+});

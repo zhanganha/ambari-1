@@ -307,6 +307,43 @@ describe('App.hostsMapper', function () {
               "host_name" : "ip-10-83-54-214.ec2.internal"
             }
           },
+
+          {
+            "href" : "http://ec2-107-21-192-172.compute-1.amazonaws.com:8080/api/v1/clusters/tdk/hosts/ip-10-83-54-214.ec2.internal/host_components/SPARK",
+            "HostRoles" : {
+              "cluster_name" : "tdk",
+              "component_name" : "SPARK_SERVER",
+              "host_name" : "ip-10-83-54-214.ec2.internal"
+            }
+          },
+
+          {
+            "href" : "http://ec2-107-21-192-172.compute-1.amazonaws.com:8080/api/v1/clusters/tdk/hosts/ip-10-83-54-214.ec2.internal/host_components/SPARK",
+            "HostRoles" : {
+              "cluster_name" : "tdk",
+              "component_name" : "SPARK_WORKER",
+              "host_name" : "ip-10-83-54-214.ec2.internal"
+            }
+          },
+
+          {
+            "href" : "http://ec2-107-21-192-172.compute-1.amazonaws.com:8080/api/v1/clusters/tdk/hosts/ip-10-83-54-214.ec2.internal/host_components/SHARK",
+            "HostRoles" : {
+              "cluster_name" : "tdk",
+              "component_name" : "SHARK_SERVER",
+              "host_name" : "ip-10-83-54-214.ec2.internal"
+            }
+          },
+
+          {
+            "href" : "http://ec2-107-21-192-172.compute-1.amazonaws.com:8080/api/v1/clusters/tdk/hosts/ip-10-83-54-214.ec2.internal/host_components/SHARK",
+            "HostRoles" : {
+              "cluster_name" : "tdk",
+              "component_name" : "SHARK_CLIENT",
+              "host_name" : "ip-10-83-54-214.ec2.internal"
+            }
+          },
+
           {
             "href" : "http://ec2-107-21-192-172.compute-1.amazonaws.com:8080/api/v1/clusters/tdk/hosts/ip-10-83-54-214.ec2.internal/host_components/OOZIE_CLIENT",
             "HostRoles" : {

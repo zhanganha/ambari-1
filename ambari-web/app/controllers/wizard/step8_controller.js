@@ -410,6 +410,9 @@ App.WizardStep8Controller = Em.Controller.extend({
           case 'SPARK':
             this.loadSpark(serviceObj);
             break;
+          case 'SHARK':
+            this.loadShark(serviceObj);
+            break;
           case 'ZOOKEEPER':
             this.loadZk(serviceObj);
             break;
@@ -652,6 +655,30 @@ App.WizardStep8Controller = Em.Controller.extend({
     var workerNodes = this.get('content.slaveComponentHosts').findProperty('displayName', 'SparkWorker');
     var totalWorkerNodes = workerNodes.hosts.length;
     worker.set('component_value', totalWorkerNodes + Em.I18n.t('installer.step8.hosts'));
+  },
+
+  /**
+   * Load all info about Shark
+   * @param sparkObj
+   */
+  loadShark: function (sparkObj) {
+    sparkObj.service_components.forEach(function (_component) {
+      switch (_component.display_name) {
+        case 'Server':
+          this.loadSharkServerValue(_component);
+          break;
+        default:
+      }
+    }, this);
+    this.get('services').pushObject(sparkObj);
+  },
+  loadSharkServerValue: function (sharkServer) {
+    var sharkHostName = this.get('content.masterComponentHosts').filterProperty('display_name', 'Shark Server');
+    if (sharkHostName.length == 1) {
+      sharkServer.set('component_value', sharkHostName[0].hostName);
+    } else {
+      sharkServer.set('component_value', sharkHostName[0].hostName + Em.I18n.t('installer.step8.other').format(sharkHostName.length - 1));
+    }
   },
 
 
@@ -1179,7 +1206,7 @@ App.WizardStep8Controller = Em.Controller.extend({
           var hostNames = _slave.hosts.mapProperty('hostName');
           switch (_client.component_name) {
             case 'HDFS_CLIENT':
-              // install HDFS_CLIENT on HBASE_MASTER, HBASE_REGIONSERVER, and WEBHCAT_SERVER hosts
+              // install HDFS_CLIENT on HBASE_MASTER, HBASE_REGIONSERVER, SPARK_SERVER and WEBHCAT_SERVER hosts
               masterHosts.filterProperty('component', 'HBASE_MASTER').filterProperty('isInstalled', false).forEach(function (_masterHost) {
                 hostNames.pushObject(_masterHost.hostName);
               }, this);
@@ -1187,6 +1214,9 @@ App.WizardStep8Controller = Em.Controller.extend({
                 hostNames.pushObject(_masterHost.hostName);
               }, this);
               masterHosts.filterProperty('component', 'WEBHCAT_SERVER').filterProperty('isInstalled', false).forEach(function (_masterHost) {
+                hostNames.pushObject(_masterHost.hostName);
+              }, this);
+            masterHosts.filterProperty('component', 'SPARK_SERVER').filterProperty('isInstalled', false).forEach(function (_masterHost) {
                 hostNames.pushObject(_masterHost.hostName);
               }, this);
               break;
@@ -1224,6 +1254,12 @@ App.WizardStep8Controller = Em.Controller.extend({
                 hostNames.pushObject(_masterHost.hostName);
               }, this);
               masterHosts.filterProperty('component', 'HIVE_SERVER').filterProperty('isInstalled', false).forEach(function (_masterHost) {
+                hostNames.pushObject(_masterHost.hostName);
+              }, this);
+              break;
+
+            case 'SHARK_CLIENT':
+              masterHosts.filterProperty('component', 'SHARK_SERVER').filterProperty('isInstalled', false).forEach(function (_masterHost) {
                 hostNames.pushObject(_masterHost.hostName);
               }, this);
               break;

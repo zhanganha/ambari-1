@@ -320,7 +320,10 @@ public class RoleCommandOrder {
         RoleCommand.START);
       addDependency(Role.SPARK_SERVER, RoleCommand.START, Role.OOZIE_SERVER,
               RoleCommand.START);
+      addDependency(Role.SHARK_SERVER, RoleCommand.START, Role.SPARK_SERVER,
+              RoleCommand.START);
 
+      
       // Service checks
       addDependency(Role.HDFS_SERVICE_CHECK, RoleCommand.EXECUTE, Role.NAMENODE,
         RoleCommand.START);

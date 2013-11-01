@@ -57,6 +57,7 @@ App.HostComponent = DS.Model.extend({
       case 'HISTORYSERVER':
       case 'FLUME_SERVER':
       case 'SPARK_SERVER':
+      case 'SHARK_SERVER':
         return true;
       default:
         return false;
@@ -152,4 +153,3 @@ App.HostComponentStatus = {
     return 'none';
   }
 };
-

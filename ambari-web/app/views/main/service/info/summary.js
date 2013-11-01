@@ -47,6 +47,7 @@ App.MainServiceInfoSummaryView = Em.View.extend({
     hue: false,
     flume: false,
     spark: false,
+    shark: false,
   },
 
   sumMasterComponentView : Em.View.extend({
@@ -67,7 +68,7 @@ App.MainServiceInfoSummaryView = Em.View.extend({
 
   clients: function () {
     var service = this.get('controller.content');
-    if (["OOZIE", "ZOOKEEPER", "HIVE", "MAPREDUCE2"].contains(service.get("id"))) {
+    if (["OOZIE", "ZOOKEEPER", "HIVE", "MAPREDUCE2", "SHARK"].contains(service.get("id"))) {
       return service.get('hostComponents').filterProperty('isClient');
     }
     return [];
@@ -98,7 +99,7 @@ App.MainServiceInfoSummaryView = Em.View.extend({
   servers: function () {
     var result = [];
     var service = this.get('controller.content');
-    if (service.get("id") == "ZOOKEEPER" || service.get("id") == "FLUME" || service.get("id") == "SPARK") {
+    if (service.get("id") == "ZOOKEEPER" || service.get("id") == "FLUME") { //more then one master exists
       var servers = service.get('hostComponents').filterProperty('isMaster');
       if (servers.length > 0) {
         result = [{
@@ -174,7 +175,7 @@ App.MainServiceInfoSummaryView = Em.View.extend({
    */
   serversHost: function() {
     var service = this.get('controller.content');
-    if (service.get("id") == "ZOOKEEPER" || service.get("id") == "FLUME"  || service.get("id") == "SPARK") {
+    if (service.get("id") == "ZOOKEEPER" || service.get("id") == "FLUME") {
       var servers = service.get('hostComponents').filterProperty('isMaster');
       if (servers.length > 0) {
         return servers[0];
@@ -353,7 +354,8 @@ App.MainServiceInfoSummaryView = Em.View.extend({
               //App.ChartServiceMetricsFlume_JVMThreadsRunnable.extend(),
               App.ChartServiceMetricsFlume_CPUUser.extend()]];
           break;
-        /*TODO(alex): add spark-related metrics applications here*/
+        /*TODO(alex): add spark-related metrics here*/
+        /*TODO(alex): add shark-related metrics here*/
         default:
           break;
       }

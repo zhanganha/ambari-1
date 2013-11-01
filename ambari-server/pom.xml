@@ -316,6 +316,9 @@
                   <location>src/main/resources/scripts/install_spark.sh</location>
                 </source>
                 <source>
+                  <location>src/main/resources/scripts/install_shark.sh</location>
+                </source>
+                <source>
                   <location>src/main/resources/scripts/install_flume.sh</location>
                 </source>
                 <source>

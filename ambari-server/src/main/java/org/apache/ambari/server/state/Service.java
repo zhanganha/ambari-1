@@ -107,6 +107,7 @@ public interface Service {
     PIG,
     HCATALOG,
     FLUME,
-    SPARK
+    SPARK,
+    SHARK
   }
 }
