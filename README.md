@@ -1,27 +1,27 @@
 Spark\Shark integration with Apache Ambari
 ======
-Deploy and manage Spark\Shark sytems on your cluster using Apache Ambari.
+Deploy and manage Spark\Shark systems on your cluster using Apache Ambari.
 
 ### Ambari
 [Apache Ambari project](http://ambari.apache.org/) is aimed at making Hadoop management simpler by developing software for provisioning, managing, and monitoring Apache Hadoop clusters.
 
 ### Spark\Shark
-[Apache Spark](http://spark.incubator.apache.org/) is an open source cluster computing system that aims to make data analytics fast — both fast to run and fast to write
+[Apache Spark](http://spark.incubator.apache.org/) is an open source cluster computing system that aims to make data analytics fast — both fast to run and fast to write.
 
 [Shark](https://github.com/amplab/shark) is a large-scale data warehouse system for Spark designed to be compatible with Apache Hive. 
 
 
 ### Work done by NFLabs
-We at [NFLabs](http://nflabs.com) think that Ambari is an awsome cluter-managemnt platform and egar to help it to become even more usefull for others.
+We at [NFLabs](http://nflabs.com) think that Ambari is an awsome cluster-managemnt platform and egar to help it to become even more usefull for others.
 
 Right now new service can not be added to Ambari only through declaration (this work is in
-[early stages now](https://issues.apache.org/jira/browse/AMBARI-2714)) it requires a code modification both, server and client side.
+[early stages now](https://issues.apache.org/jira/browse/AMBARI-2714)) but it requires a code modifications for both, server and client side.
 
-Here is our integration scope and current status:
-- [x] Spark\Shark installation though wizzard using custom stack NFL definition
-- [x] Spark\Shark service managemnt: start\stop through web ui
-- [ ] Spark\Shark configuration though GUI
-      (for now configuration step is done manually after the installation, check [example](https://gist.github.com/alexander-bzz/64f62779f8d7757e1696))
+Here is our integration scope and current progress:
+- [x] Spark\Shark installation through wizzard using custom NFL stack definition
+- [x] Spark\Shark service management: start\stop through web ui
+- [ ] Spark\Shark configuration using web ui
+      (as for now configuration step is done manually after the installation, check [our example](https://gist.github.com/alexander-bzz/64f62779f8d7757e1696))
 - [ ] Migration to HDP-1.4
 - [ ] Spark\Shark service monitoring i.e gangilla metrics
 
