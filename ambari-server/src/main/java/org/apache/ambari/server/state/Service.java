@@ -116,6 +116,7 @@ public interface Service {
     HCATALOG,
     FLUME,
     YARN,
-    MAPREDUCE2
+    MAPREDUCE2,
+	SPARK
   }
 }
