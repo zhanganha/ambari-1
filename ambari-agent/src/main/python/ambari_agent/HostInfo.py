@@ -41,7 +41,7 @@ class HostInfo:
   DEFAULT_PROJECT_NAMES = [
     "hadoop*", "hadoop", "hbase", "hcatalog", "hive", "ganglia", "nagios",
     "oozie", "sqoop", "hue", "zookeeper", "mapred", "hdfs", "flume",
-    "storm", "hive-hcatalog", "tez", "falcon", "ambari_qa", "hadoop_deploy",
+    "storm", "spark", "hive-hcatalog", "tez", "falcon", "ambari_qa", "hadoop_deploy",
     "rrdcached", "hcat", "ambari-qa", "sqoop-ambari-qa", "sqoop-ambari_qa",
     "webhcat", "hadoop-hdfs", "hadoop-yarn", "hadoop-mapreduce"
   ]

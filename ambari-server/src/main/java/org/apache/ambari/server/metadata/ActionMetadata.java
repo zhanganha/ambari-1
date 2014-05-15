@@ -60,6 +60,7 @@ public class ActionMetadata {
     serviceClients.put("pig"        , Role.PIG.toString());
     serviceClients.put("sqoop"      , Role.SQOOP.toString());
     serviceClients.put("yarn"       , Role.YARN_CLIENT.toString());
+    serviceClients.put("spark"       , Role.SPARK_WORKER.toString());
   }
 
   private void fillServiceActions() {
@@ -77,6 +78,7 @@ public class ActionMetadata {
     serviceActions.put("sqoop"      , Arrays.asList(Role.SQOOP_SERVICE_CHECK.toString()));
     serviceActions.put("webhcat"    , Arrays.asList(Role.WEBHCAT_SERVICE_CHECK.toString()));
     serviceActions.put("storm"      , Arrays.asList(Role.STORM_SERVICE_CHECK.toString()));
+    serviceActions.put("spark"      , Arrays.asList(Role.SPARK_SERVER.toString()));
     serviceActions.put("falcon"     , Arrays.asList(Role.FALCON_SERVICE_CHECK.toString()));
   }
 
@@ -100,7 +102,9 @@ public class ActionMetadata {
     serviceCheckActions.put("webhcat",
         Role.WEBHCAT_SERVICE_CHECK.toString());
     serviceCheckActions.put("storm",
-            Role.STORM_SERVICE_CHECK.toString());
+    		Role.STORM_SERVICE_CHECK.toString());
+    serviceCheckActions.put("spark",
+            Role.SPARK_SERVER.toString());
     serviceCheckActions.put("falcon",
             Role.FALCON_SERVICE_CHECK.toString());
   }
