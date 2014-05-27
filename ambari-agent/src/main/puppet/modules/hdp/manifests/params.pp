@@ -87,6 +87,8 @@ class hdp::params()
   $hs_host = hdp_default("hs_host")
   $zookeeper_hosts = hdp_default("zookeeper_hosts")
   $flume_hosts = hdp_default("flume_hosts")
+  $spark_server_host = hdp_default("spark_server_host")
+  $spark_worker_hosts = hdp_default("spark_worker_hosts")
 
 
   $nn_principal_str = hdp_default("hdfs-site/dfs.namenode.kerberos.principal", "nn/_HOST@EXAMPLE.COM")
@@ -214,6 +216,7 @@ class hdp::params()
   $hbase_user = hdp_default("hbase_user","hbase")
 
   $hive_user = hdp_default("hive_user","hive")
+  $spark_user = hdp_default("spark_user","spark")
   $hcat_user = hdp_default("hcat_user","hcat")
   $webhcat_user = hdp_default("webhcat_user","hcat")
 
@@ -359,6 +362,7 @@ class hdp::params()
     $hcat_mysql_host = hdp_default("hcat_mysql_host")
     $hue_conf_dir = "/etc/hue/conf"
     $hive_conf_dir = "/etc/hive/conf"
+    $spark_conf_dir = "/etc/spark/conf"
 
   } elsif ($packages == 'bigtop') {  
    
@@ -382,6 +386,7 @@ class hdp::params()
     $pig_conf_dir = "/etc/pig/conf"
     $oozie_conf_dir = "/etc/oozie/conf"
     $hive_conf_dir = "/etc/hive/conf"
+    $spark_conf_dir = "/etc/spark/conf"
     $hcat_conf_dir = "/etc/hcatalog/conf"
     $hadoop_jar_location = "/usr/lib/hadoop/"
     $hadoop_mapred2_jar_location = "/usr/lib/hadoop-mapreduce"
@@ -565,6 +570,9 @@ class hdp::params()
     },
     hive=> {
       'ALL' => {64 =>{'ALL' => ['hive']}}
+    },
+    spark=> {
+      'ALL' => {'ALL' =>{'ALL' => ['spark']}}
     },
     hcat=> {
       'ALL' => {'ALL' =>{'ALL' => ['hcatalog']}}
