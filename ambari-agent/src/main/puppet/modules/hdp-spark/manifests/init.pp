@@ -47,6 +47,10 @@ class hdp-spark(
   } else {  
     hdp::package { 'spark': }
   
+    hdp::user{ 'spark_user':
+      user_name => $spark_user
+    }
+  
     hdp::directory { $config_dir: 
       service_state => $service_state,
       force => true,
