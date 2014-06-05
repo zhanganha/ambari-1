@@ -103,7 +103,7 @@ public class ActionMetadata {
         Role.WEBHCAT_SERVICE_CHECK.toString());
     serviceCheckActions.put("storm",
     		Role.STORM_SERVICE_CHECK.toString());
-    serviceCheckActions.put("spark",
+   // serviceCheckActions.put("spark",
             Role.SPARK_SERVER.toString());
     serviceCheckActions.put("falcon",
             Role.FALCON_SERVICE_CHECK.toString());
