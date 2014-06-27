@@ -61,7 +61,7 @@ class hdp-spark(
 
     hdp-spark::configfile { 'spark-env.sh' : conf_dir => $config_dir}
 
-    hdp-spark::configfile { 'workers' : conf_dir => $config_dir}
+    hdp-spark::configfile { 'slaves' : conf_dir => $config_dir}
 
     Anchor['hdp-spark::begin'] -> Hdp::Package['spark'] -> Hdp::Directory[$config_dir] -> 
     Hdp-spark::Configfile<||> ->  Anchor['hdp-spark::end']
