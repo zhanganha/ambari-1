@@ -60,7 +60,6 @@ public class ActionMetadata {
     serviceClients.put("pig"        , Role.PIG.toString());
     serviceClients.put("sqoop"      , Role.SQOOP.toString());
     serviceClients.put("yarn"       , Role.YARN_CLIENT.toString());
-    serviceClients.put("spark"       , Role.SPARK_WORKER.toString());
   }
 
   private void fillServiceActions() {
@@ -103,8 +102,8 @@ public class ActionMetadata {
         Role.WEBHCAT_SERVICE_CHECK.toString());
     serviceCheckActions.put("storm",
     		Role.STORM_SERVICE_CHECK.toString());
-   // serviceCheckActions.put("spark",
-   //         Role.SPARK_SERVER.toString());
+    serviceCheckActions.put("spark",
+            Role.SPARK_SERVER.toString());
     serviceCheckActions.put("falcon",
             Role.FALCON_SERVICE_CHECK.toString());
   }

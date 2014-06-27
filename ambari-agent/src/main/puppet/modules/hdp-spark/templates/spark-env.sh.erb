@@ -15,10 +15,5 @@
 
 # Enviroment variables can be set here.
 #
-# #JAVA_HOME=/usr/lib/jvm/java-6-sun
-#
-# # Give Flume more memory and pre-allocate, enable remote monitoring via JMX
-JAVA_OPTS="-Xms100m -Xmx200m -Dcom.sun.management.jmxremote -Dspark.monitoring.type=ganglia -Dspark.monitoring.hosts=<%=scope.function_hdp_template_var("::hdp-spark::params::ganglia_workers")%>"
-#
-# # Note that the Flume conf directory is always included in the classpath.
-# #FLUME_CLASSPATH=""
+export SPARK_MASTER_IP=<%=scope.function_hdp_host("spark_server_hosts")%>
+

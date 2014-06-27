@@ -173,5 +173,13 @@ module.exports = [
     canBeSelected: true,
     isHidden: false,
     description: Em.I18n.t('services.storm.description')
-  }
+  },
+  {
+	    serviceName: 'SPARK',
+	    displayName: 'Spark',
+	    isDisabled: false,
+	    isSelected: true,
+	    canBeSelected: true,
+	    description: Em.I18n.t('services.oozie.description')
+	  },
 ];

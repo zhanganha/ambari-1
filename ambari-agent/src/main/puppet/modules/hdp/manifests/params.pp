@@ -87,7 +87,7 @@ class hdp::params()
   $hs_host = hdp_default("hs_host")
   $zookeeper_hosts = hdp_default("zookeeper_hosts")
   $flume_hosts = hdp_default("flume_hosts")
-  $spark_server_host = hdp_default("spark_server_host")
+  $spark_server_host = hdp_default("spark_server_hosts")
   $spark_worker_hosts = hdp_default("spark_worker_hosts")
 
 
@@ -355,6 +355,7 @@ class hdp::params()
     $hbase_daemon_script = "/usr/bin/hbase-daemon.sh"
     $use_32_bits_on_slaves = false
     $zk_bin = '/usr/sbin'
+    $spark_bin = '/usr/lib/spark/sbin'
     $zk_smoke_test_script = '/usr/bin/zkCli.sh'
     $update_zk_shell_files = false
 
@@ -393,6 +394,7 @@ class hdp::params()
     $hbase_daemon_script = "/usr/lib/hbase/bin/hbase-daemon.sh"
     $use_32_bits_on_slaves = false
     $zk_bin = '/usr/lib/zookeeper/bin'
+    $spark_bin = '/usr/lib/spark/sbin'
     $zk_smoke_test_script = "/usr/lib/zookeeper/bin/zkCli.sh"
     $update_zk_shell_files = false
 

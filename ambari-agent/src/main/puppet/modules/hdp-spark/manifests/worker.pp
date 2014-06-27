@@ -20,11 +20,26 @@
 #
 class hdp-spark::worker(
   $service_state = $hdp::params::cluster_client_state
-) inherits hdp::params
+) inherits hdp-spark::params 
 {
- 
+
+  if ($service_state == 'no_op') {
+  } elsif ($service_state in ['running','stopped','installed_and_configured','uninstalled']) {    
+    $hdp::params::service_exists['hdp-spark::worker'] = true
+
+    #adds package, users, directories, and common configs
+    class { 'hdp-spark':
+      type          => 'worker',
+      service_state => $service_state
+    }
+
     hdp-spark::service{ 'worker':
       ensure => $service_state
     }
 
+    #top level does not need anchors
+    Class['hdp-spark'] -> Hdp-spark::Service['worker'] 
+    } else {
+    hdp_fail("TODO not implemented yet: service_state = ${service_state}")
+  }
 }
