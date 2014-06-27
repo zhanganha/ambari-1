@@ -16,7 +16,6 @@
    limitations under the License.
 -->
 <metainfo>
-    <user>root</user>
     <comment>Apache Spark is an open-source data analytics cluster computing framework.</comment>
     <version>0.9.1</version>
 
