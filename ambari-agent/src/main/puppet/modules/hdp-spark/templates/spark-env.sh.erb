@@ -16,4 +16,4 @@
 # Enviroment variables can be set here.
 #
 export SPARK_MASTER_IP=<%=scope.function_hdp_host("spark_server_hosts")%>
-
+export SPARK_PID_DIR=<%=scope.function_hdp_template_var("::hdp-spark::params::spark_pid_dir")%>
