@@ -19,27 +19,20 @@
 #
 #
 define hdp-spark::service(
-  $ensure = 'running',
+  $ensure = 'running'
 )
 {
   include hdp-spark::params
   $role = $name
   $pid_file = "${spark_pid_dir}/spark_${role}.pid"
+  $spark_bin = $hdp::params::spark_bin
   anchor{'hdp-spark::service::begin':}
   anchor{'hdp-spark::service::end':}
   if ($ensure == 'running') {
-  	if ($role == 'master') {
- 	 	$daemon_cmd = "${spark_bin}/start-master.sh"
-  	} else {
-  	 	$daemon_cmd = "${spark_bin}/start-slave.sh"
-  	}
+  	$daemon_cmd = "${spark_bin}/sparkService.sh $spark_bin $role running ${spark_pid_dir}"
     $no_op_test = "ls ${pid_file} >/dev/null 2>&1 && ps `cat ${pid_file}` >/dev/null 2>&1"
   } elsif ($ensure == 'stopped') {
-  	if ($role == 'master') {
- 	 	$daemon_cmd = "${spark_bin}/stop-master.sh"
-  	} else {
-  	 	$daemon_cmd = "${spark_bin}/stop-slave.sh"
-  	}
+  	$daemon_cmd = "${spark_bin}/sparkService.sh $spark_bin $role stopped ${spark_pid_dir}"
     $no_op_test = undef
   } else {
     $daemon_cmd = undef
@@ -55,6 +48,6 @@ define hdp-spark::service(
 
   if ($ensure in ['running','stopped']) {
      anchor{'hdp-spark::server::begin':} ->  Hdp::Exec[$daemon_cmd] -> Anchor['hdp-spark::service::end']	
-   }
+  }
 }
 
