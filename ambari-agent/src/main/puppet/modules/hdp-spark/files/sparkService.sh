@@ -24,23 +24,32 @@ spark_bin=$1
 service=$2
 ensure=$3
 spark_pid_dir=$4
+spark_server_hosts=$5
 
 case "$service" in
 
 master) 
     if [[ ${ensure} == 'running' ]]; then 
-      ${spark_bin}/start-all.sh
+      ${spark_bin}/start-master.sh
+      if [ -f "${spark_pid_dir}/spark-master.pid" ]; then  
+		rm "${spark_pid_dir}/spark-master.pid"  
+	  fi 
  	  ln ${spark_pid_dir}/spark-*master*.pid ${spark_pid_dir}/spark-master.pid
  	else 
- 	  ${spark_bin}/stop-all.sh
+ 	  ${spark_bin}/stop-master.sh 
  	fi
     ;;
 worker) 
-#    if [[ ${ensure} == 'running' ]]; then 
-#      ${spark_bin}/start-slave.sh 
-# 	else 
-#	  ${spark_bin}/stop-slave.sh
-# 	fi
+    if [[ ${ensure} == 'running' ]]; then 
+      ${spark_bin}/start-slave.sh 1 spark://$spark_server_hosts:7077
+      if [ -f "${spark_pid_dir}/spark-worker.pid" ]; then  
+		rm "${spark_pid_dir}/spark-worker.pid"  
+	  fi 
+ 	  ln ${spark_pid_dir}/spark-*worker*.pid ${spark_pid_dir}/spark-worker.pid
+ 	else 
+	 	pid=`cat ${spark_pid_dir}/spark-worker.pid` 
+	 	kill -9 $pid
+ 	fi
     ;;
 *) echo "UNKNOWN: Invalid service name [$service]"
    exit 3

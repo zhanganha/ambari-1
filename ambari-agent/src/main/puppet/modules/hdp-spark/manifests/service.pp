@@ -26,13 +26,15 @@ define hdp-spark::service(
   $role = $name
   $pid_file = "${spark_pid_dir}/spark_${role}.pid"
   $spark_bin = $hdp::params::spark_bin
+  $spark_server_hosts = $hdp::params::spark_server_hosts
   anchor{'hdp-spark::service::begin':}
   anchor{'hdp-spark::service::end':}
+  
   if ($ensure == 'running') {
-  	$daemon_cmd = "${spark_bin}/sparkService.sh $spark_bin $role running ${spark_pid_dir}"
+  	$daemon_cmd = "${spark_bin}/sparkService.sh $spark_bin $role running ${spark_pid_dir} $spark_server_hosts"
     $no_op_test = "ls ${pid_file} >/dev/null 2>&1 && ps `cat ${pid_file}` >/dev/null 2>&1"
   } elsif ($ensure == 'stopped') {
-  	$daemon_cmd = "${spark_bin}/sparkService.sh $spark_bin $role stopped ${spark_pid_dir}"
+  	$daemon_cmd = "${spark_bin}/sparkService.sh $spark_bin $role stopped ${spark_pid_dir} $spark_server_hosts"
     $no_op_test = undef
   } else {
     $daemon_cmd = undef

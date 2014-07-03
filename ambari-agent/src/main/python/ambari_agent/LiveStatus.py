@@ -60,8 +60,6 @@ class LiveStatus:
      "componentName" : "PIG"},
     {"serviceName" : "SQOOP",
      "componentName" : "SQOOP"},
-    {"serviceName" : "SPARK",
-     "componentName" : "SPARK_WORKER"},
     {"serviceName" : "TEZ",
      "componentName" : "TEZ_CLIENT"},
     {"serviceName" : "FALCON",
@@ -104,6 +102,9 @@ class LiveStatus:
       {"serviceName" : "SPARK",
        "componentName" : "SPARK_SERVER"},
 
+	   {"serviceName" : "SPARK",
+     	"componentName" : "SPARK_WORKER"},
+     
       {"serviceName" : "ZOOKEEPER",
        "componentName" : "ZOOKEEPER_SERVER"},
 

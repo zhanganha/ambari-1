@@ -60,7 +60,11 @@ class hdp-spark(
     }
 
 	if ($service_state == 'installed_and_configured') {
-       hdp-spark::shell_file{ 'sparkService.sh': }
+	    hdp::directory { $hdp::params::spark_bin: 
+	      service_state => $service_state,
+	      force => true
+	    }
+        hdp-spark::shell_file{ 'sparkService.sh': }
     }
     hdp-spark::configfile { 'spark-env.sh' : conf_dir => $config_dir}
 
