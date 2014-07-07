@@ -16,6 +16,9 @@
    limitations under the License.
 -->
 <metainfo>
+  <schemaVersion>2.0</schemaVersion>
+  <services>
+    <service>
     <comment>Apache Spark is an open-source data analytics cluster computing framework.</comment>
     <version>0.9.1</version>
 
@@ -30,5 +33,9 @@
             <category>SLAVE</category>
         </component>
     </components>
-
+	<configuration-dependencies>
+        <config-type>spark-site</config-type>
+     </configuration-dependencies>
+    </service>
+   </services>
 </metainfo>

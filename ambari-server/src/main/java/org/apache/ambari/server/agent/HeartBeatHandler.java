@@ -25,7 +25,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.apache.ambari.server.AmbariException;
 import org.apache.ambari.server.HostNotFoundException;
 import org.apache.ambari.server.RoleCommand;
-import org.apache.ambari.server.Role;
 import org.apache.ambari.server.ServiceComponentHostNotFoundException;
 import org.apache.ambari.server.ServiceComponentNotFoundException;
 import org.apache.ambari.server.ServiceNotFoundException;
@@ -393,7 +392,8 @@ public class HeartBeatHandler {
                   || prevState.equals(State.STARTING)
                   || prevState.equals(State.STOPPING)
                   || prevState.equals(State.UNKNOWN)
-                  || (prevState.equals(State.INSTALLING) && Role.SPARK_SERVER.name().equals(componentName))) {
+                  //|| (prevState.equals(State.INSTALLING) && Role.SPARK_SERVER.name().equals(componentName))
+                  ) {
                 scHost.setState(liveState);
                 if (!prevState.equals(liveState)) {
                   LOG.info("State of service component " + componentName

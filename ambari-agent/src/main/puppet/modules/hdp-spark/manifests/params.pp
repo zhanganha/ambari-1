@@ -29,12 +29,10 @@ class hdp-spark::params() inherits hdp::params
 
   $spark_log_dir = hdp_default("spark_log_dir","/var/log/spark")
 
-  $spark_server_heapsize = hdp_default("spark_server_heapsize","1000m")
-
   $spark_pid_dir = hdp_default("spark_pid_dir","/var/run/spark")
 
-  $spark_worker_heapsize = hdp_default("spark_worker_heapsize","1000m")
-
-  $spark_worker_xmn_size = hdp_calc_xmn_from_xms("$spark_worker_heapsize","0.2","512")
-
+  $spark_master_port = hdp_default("spark-site/SPARK_MASTER_PORT",7077)
+  
+  $spark_master_webui_port = hdp_default("spark-site/SPARK_MASTER_WEBUI_PORT",8080)
+  
 }

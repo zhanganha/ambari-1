@@ -37,6 +37,7 @@ class hdp::params()
     $sqoop-site = $configuration['sqoop-site']
     $webhcat-site = $configuration['webhcat-site']
     $yarn-site = $configuration['yarn-site']
+    $spark-site = $configuration['spark-site']
   }
 
   ## Stack version

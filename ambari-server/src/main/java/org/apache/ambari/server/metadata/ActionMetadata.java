@@ -77,7 +77,7 @@ public class ActionMetadata {
     serviceActions.put("sqoop"      , Arrays.asList(Role.SQOOP_SERVICE_CHECK.toString()));
     serviceActions.put("webhcat"    , Arrays.asList(Role.WEBHCAT_SERVICE_CHECK.toString()));
     serviceActions.put("storm"      , Arrays.asList(Role.STORM_SERVICE_CHECK.toString()));
-    serviceActions.put("spark"      , Arrays.asList(Role.SPARK_SERVER.toString()));
+    serviceActions.put("spark"      , Arrays.asList(Role.SPARK_SERVICE_CHECK.toString()));
     serviceActions.put("falcon"     , Arrays.asList(Role.FALCON_SERVICE_CHECK.toString()));
   }
 
@@ -103,7 +103,7 @@ public class ActionMetadata {
     serviceCheckActions.put("storm",
     		Role.STORM_SERVICE_CHECK.toString());
     serviceCheckActions.put("spark",
-            Role.SPARK_SERVER.toString());
+            Role.SPARK_SERVICE_CHECK.toString());
     serviceCheckActions.put("falcon",
             Role.FALCON_SERVICE_CHECK.toString());
   }
