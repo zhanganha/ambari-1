@@ -96,6 +96,11 @@ def setup_users():
          gid=params.user_group,
          groups=[params.user_group]
     )
+  if params.has_spark_server:
+    User(params.spark_user,
+         gid=params.user_group,
+         groups=[params.user_group]
+    )
 
   if params.has_falcon_server:
     User(params.falcon_user,

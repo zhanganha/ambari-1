@@ -19,6 +19,7 @@
   <schemaVersion>2.0</schemaVersion>
   <services>
     <service>
+    <name>SPARK</name>
     <comment>Apache Spark is an open-source data analytics cluster computing framework.</comment>
     <version>0.9.1</version>
 
@@ -26,15 +27,44 @@
         <component>
             <name>SPARK_SERVER</name>
             <category>MASTER</category>
+            <commandScript>
+	          <script>scripts/spark_server.py</script>
+	          <scriptType>PYTHON</scriptType>
+	          <timeout>600</timeout>
+	         </commandScript>
         </component>
 
         <component>
             <name>SPARK_WORKER</name>
             <category>SLAVE</category>
+            <commandScript>
+	          <script>scripts/spark_worker.py</script>
+	          <scriptType>PYTHON</scriptType>
+	          <timeout>600</timeout>
+	        </commandScript>
         </component>
-    </components>
+      </components>
+
+      <osSpecifics>
+        <osSpecific>
+          <osType>any</osType>
+          <packages>
+            <package>
+              <type>rpm</type>
+              <name>spark</name>
+            </package>
+          </packages>
+        </osSpecific>
+      </osSpecifics>
+
+      <commandScript>
+        <script>scripts/service_check.py</script>
+        <scriptType>PYTHON</scriptType>
+        <timeout>300</timeout>
+      </commandScript>
 	<configuration-dependencies>
         <config-type>spark-site</config-type>
+        <config-type>global</config-type>
      </configuration-dependencies>
     </service>
    </services>
