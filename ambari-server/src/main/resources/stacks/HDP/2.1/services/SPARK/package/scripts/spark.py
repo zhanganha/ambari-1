@@ -33,7 +33,7 @@ def spark(type = None):
             group=params.user_group
   )
 
-  configFile("log4j.properties", template_name="log4j.properties.j2")
+  #configFile("log4j.properties", template_name="log4j.properties.j2")
   configFile("spark-env.sh", template_name="spark-env.sh.j2")
   configFile("slaves", template_name="slaves.j2")
 

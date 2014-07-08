@@ -30,7 +30,7 @@ spark_user = config['configurations']['global']['spark_user']
   
 ### spark-env
 hadoop_conf_dir = "/etc/hadoop/conf"
-conf_dir = "/etc/spark/conf"
+config_dir = "/etc/spark/conf"
 spark_bin = '/usr/lib/spark/sbin'
 
 spark_log_dir = config['configurations']['global']['spark_log_dir']
@@ -45,7 +45,7 @@ spark_master_webui_port = config['configurations']['spark-site']['SPARK_MASTER_W
 
 java64_home = config['hostLevelParams']['java_home']
 
-spark_master_hosts = config['clusterHostInfo']['spark_master_hosts']
+spark_master_hosts = config['clusterHostInfo']['spark_server_hosts'][0]
 spark_master_hosts.sort()
 
 spark_worker_hosts = config['clusterHostInfo']['spark_worker_hosts']
@@ -54,6 +54,8 @@ spark_worker_hosts.sort()
 log4j_file = format("{config_dir}/log4j.properties")
 slaves_file = format("{config_dir}/slave")
 spark_env_file = format("{config_dir}/spark_env.sh")
+
+is_spark_master = hostname in spark_master_hosts
 
 if 'ganglia_server_host' in config['clusterHostInfo'] and \
     len(config['clusterHostInfo']['ganglia_server_host'])>0:

@@ -34,15 +34,12 @@ def spark_service(
   pid_file = status_params.pid_files[name]
   no_op_test = format("ls {pid_file} >/dev/null 2>&1 && ps `cat {pid_file}` >/dev/null 2>&1")
   if action == 'start':
-  	daemon_cmd = format("/tmp/sparkService.sh {spark_bin} {name} running {spark_pid_dir} {spark_server_hosts}"
+    daemon_cmd = format("/tmp/sparkService.sh {spark_bin} {name} running {spark_pid_dir} {spark_master_hosts}:{spark_master_port}")
     Execute(daemon_cmd,
-            not_if=no_op_test,
-            user=params.spark_user
+            not_if=no_op_test
     )
   elif action == 'stop':
-  	daemon_cmd = format("/tmp/sparkService.sh {spark_bin} {name} stopped {spark_pid_dir} {spark_server_hosts}"
+    daemon_cmd = format("/tmp/sparkService.sh {spark_bin} {name} stopped {spark_pid_dir} {spark_master_hosts}:{spark_master_port}")
     rm_pid = format("rm -f {pid_file}")
-    Execute(daemon_cmd,
-            user=params.spark_user
-    )
+    Execute(daemon_cmd)
     Execute(rm_pid)

@@ -22,9 +22,18 @@ from resource_management import *
 
 class SparkServiceCheck(Script):
   def service_check(self, env):
-    import params
-    env.set_params(params)
-
+    import status_params
+    env.set_params(status_params)
+	
+	if params.is_spark_master:
+      pid_file = status_params.pid_files[name]
+      check_spark_process_cmd = format(
+        "ls {pid_file} >/dev/null 2>&1 && ps `cat {pid_file}` >/dev/null 2>&1")
+      Execute(check_spark_process_cmd,
+              logoutput=True,
+              try_sleep=3,
+              tries=5
+      )
 
 if __name__ == "__main__":
   SparkServiceCheck().execute()

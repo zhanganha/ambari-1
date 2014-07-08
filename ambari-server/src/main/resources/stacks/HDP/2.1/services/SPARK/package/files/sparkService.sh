@@ -41,7 +41,7 @@ master)
     ;;
 worker) 
     if [[ ${ensure} == 'running' ]]; then 
-      ${spark_bin}/start-slave.sh 1 spark://$spark_server_hosts:7077
+      ${spark_bin}/start-slave.sh 1 spark://$spark_server_hosts
       if [ -f "${spark_pid_dir}/spark-worker.pid" ]; then  
 		rm "${spark_pid_dir}/spark-worker.pid"  
 	  fi 
