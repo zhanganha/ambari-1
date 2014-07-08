@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.6
+#!/usr/bin/env python
 """
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
@@ -15,8 +15,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
-Ambari Agent
 
 """
 
@@ -53,7 +51,7 @@ class SparkServer(Script):
   def status(self, env):
     import status_params
     env.set_params(status_params)
-    check_process_status(status_params.spark_master)
+    check_process_status(status_params.pid_master)
 
 if __name__ == "__main__":
   SparkServer().execute()

@@ -25,5 +25,5 @@ config = Script.get_config()
 pid_dir = config['configurations']['global']['spark_pid_dir']
 pid_master = format("{pid_dir}/spark-master.pid")
 pid_worker = format("{pid_dir}/spark-worker.pid")
-pid_files = {"spark_master":pid_master,
-             "spark_worker": pid_worker}
+pid_files = {"master" : pid_master,
+             "worker" : pid_worker}

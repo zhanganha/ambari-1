@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.6
+#!/usr/bin/env python
 """
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
@@ -16,8 +16,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-Ambari Agent
-
 """
 
 from resource_management import *
@@ -26,6 +24,7 @@ def spark_service(
 	name,
 	action='start'):
   import params
+  import status_params
 
   File("/tmp/sparkService.sh",
          mode=0755,
@@ -33,11 +32,9 @@ def spark_service(
   )
   
   pid_file = status_params.pid_files[name]
-  
+  no_op_test = format("ls {pid_file} >/dev/null 2>&1 && ps `cat {pid_file}` >/dev/null 2>&1")
   if action == 'start':
-  
   	daemon_cmd = format("/tmp/sparkService.sh {spark_bin} {name} running {spark_pid_dir} {spark_server_hosts}"
-    no_op_test = format("ls {pid_file} >/dev/null 2>&1 && ps `cat {pid_file}` >/dev/null 2>&1")
     Execute(daemon_cmd,
             not_if=no_op_test,
             user=params.spark_user
