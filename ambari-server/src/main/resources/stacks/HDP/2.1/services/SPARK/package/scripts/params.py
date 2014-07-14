@@ -46,7 +46,6 @@ spark_master_webui_port = config['configurations']['spark-site']['SPARK_MASTER_W
 java64_home = config['hostLevelParams']['java_home']
 
 spark_master_hosts = config['clusterHostInfo']['spark_server_hosts'][0]
-spark_master_hosts.sort()
 
 spark_worker_hosts = config['clusterHostInfo']['spark_worker_hosts']
 spark_worker_hosts.sort()
