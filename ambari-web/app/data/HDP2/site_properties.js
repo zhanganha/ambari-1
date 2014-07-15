@@ -1145,20 +1145,6 @@ module.exports =
         "category": "Spark",
         "filename": "spark-site.xml"
       },
-    {
-      "id": "site property",
-      "name": "spark_log_dir",
-      "displayName": "Spark Log Dir",
-      "serviceName": "SPARK",
-      "category": "General"
-    },
-    {
-      "id": "site property",
-      "name": "spark_pid_dir",
-      "displayName": "Spark Pid Dir",
-      "serviceName": "SPARK",
-      "category": "General"
-    },
     /*********************************************oozie-site for Falcon*****************************/
     {
       "id": "site property",
