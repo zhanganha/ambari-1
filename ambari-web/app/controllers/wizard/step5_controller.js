@@ -158,19 +158,18 @@ App.WizardStep5Controller = Em.Controller.extend({
    * @return Array
    */
   loadComponents:function () {
-
+	  
     var services = this.get('content.services')
       .filterProperty('isSelected', true).mapProperty('serviceName'); //list of shown services
-
+    
     var masterComponents = this.get('components').filterProperty('isMaster', true); //get full list from mock data
     var masterHosts = this.get('content.masterComponentHosts'); //saved to local storage info
-
+    
     var resultComponents = [];
 
     var servicesLength = services.length;
     for (var index = 0; index < servicesLength; index++) {
       var componentInfo = masterComponents.filterProperty('service_name', services[index]);
-
       componentInfo.forEach(function (_componentInfo) {
         if (_componentInfo.component_name == 'ZOOKEEPER_SERVER' || _componentInfo.component_name == 'HBASE_MASTER') {
           var savedComponents = masterHosts.filterProperty('component', _componentInfo.component_name);
@@ -444,6 +443,8 @@ App.WizardStep5Controller = Em.Controller.extend({
       case 'STORM_UI_SERVER':
       case 'DRPC_SERVER':
       case 'STORM_REST_API':
+      case 'SPARK_SERVER':
+      case 'SPARK_WORKER':
       case 'NIMBUS':
         return this.getNimbusServer(noOfHosts);
       default:

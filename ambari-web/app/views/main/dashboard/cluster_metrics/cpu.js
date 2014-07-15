@@ -40,9 +40,22 @@ App.ChartClusterMetricsCPU = App.ChartLinearTimeView.extend({
       var cpu_idle;
       for ( var name in jsonData.metrics.cpu) {
         var seriesData = jsonData.metrics.cpu[name];
+        if("Idle" == name){
+        	name = Em.I18n.t('hosts.host.metrics.cpu.displayNames.cpu_idle');
+        }else if("Nice" == name){
+        	name = Em.I18n.t('hosts.host.metrics.cpu.displayNames.cpu_nice');
+        }else if("System" == name){
+        	name = Em.I18n.t('hosts.host.metrics.cpu.displayNames.cpu_system');
+        }else if("Wait" == name){
+        	name = Em.I18n.t('hosts.host.metrics.cpu.displayNames.cpu_wait');
+        }else if("User" == name){
+        	name = Em.I18n.t('hosts.host.metrics.cpu.displayNames.cpu_user');
+        }else{
+        	name = '--';
+        }
         if (seriesData) {
           var s = this.transformData(seriesData, name);
-          if (Em.I18n.t('dashboard.clusterMetrics.cpu.displayNames.idle') == s.name) {
+          if (Em.I18n.t('hosts.host.metrics.cpu.displayNames.cpu_idle') == s.name) {
             cpu_idle = s;
           }
           else {
@@ -56,7 +69,7 @@ App.ChartClusterMetricsCPU = App.ChartLinearTimeView.extend({
   },
   
   colorForSeries: function (series) {
-    if (Em.I18n.t('dashboard.clusterMetrics.cpu.displayNames.idle') == series.name){
+    if (Em.I18n.t('hosts.host.metrics.cpu.displayNames.cpu_idle') == series.name){
       return '#CFECEC';
     }
     return null;

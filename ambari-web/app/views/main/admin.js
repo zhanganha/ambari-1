@@ -26,6 +26,10 @@ App.MainAdminView = Em.View.extend({
       name: 'user',
       url: 'admin.index',
       label: Em.I18n.t('common.users')
+    },{
+        name: 'license',
+        url:'adminLicense',
+        label: Em.I18n.t('menu.item.license')
     }];
     if (App.get('isHadoop2Stack') && App.supports.highAvailability) {
       items.push({

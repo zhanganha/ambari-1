@@ -344,7 +344,25 @@ module.exports = [
             isMaster: false
           })
         ]
-      })
+      }),
+      Ember.Object.create({
+          service_name: 'SPARK',
+          display_name: 'Spark',
+          service_components: [
+            Ember.Object.create({
+              display_name: 'Spark Server',
+              component_name: 'SPARK_SERVER',
+              component_value: '',
+              isMaster: true
+            }),
+            Ember.Object.create({
+              display_name: 'Spark Worker',
+              component_name: 'SPARK_WORKER',
+              component_value: '',
+              isMaster: false
+            })
+          ]
+        }),
     ]
   }
 ];

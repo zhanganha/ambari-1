@@ -310,7 +310,7 @@ App.Router = Em.Router.extend({
   },
 
   logOff: function (context) {
-    $('title').text('Ambari');
+    $('title').text('Inspur');
     var hash = window.btoa(this.get('loginController.loginName') + ":" + this.get('loginController.password'));
 
     App.router.get('mainController').stopPolling();

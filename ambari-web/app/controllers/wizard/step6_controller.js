@@ -244,6 +244,12 @@ App.WizardStep6Controller = Em.Controller.extend({
           label: self.getComponentDisplayName('SUPERVISOR')
         }));
       }
+      if (this.isServiceSelected('SPARK')) {
+          headers.pushObject(Em.Object.create({
+            name: 'SPARK_WORKER',
+            label: self.getComponentDisplayName('SPARK_WORKER')
+          }));
+        }
       headers.pushObject(Ember.Object.create({
         name: 'CLIENT',
         label: self.getComponentDisplayName('CLIENT')

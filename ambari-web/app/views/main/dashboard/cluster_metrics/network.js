@@ -43,6 +43,13 @@ App.ChartClusterMetricsNetwork = App.ChartLinearTimeView.extend({
       for ( var name in jsonData.metrics.network) {
         var displayName = name;
         var seriesData = jsonData.metrics.network[name];
+        if("In" == name){
+        	displayName = Em.I18n.t('hosts.host.metrics.network.displayNames.bytes_in');
+        }else if("Out" == name){
+        	displayName = Em.I18n.t('hosts.host.metrics.network.displayNames.bytes_out');
+        }else{
+        	displayName = '--';
+        }
         if (seriesData) {
           seriesArray.push(this.transformData(seriesData, displayName));
         }

@@ -1765,6 +1765,20 @@ var urls = {
     'real': '/proxy?url=http://{historyServerHostName}:{ahsWebPort}/ws/v1/timeline/TEZ_VERTEX_ID/{tezDagVertexId}?fields=otherinfo',
     'mock': '/data/jobs/tezDagVertex.json',
     'apiPrefix': ''
+  },
+  'license.upload':{
+	  'real': '/license/fileupload/{licenseCon}', //带输入
+	  'mock': '/data/licenses/upload.json',
+	  'format': function (data, opt) {
+	      return {
+	        type: 'POST',
+	        async: false
+	      };
+	   }
+  },
+  'license.detail':{
+	  'real': '/license/content', 
+	  'mock': '/data/licenses/licenses.json'
   }
 };
 /**

@@ -51,7 +51,8 @@ App.MainServiceInfoSummaryView = Em.View.extend({
     storm: false,
     tez: false,
     pig :false,
-    sqoop: false
+    sqoop: false,
+    spark:false
   },
 
   servicesHaveClients: ["OOZIE", "ZOOKEEPER", "HIVE", "MAPREDUCE2", "TEZ", "SQOOP", "PIG","FALCON"],
@@ -421,7 +422,7 @@ App.MainServiceInfoSummaryView = Em.View.extend({
     if (!serviceName) {
       return false;
     }
-    var noAlertsServices = ['PIG', 'SQOOP', 'TEZ'];
+    var noAlertsServices = ['PIG', 'SQOOP', 'TEZ','SPARK'];//该处设置在UI前端是否有“警报和健康检查”面板
     return noAlertsServices.indexOf(serviceName) > -1;
   }.property(''),
 

@@ -30,4 +30,5 @@ require('templates/main/service/info/summary/falcon');
 require('templates/main/service/info/summary/tez');
 require('templates/main/service/info/summary/pig');
 require('templates/main/service/info/summary/sqoop');
+require('templates/main/service/info/summary/spark');
 require('templates/main/admin/highAvailability/progress');

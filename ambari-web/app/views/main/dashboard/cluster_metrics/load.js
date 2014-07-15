@@ -41,6 +41,17 @@ App.ChartClusterMetricsLoad = App.ChartLinearTimeView.extend({
       for ( var name in jsonData.metrics.load) {
         var displayName = name;
         var seriesData = jsonData.metrics.load[name];
+        if("1-min" == name){
+        	displayName = Em.I18n.t('dashboard.clusterMetrics.1-min');
+        }else if("Nodes" == name){
+        	displayName = Em.I18n.t('dashboard.clusterMetrics.Nodes');
+        }else if("Procs" == name){
+        	displayName = Em.I18n.t('dashboard.clusterMetrics.Procs');
+        }else if("CPUs" == name){
+        	displayName = Em.I18n.t('dashboard.clusterMetrics.CPUs');
+        }else{
+        	displayName = '--';
+        }
         if (seriesData) {
           seriesArray.push(this.transformData(seriesData, displayName));
         }

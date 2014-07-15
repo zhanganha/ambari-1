@@ -51,6 +51,11 @@ require('controllers/main/admin/access_controller');
 require('controllers/main/admin/user/edit');
 require('controllers/main/admin/user/create');
 require('controllers/main/admin/advanced');
+//license start
+require('controllers/main/license/license');
+require('controllers/main/license/detail');
+require('controllers/main/license/upload');
+//end
 require('utils/polling');
 require('controllers/main/admin/security');
 require('controllers/main/admin/security/security_progress_controller');

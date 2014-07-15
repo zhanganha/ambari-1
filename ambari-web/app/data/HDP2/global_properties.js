@@ -1684,6 +1684,21 @@ module.exports =
     },
     {
       "id": "puppet var",
+      "name": "spark_user",
+      "displayName": "Spark User",
+      "description": "User to run Spark as",
+      "defaultValue": "spark",
+      "isReconfigurable": false,
+      "displayType": "user",
+      "isOverridable": false,
+      "isVisible": true,
+      "serviceName":"MISC",
+      "category": "Users and Groups",
+      "belongsToService":["SPARK"],
+      "index": 13
+    },
+    {
+      "id": "puppet var",
       "name": "gmond_user",
       "displayName": "Gmond User",
       "description": "The user used to run gmond for Ganglia",

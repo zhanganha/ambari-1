@@ -32,5 +32,8 @@ App.LoginView = Em.View.extend({
     insertNewline: function(){
       this.get("controller").submit();
     }
-  })
+  }),
+  didInsertElement: function(){
+	  $("#loginBody").attr("style","background: url(/img/loginbox.png) no-repeat center 50px;width:100%;height:600px;margin:0 auto;overflow:hidden;position:relative;");
+  }
 });

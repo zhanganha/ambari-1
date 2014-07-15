@@ -41,6 +41,21 @@ App.ChartClusterMetricsMemory = App.ChartLinearTimeView.extend({
       for ( var name in jsonData.metrics.memory) {
         var displayName = name;
         var seriesData = jsonData.metrics.memory[name];
+        if("Use" == name){
+        	displayName = Em.I18n.t('hosts.host.metrics.memory.displayNames.mem_used');
+        }else if("Total" == name){
+        	displayName = Em.I18n.t('hosts.host.metrics.disk.displayNames.disk_total');
+        }else if("Share" == name){
+        	displayName = Em.I18n.t('hosts.host.metrics.memory.displayNames.mem_shared');
+        }else if("Buffer" == name){
+        	displayName = Em.I18n.t('hosts.host.metrics.memory.displayNames.mem_buffers');
+        }else if("Swap" == name){
+        	displayName = Em.I18n.t('hosts.host.metrics.memory.displayNames.swap_free');
+        }else if("Cache" == name){
+        	displayName = Em.I18n.t('hosts.host.metrics.memory.displayNames.mem_cached');
+        }else{
+        	displayName = '--';
+        }
         if (seriesData) {
           seriesArray.push(this.transformData(seriesData, displayName));
         }

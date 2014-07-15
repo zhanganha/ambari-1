@@ -22,7 +22,7 @@
 	  <div class="row-fluid">
 	    <div class="span2 legend-column">
 		     <div class="btn-group">
-				  <button class="btn">{{t charts.heatmap.selectMetric}}</button>
+				  <button class="btn"  data-toggle="dropdown">{{t charts.heatmap.selectMetric}}</button>
 				  <button class="btn dropdown-toggle" data-toggle="dropdown">
 				    <span class="caret"></span>
 				  </button>
@@ -54,7 +54,7 @@
 					</table>
 	        {{t common.maximum}}:
 	        <div id="inputMaximum" class="control-group">
-	          {{view Ember.TextField type="text" maxlength="8" valueBinding="controller.inputMaximum" class="span6"}}
+	          {{view Ember.TextField type="text" maxlength="8" valueBinding="controller.inputMaximum" class="span6"  disabled="disabled"}}
 	          {{controller.selectedMetric.units}}
 	        </div>
         {{/if}}

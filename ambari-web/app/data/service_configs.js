@@ -290,6 +290,15 @@ module.exports = [
     ],
     sites: ['global'],
     configs: []
-  }
-
+  },
+  {
+	serviceName: 'SPARK',
+	displayName: 'Spark',
+	configCategories: [
+	  App.ServiceConfigCategory.create({ name: 'Spark', displayName : 'Spark'}),
+	  App.ServiceConfigCategory.create({ name: 'General', displayName : 'General'})
+	 ],
+	sites: ['global', 'spark-site'],
+	configs: []
+   }
 ];

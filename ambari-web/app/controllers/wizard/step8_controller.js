@@ -552,7 +552,6 @@ App.WizardStep8Controller = Em.Controller.extend({
    */
   loadServices: function () {
     var reviewService = this.rawContent.findProperty('config_name', 'services');
-
     this.get('selectedServices').forEach(function (_service) {
       console.log('INFO: step8: Name of the service from getService function: ' + _service.serviceName);
       var serviceObj = reviewService.config_value.findProperty('service_name', _service.serviceName);
@@ -1176,7 +1175,8 @@ App.WizardStep8Controller = Em.Controller.extend({
       PIG: {site: [], log4j: ['pig']},
       FALCON: {site: [{filename:'falcon-startup.properties',isXmlFile: false},{filename:'falcon-runtime.properties',isXmlFile: false}], log4j: []},
       TEZ: {site: [{filename:'tez-site',isXmlFile: true}], log4j: []},
-      ZOOKEEPER: {site: [], log4j: ['zookeeper']}
+      ZOOKEEPER: {site: [], log4j: ['zookeeper']},
+      SPARK:{site: [{filename:'spark-site',isXmlFile: true}], log4j: []}
     };
 
     if (App.supports.capacitySchedulerUi) {

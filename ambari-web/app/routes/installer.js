@@ -32,7 +32,7 @@ module.exports = Em.Route.extend({
       App.router.get('installerController').checkServerClientVersion().done(function() {
 
         var name = 'Cluster Install Wizard';
-        $('title').text('Ambari - ' + name);
+        $('title').text('CloudCanyon - ' + name);
 
         if (App.get('isAdmin')) {
           router.get('mainController').stopPolling();

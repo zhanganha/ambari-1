@@ -37,6 +37,8 @@ require('models/service/flume');
 require('models/service/storm');
 require('models/alert');
 require('models/user');
+//许可证
+require('models/license');
 require('models/host');
 require('models/rack');
 require('models/job');

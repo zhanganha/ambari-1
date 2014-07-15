@@ -62,6 +62,13 @@ require('views/main/host/metrics/network');
 require('views/main/host/metrics/processes');
 require('views/main/host/addHost/step4_view');
 require('views/main/admin');
+//许可证管理
+require('views/main/license/license');
+require('views/main/license/row');
+require('views/main/license/detail');
+require('views/main/license/upload');
+//end
+
 require('views/main/admin/highAvailability_view');
 require('views/main/admin/highAvailability/wizard_view');
 require('views/main/admin/highAvailability/progress_view');

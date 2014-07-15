@@ -44,6 +44,9 @@ require('mappers/jobs_mapper');
 require('mappers/runs_mapper');
 require('mappers/racks_mapper');
 require('mappers/users_mapper');
+//许可证初始化 start
+require('mappers/licenses_mapper');
+//end
 require('mappers/service_mapper');
 require('mappers/service_metrics_mapper');
 require('mappers/target_cluster_mapper');

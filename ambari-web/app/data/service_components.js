@@ -397,6 +397,22 @@ module.exports = new Ember.Set([
     isMaster: true,
     isClient: false,
     description: 'Master component for STORM'
+  },
+  {
+	service_name: 'SPARK',
+	component_name: 'SPARK_SERVER',
+	display_name: 'Spark Server',
+	isMaster: true,
+	isClient: false,
+	description: 'Master component for Spark'
+  },
+  {
+	service_name: 'SPARK',
+	component_name: 'SPARK_WORKER',
+	display_name: 'Spark Worker',
+	isMaster: false, //此处设置是否在前端UI显示节点列表
+	isClient: false,
+	description: 'Master component for Spark' 
   }
 ]);
 

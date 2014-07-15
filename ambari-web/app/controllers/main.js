@@ -29,7 +29,7 @@ App.MainController = Em.Controller.extend({
     } else {
       name = Em.I18n.t('common.loading');
     }
-    $('title').text('Ambari - ' + name);
+    $('title').text('CloudCanyon - ' + name);
   }.observes('App.router.clusterController.clusterName'),
 
   isClusterDataLoaded: function(){

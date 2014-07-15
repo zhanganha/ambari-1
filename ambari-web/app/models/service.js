@@ -89,7 +89,8 @@ App.Service = DS.Model.extend({
       "HUE",
       "TEZ",
       "STORM",
-      "FALCON"
+      "FALCON",
+     // "SPARK" 此处为是否具有对应的“配置”标签页
     ];
     return configurableServices.contains(this.get('serviceName'));
   }.property('serviceName'),
@@ -207,7 +208,8 @@ App.Service.DisplayNames = {
   'HUE': 'Hue',
   'FLUME': 'Flume',
   'FALCON': 'Falcon',
-  'STORM': 'Storm'
+  'STORM': 'Storm',
+  'SPARK': 'Spark'
 };
 
 App.Service.servicesSortOrder = [
@@ -229,7 +231,8 @@ App.Service.servicesSortOrder = [
   'ZOOKEEPER',
   'PIG',
   'SQOOP',
-  'HUE'
+  'HUE',
+  'SPARK'
 ];
 
 App.Service.FIXTURES = [];

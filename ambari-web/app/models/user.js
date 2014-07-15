@@ -43,13 +43,13 @@ App.EditUserForm = App.Form.extend({
   }.property('App.router.mainAdminUserEditController.content'),
 
   fieldsOptions:[
-    { name:"userName", displayName:"Username" },
-    { name:"old_password", displayName:"Current Password", displayType:"password", isRequired: false },
-    { name:"new_password", displayName:"New Password", displayType:"password",  isRequired: false },
-    { name:"new_passwordRetype", displayName:"Retype New Password", displayType:"password", isRequired: false },
+    { name:"userName", displayName:"用户名："}, //或者Em.I18n.t('login.username')
+    { name:"old_password", displayName:"当前用户密码：", displayType:"password", isRequired: false },
+    { name:"new_password", displayName:"新密码：", displayType:"password",  isRequired: false },
+    { name:"new_passwordRetype", displayName:"确认密码：", displayType:"password", isRequired: false },
     { name:"admin", displayName:"Admin", displayType:"checkbox", isRequired:false },
-    { name:"roles", displayName:"Role", isRequired:false, isHidden:true },
-    { name:"isLdap", displayName:"Type", isRequired:false, isHidden:true }
+    { name:"roles", displayName:"角色", isRequired:false, isHidden:true },
+    { name:"isLdap", displayName:"类型", isRequired:false, isHidden:true }
   ],
   fields:[],
   disableUsername:function () {
@@ -113,11 +113,11 @@ App.CreateUserForm = App.Form.extend({
   }.property('App.router.mainAdminUserCreateController.content'),
 
   fieldsOptions:[
-    { name:"userName", displayName:"Username", toLowerCase: function(){var v = this.get('value'); this.set('value', v.toLowerCase())}.observes('value') },
-    { name:"password", displayName:"Password", displayType:"password", isRequired: true },
-    { name:"passwordRetype", displayName:"Retype Password", displayType:"password", validator:"passwordRetype", isRequired: true },
+    { name:"userName", displayName:"用户名：", toLowerCase: function(){var v = this.get('value'); this.set('value', v.toLowerCase())}.observes('value') },
+    { name:"password", displayName:"密码：", displayType:"password", isRequired: true },
+    { name:"passwordRetype", displayName:"确认密码：", displayType:"password", validator:"passwordRetype", isRequired: true },
     { name:"admin", displayName:"Admin", displayType:"checkbox", isRequired:false },
-    { name:"roles", displayName:"Role", isRequired:false, isHidden:true }
+    { name:"roles", displayName:"角色", isRequired:false, isHidden:true }
   ],
   fields:[],
 

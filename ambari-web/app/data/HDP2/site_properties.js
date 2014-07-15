@@ -1127,7 +1127,39 @@ module.exports =
       "displayType": "multiLine",
       "filename": "storm-site.xml"
     },
-  /*********************************************oozie-site for Falcon*****************************/
+   
+    /*********************************************Spark*****************************************/
+    {
+      "id": "site property",
+      "name": "SPARK_MASTER_PORT",
+      "displayName": "Spark master port",
+      "serviceName": "SPARK",
+      "category": "Spark",
+      "filename": "spark-site.xml"	  
+    },
+    {
+        "id": "site property",
+        "name": "SPARK_MASTER_WEBUI_PORT",
+        "displayName": "Spark master webui port",
+        "serviceName": "SPARK",
+        "category": "Spark",
+        "filename": "spark-site.xml"
+      },
+    {
+      "id": "site property",
+      "name": "spark_log_dir",
+      "displayName": "Spark Log Dir",
+      "serviceName": "SPARK",
+      "category": "General"
+    },
+    {
+      "id": "site property",
+      "name": "spark_pid_dir",
+      "displayName": "Spark Pid Dir",
+      "serviceName": "SPARK",
+      "category": "General"
+    },
+    /*********************************************oozie-site for Falcon*****************************/
     {
       "id": "site property",
       "isReconfigurable": false,

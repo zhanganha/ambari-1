@@ -555,6 +555,177 @@ module.exports = Em.Route.extend({
         router.get('mainAdminController').connectOutlet('mainAdminMisc');
       }
     }),
+    //license调整
+    adminLicense: Em.Route.extend({
+    	route: '/license',
+    	index: Em.Route.extend({
+            route: '/',
+            redirectsTo: 'detail'
+          }),
+        enter: function (router) {
+            router.set('mainAdminController.category', "license");
+            Em.run.next(function () {
+              router.transitionTo('detail');
+            });
+          },
+    	connectOutlets: function (router) {
+    		router.set('mainAdminController.category', "license");
+    		router.get('mainAdminController').connectOutlet('mainLicense');
+        },
+        detail: Em.Route.extend({
+            route: '/detail',
+            connectOutlets: function (router) {
+              router.get('mainAdminController').connectOutlet('mainLicense');
+            }
+          }),
+        addLicense: function (router) {
+        	router.transitionTo('uploadLicense');
+        },
+        updateLicense:function(router){
+        	router.transitionTo('updateLicense');
+        }
+    }),
+    
+    //上传license
+    uploadLicense: Em.Route.extend({
+    	route: '/license/upload',
+    	enter: function (router) {
+    		console.log('in /license/upload:enter');
+
+    	    Ember.run.next(function () {
+    	      App.ModalPopup.show({
+    	        classNames: ['full-width-modal'],
+    	        header:Em.I18n.t('license.upload.header'),
+    	        bodyClass:  App.UploadLicenseView.extend({
+    	          controllerBinding: 'App.router.uploadLicenseController'
+    	        }),
+    	        primary: Em.I18n.t('ok'),
+    	        secondary: Em.I18n.t('common.cancel'),
+    	        showFooter: true,
+    	        onPrimary:function () {
+    	        	var licenseKey = $('#uploadLicense').val();
+    	        	if(this.checkLicenseError(licenseKey)){
+    	        		var licenseCon = $('#sshKey').val();
+//        	        	licenseKey = {licenseCon:licenseKey};
+//        	        	var uploadKey = JSON.stringify(licenseKey);
+    	        		$.ajax({
+    	        		     type: 'POST',
+    	        		     url: App.apiPrefix + '/license/fileupload',///data/licenses/upload.json
+    	        		     data: licenseCon,
+    	        		     dataType: 'json',
+    	        		     success: function(data){
+    	        		    	 var flag = data['result'];
+    	         	        	if("success" == flag){
+    	         	        		App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.upload.success'));  
+    	         	        	}else{
+    	         	        		App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.upload.failed')); 
+    	         	        	}
+    	         	        	
+    	        		     },
+    	        		     error:function(){
+    	        		    	 App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.upload.failed')); 
+    	        		     }
+    	        		  });
+    	        		this.hide();
+    	        		router.transitionTo('adminLicense');
+    	        	}
+    	        	
+    	        },
+    	        onClose: function() {
+    	          this.hide();
+    	          router.transitionTo('adminLicense');
+    	        },
+    	        onSecondary: function (){
+    	        	this.hide();
+    	        	router.transitionTo('adminLicense');
+    	        },
+    	        didInsertElement: function(){
+    	          this.fitHeight();
+    	        },
+    	        checkLicenseError: function (licenseKey) {
+    	        	if (licenseKey == "") {
+    	        		$("#uploadError").html(Em.I18n.t('license.upload.errorMessage'));
+    	        	      return false;
+    	        	  }else if(licenseKey.length > 512){
+    	        		  return false;
+    	        	  }
+    	        		  return true;
+    	        }
+    	      });
+//    	      router.transitionTo('upload');
+    	    });
+    	  },
+    	  
+    }),
+    //更新许可证
+    updateLicense: Em.Route.extend({
+    	route: '/license/upload',
+    	enter: function (router) {
+    		console.log('in /license/upload:enter');
+
+    	    Ember.run.next(function () {
+    	      App.ModalPopup.show({
+    	        classNames: ['full-width-modal'],
+    	        header:Em.I18n.t('license.upload.header'),
+    	        bodyClass:  App.UploadLicenseView.extend({
+    	          controllerBinding: 'App.router.uploadLicenseController'
+    	        }),
+    	        primary: Em.I18n.t('ok'),
+    	        secondary: Em.I18n.t('common.cancel'),
+    	        showFooter: true,
+    	        onPrimary:function () {
+    	        	var licenseKey = $('#uploadLicense').val();
+    	        	if(this.checkLicenseError(licenseKey)){
+    	        		var licenseCon = $('#sshKey').val();
+    	        		$.ajax({
+    	        		     type: 'POST',
+    	        		     url: App.apiPrefix + '/license/updateLicense',
+    	        		     data: licenseCon,
+    	        		     dataType: 'json',
+    	        		     success: function(data){
+    	        		    	 var flag = data['result'];
+    	         	        	if("success" == flag){
+    	         	        		App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.upload.success'));  
+    	         	        	}else{
+    	         	        		App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.upload.failed')); 
+    	         	        	}
+    	         	        	
+    	        		     },
+    	        		     error:function(){
+    	        		    	 App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.upload.failed')); 
+    	        		     }
+    	        		  });
+    	        		this.hide();
+    	        		router.transitionTo('adminLicense');
+    	        	}
+    	        },
+    	        onClose: function() {
+    	          this.hide();
+    	          router.transitionTo('adminLicense');
+    	        },
+    	        onSecondary: function (){
+    	        	this.hide();
+    	        	router.transitionTo('adminLicense');
+    	        },
+    	        didInsertElement: function(){
+    	          this.fitHeight();
+    	        },
+    	        checkLicenseError: function (licenseKey) {
+    	        	if (licenseKey == "") {
+    	        		$("#uploadError").html(Em.I18n.t('license.upload.errorMessage'));
+    	        	      return false;
+    	        	  }else if(licenseKey.length > 512){
+    	        		  return false;
+    	        	  }
+    	        		  return true;
+    	        }
+    	      });
+//    	      router.transitionTo('upload');
+    	    });
+    	  },
+    	  
+    }),
+    
     adminAccess: Em.Route.extend({
       enter: function(router) {
         router.get('mainController').dataLoading().done(function() {

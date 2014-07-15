@@ -59,7 +59,8 @@ App.ClusterController = Em.Controller.extend({
     'clusterStatus':false,
     'racks':false,
     'users':false,
-    'componentConfigs': false
+    'componentConfigs': false,
+    'licenses':false
   }),
 
   /**
@@ -289,6 +290,8 @@ App.ClusterController = Em.Controller.extend({
     }
     var clusterUrl = this.getUrl('/data/clusters/cluster.json', '?fields=Clusters');
     var usersUrl = App.testMode ? '/data/users/users.json' : App.apiPrefix + '/users/?fields=*';
+    //许可证license的url
+    var licensesUrl = App.testMode ? '/data/licenses/licenses.json' : App.apiPrefix + '/license/content/?fields=*';//等接口将来写   假数据/data/licenses/licenses.json
     var racksUrl = "/data/racks/racks.json";
 
     App.HttpClient.get(racksUrl, App.racksMapper, {
@@ -322,7 +325,15 @@ App.ClusterController = Em.Controller.extend({
     }, function (jqXHR, textStatus) {
         self.updateLoadStatus('users');
     });
-
+    //许可证管理Start
+    App.HttpClient.get(licensesUrl, App.licensesMapper, {
+        complete:function (jqXHR, textStatus) {
+          self.updateLoadStatus('licenses');
+        }
+      }, function (jqXHR, textStatus) {
+          self.updateLoadStatus('licenses');
+      });
+    //end
     /**
      * Order of loading:
      * 1. request for services

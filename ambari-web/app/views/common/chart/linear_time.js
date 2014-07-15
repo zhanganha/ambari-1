@@ -832,7 +832,11 @@ App.ChartLinearTimeView.PercentageFormatter = function (percentage) {
   if (!value || value.length < 1) {
     value = '0 %';
   } else {
-    value = value.toFixed(3).replace(/0+$/, '').replace(/\.$/, '') + '%';
+		if(value > 100){
+			value = '-- %';
+		}else{
+			value = value.toFixed(3).replace(/0+$/, '').replace(/\.$/, '') + '%';
+		}
   }
   return value;
 };

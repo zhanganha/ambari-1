@@ -486,9 +486,9 @@ App.ServiceConfigsByCategoryView = Ember.View.extend({
     App.ModalPopup.show({
       // classNames: ['big-modal'],
       classNames: [ 'sixty-percent-width-modal'],
-      header: "Add Property",
-      primary: 'Add',
-      secondary: 'Cancel',
+      header: "添加属性",
+      primary: Em.I18n.t('ok'),
+      secondary: Em.I18n.t('no'),
       onPrimary: function () {
         serviceConfigObj.observeAddPropertyValue();
         /**
