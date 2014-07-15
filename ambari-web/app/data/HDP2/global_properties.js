@@ -1458,6 +1458,35 @@ module.exports =
       "category": "StormRestApi",
       "filename": "global.xml"
     },
+    
+    /**********************************************SPARK***************************************/
+    {
+      "id": "puppet var",
+      "name": "spark_log_dir",
+      "displayName": "spark_log_dir",
+      "description": "Spark log directory",
+      "defaultValue": "/var/log/spark",
+      "displayType": "directory",
+      "isReconfigurable": true,
+      "isVisible": true,
+      "isRequiredByAgent": true,
+      "serviceName": "SPARK",
+      "category": "General"
+    },
+    {
+      "id": "puppet var",
+      "name": "spark_pid_dir",
+      "displayName": "spark_pid_dir",
+      "description": "Spark PID directory",
+      "defaultValue": "/var/run/spark",
+      "displayType": "directory",
+      "isReconfigurable": true,
+      "isVisible": true,
+      "isRequiredByAgent": true,
+      "serviceName": "SPARK",
+      "category": "General"
+    },
+    
   /**********************************************MISC***************************************/
     {
       "id": "puppet var",
