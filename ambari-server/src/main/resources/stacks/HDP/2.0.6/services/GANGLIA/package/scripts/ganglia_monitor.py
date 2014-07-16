@@ -134,6 +134,14 @@ class GangliaMonitor(Script):
                       role = "monitor",
                       owner = "root",
                       group = params.user_group)
+                      
+    if params.is_spark_host:
+      generate_daemon("gmond",
+                      name = "HDPSpark",
+                      role = "monitor",
+                      owner = "root",
+                      group = params.user_group)
+                      
     if params.is_supervisor_host:
       generate_daemon("gmond",
                       name = "HDPSupervisor",
@@ -259,6 +267,13 @@ class GangliaMonitor(Script):
     if params.has_nimbus_server:
       generate_daemon("gmond",
                       name = "HDPNimbus",
+                      role = "server",
+                      owner = "root",
+                      group = params.user_group)
+
+	if params.is_spark_server:
+      generate_daemon("gmond",
+                      name = "HDPSpark",
                       role = "server",
                       owner = "root",
                       group = params.user_group)

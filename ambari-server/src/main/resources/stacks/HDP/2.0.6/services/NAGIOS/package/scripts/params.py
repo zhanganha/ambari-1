@@ -69,6 +69,7 @@ hbase_rs_port = "60030"
 storm_ui_port = config['configurations']['storm-site']['ui.port']
 drpc_port = config['configurations']['storm-site']['drpc.port']
 nimbus_port = config['configurations']['storm-site']['nimbus.thrift.port']
+spark_port = config['configurations']['spark-site']['SPARK_MASTER_PORT']
 supervisor_port = "56431"
 storm_rest_api_port = "8745"
 falcon_port = config['configurations']['global']['falcon_port']
@@ -145,6 +146,7 @@ _nagios_server_host = default("/clusterHostInfo/nagios_server_host",None)
 _ganglia_server_host = default("/clusterHostInfo/ganglia_server_host",None)
 _app_timeline_server_hosts = default("/clusterHostInfo/app_timeline_server_hosts",None)
 _nimbus_host = default("/clusterHostInfo/nimbus_hosts",None)
+_spark_master_hosts = default("/clusterHostInfo/spark_server_hosts", None)
 _drpc_host = default("/clusterHostInfo/drpc_server_hosts",None)
 _supervisor_hosts = default("/clusterHostInfo/supervisor_hosts",None)
 _storm_ui_host = default("/clusterHostInfo/storm_ui_server_hosts",None)
@@ -185,6 +187,7 @@ hostgroup_defs = {
     'historyserver2' : _hs_host,
     'journalnodes' : _journalnode_hosts,
     'nimbus' : _nimbus_host,
+    'spark-server' : _spark_master_hosts,
     'drpc-server' : _drpc_host,
     'storm_ui' : _storm_ui_host,
     'supervisors' : _supervisor_hosts,

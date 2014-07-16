@@ -292,6 +292,20 @@ define service {
 }
 {% endif %}
 
+{% if hostgroup_defs['spark-server'] %}
+# Spark Checks
+define service {
+        hostgroup_name          spark
+        use                     hadoop-service
+        service_description     Spark::Spark process
+        servicegroups           SPARK
+        check_command           check_tcp_wrapper!{{ spark_port }}!-w 1 -c 1
+        normal_check_interval   0.5
+        retry_check_interval    0.25
+        max_check_attempts      3
+}
+{% endif %}
+
 {% if hostgroup_defs['drpc-server'] %}
 # drpc Checks
 define service {

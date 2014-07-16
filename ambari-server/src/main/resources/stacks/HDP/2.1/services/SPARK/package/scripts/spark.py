@@ -34,8 +34,12 @@ def spark(type = None):
   )
 
   #configFile("log4j.properties", template_name="log4j.properties.j2")
-  configFile("spark-env.sh", template_name="spark-env.sh.j2")
+  
+  if params.ganglia_installed
+  	configFile("slaves", template_name="metrics.properties.j2")
+  
   configFile("slaves", template_name="slaves.j2")
+  configFile("spark-env.sh", template_name="spark-env.sh.j2")
 
   Directory(params.spark_pid_dir,
             owner=params.spark_user,

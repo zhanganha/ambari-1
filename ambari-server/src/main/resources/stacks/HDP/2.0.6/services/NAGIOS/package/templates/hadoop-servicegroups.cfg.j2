@@ -107,6 +107,12 @@ define servicegroup {
   alias  STORM Checks
 }
 {% endif %}
+{% if hostgroup_defs['spark-server'] %}
+define servicegroup {
+  servicegroup_name  SPARK
+  alias  SPARK Checks
+}
+{% endif %}
 {% if hostgroup_defs['falcon-server'] %}
 define servicegroup {
   servicegroup_name  FALCON

@@ -402,6 +402,8 @@ function hdp_mon_generate_response( $response_data )
         break;
       case "STORM_UI_SERVER":
       case "NIMBUS":
+      case "SPARK_SERVER":
+      case "SPARK_WORKER":
       case "DRPC_SERVER":
       case "SUPERVISOR":
       case "STORM_REST_API":
@@ -416,6 +418,7 @@ function hdp_mon_generate_response( $response_data )
       case "WEBHCAT":
       case "GANGLIA":
       case "STORM":
+      case "SPARK":
       case "FALCON":
       case "PUPPET":
         break;

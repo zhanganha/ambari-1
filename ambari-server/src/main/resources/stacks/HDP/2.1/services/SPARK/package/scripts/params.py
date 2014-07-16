@@ -56,7 +56,9 @@ spark_env_file = format("{config_dir}/spark_env.sh")
 
 is_spark_master = hostname in spark_master_hosts
 
-pid_files = status_params。pid_files
+is_spark_worker = hostname in spark_worker_hosts
+
+pid_files = status_params.pid_files
 
 if 'ganglia_server_host' in config['clusterHostInfo'] and \
     len(config['clusterHostInfo']['ganglia_server_host'])>0:
