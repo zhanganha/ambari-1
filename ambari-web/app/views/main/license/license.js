@@ -47,10 +47,13 @@ App.MainLicenseView = Em.View.extend({
 		  }
 		  for(var i in  items){
 			  var license = items[i].Licenses;
-			  $("#licenseId").html(license.id);
-			  $("#licenseVersion").html(license.version);
-			  $("#licenseDate1").html(license.date1);
-			  $("#licenseDate2").html(license.date2);
+			  if (license.version == '1') {
+			  	$("#licenseVersion").html(Em.I18n.t('license.users.licenseVersion1'));
+			  } else {
+			  	$("#licenseVersion").html(Em.I18n.t('license.users.licenseVersion2'));
+			  }
+			  $("#licenseDate").html(license.date);
+			  $("#licenseNodes").html(license.nodes);
 		  }
 	  }else{
 		  $("#addOperate").show();

@@ -24,10 +24,9 @@ App.LicenseModel = Em.Object.extend({
 });
 
 App.License = DS.Model.extend({
-  id:DS.attr('string'),
   version:DS.attr('string'),
-  date1:DS.attr('string'),
-  date2:DS.attr('string'),
+  date:DS.attr('string'),
+  nodes:DS.attr('string'),
   auditItems:DS.hasMany('App.ServiceAudit')
 });
 
@@ -38,14 +37,13 @@ App.ViewLicenseForm = App.Form.extend({
 	  }.property('App.router.mainLicenseDetailsController.content'),
 
 	  fieldsOptions:[
-	    { name:"id", displayName:"Mac" },
 	    { name:"version", displayName:"Version" },
-	    { name:"date1", displayName:"CommencementDate"},
-	    { name:"date2", displayName:"ExpiryDate"}
+	    { name:"date", displayName:"ExpiryDate"},
+	    { name:"nodes", displayName:"Nodes"}
 	  ],
 	  fields:[],
 	  disableUsername:function () {
-		    this.getField("id").set("disabled", "disabled");
+		 //   this.getField("id").set("disabled", "disabled");
 		  }.observes('object'),
 
 		  isValid:function () {

@@ -20,10 +20,9 @@
 App.licensesMapper = App.QuickDataMapper.create({
   model : App.License,
   config : {
-	  id : 'Licenses.id',
 	  version:'Licenses.version',
-	  date1: 'Licenses.date1',
-	  date2: 'Licenses.date2'
+	  date: 'Licenses.date',
+	  nodes: 'Licenses.nodes'
   },
   map: function (json) {
 	    var self = this;
