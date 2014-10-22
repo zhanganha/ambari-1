@@ -52,8 +52,16 @@ App.MainLicenseView = Em.View.extend({
 			  } else {
 			  	$("#licenseVersion").html(Em.I18n.t('license.users.licenseVersion2'));
 			  }
-			  $("#licenseDate").html(license.date);
-			  $("#licenseNodes").html(license.nodes);
+			  if (license.data == 'null' || license.data == null || license.data == '') {
+			    $("#licenseVersion").html(Em.I18n.t('license.users.licenseLimit')); 
+			  } else {
+			  	$("#licenseDate").html(license.date);
+			  }
+			  if (license.nodes == 'null' || license.nodes == null || license.nodes == '') {
+			    $("#licenseVersion").html(Em.I18n.t('license.users.licenseLimit')); 
+			  } else {
+			  	$("#licenseDate").html(license.nodes);
+			  }
 		  }
 	  }else{
 		  $("#addOperate").show();

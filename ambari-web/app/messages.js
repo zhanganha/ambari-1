@@ -1996,6 +1996,7 @@ Em.I18n.translations = {
   'license.users.licenseNodes':'节点数',
   'license.users.licenseVersion1':'正式版',
   'license.users.licenseVersion2':'试用版',
+  'license.users.licenseLimit':'无限制',
   'license.users.licenseModels':'模式',
   'license.users.addButton':'添加证书',
   'license.users.updateButton':'更新证书',
