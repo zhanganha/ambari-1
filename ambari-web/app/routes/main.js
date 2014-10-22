@@ -583,6 +583,9 @@ module.exports = Em.Route.extend({
         },
         updateLicense:function(router){
         	router.transitionTo('updateLicense');
+        },
+        deleteLicense:function(router){
+        	router.transitionTo('deleteLicense');
         }
     }),
     
@@ -657,6 +660,53 @@ module.exports = Em.Route.extend({
     	  },
     	  
     }),
+    //删除许可证
+    deleteLicense:Em.Route.extend({
+    	route: '/license/delete',
+    	enter: function (router) {
+    		console.log('in /license/delete:enter');
+    	    Ember.run.next(function () {
+    	    	App.ModalPopup.show({
+    	    	header:'删除许可证',
+    	    	body:Em.I18n.t('question.sure'),
+       	        primary:Em.I18n.t('yes'),
+       	        secondary:Em.I18n.t('no'),
+    	        onPrimary:function () {
+    	        	$.ajax({
+             		     type: 'POST',
+             		     url: App.apiPrefix + '/license/deleteLicense',
+             		     dataType: 'json',
+             		     success: function(data){
+             		    	 var flag = data['result'];
+            	        	if("success" == flag){
+            	        		App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.delete.success'));  
+            	        	}else{
+            	        		App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.delete.failed')); 
+            	        	}
+             		     },
+             		     error:function(){
+             		    	App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.delete.failed')); 
+             		     }
+             		  });
+    	        	this.hide();
+      	            router.transitionTo('adminLicense');
+    	        },
+    	        onClose: function() {
+    	          this.hide();
+    	          router.transitionTo('adminLicense');
+    	        },
+    	        onSecondary: function (){
+    	        	this.hide();
+    	        	router.transitionTo('adminLicense');
+    	        },
+    	        didInsertElement: function(){
+    	          this.fitHeight();
+    	        },
+    	      });
+    	    });
+    	  },
+    }),
+    
     //更新许可证
     updateLicense: Em.Route.extend({
     	route: '/license/upload',
@@ -685,14 +735,14 @@ module.exports = Em.Route.extend({
     	        		     success: function(data){
     	        		    	 var flag = data['result'];
     	         	        	if("success" == flag){
-    	         	        		App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.upload.success'));  
+    	         	        		App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.update.success'));  
     	         	        	}else{
-    	         	        		App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.upload.failed')); 
+    	         	        		App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.update.failed')); 
     	         	        	}
     	         	        	
     	        		     },
     	        		     error:function(){
-    	        		    	 App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.upload.failed')); 
+    	        		    	 App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.update.failed')); 
     	        		     }
     	        		  });
     	        		this.hide();

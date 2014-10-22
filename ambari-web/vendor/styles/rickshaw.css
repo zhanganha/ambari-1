@@ -265,12 +265,15 @@
 }
 .rickshaw_legend .line .swatch {
 	display: inline-block;
-	margin-right: 3px;
+	margin-right: 5px;
 	border-radius: 2px;
+	float:left;
 }
 .rickshaw_legend .label {
 	white-space: nowrap;
 	display: inline;
+	float:left;
+	height:10px;
 }
 .rickshaw_legend .action:hover {
 	opacity: 0.6;
@@ -281,6 +284,7 @@
 	opacity: 0.2;
 	cursor: pointer;
 	font-size: 14px;
+	float:left;
 }
 .rickshaw_legend .line.disabled {
 	opacity: 0.4;

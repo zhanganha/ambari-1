@@ -139,7 +139,7 @@ App.HighAvailabilityProgressPageController = App.HighAvailabilityWizardControlle
     console.warn('func: manualRollback');
     App.ModalPopup.show({
       header: Em.I18n.t('admin.highAvailability.confirmRollbackHeader'),
-      primary: Em.I18n.t('yes'),
+      primary: null,
       showCloseButton: false,
       onPrimary: function () {
         var controller = App.router.get('highAvailabilityWizardController');
@@ -173,7 +173,7 @@ App.HighAvailabilityProgressPageController = App.HighAvailabilityWizardControlle
     App.router.get(this.get('content.controllerName')).saveFailedTask(task);
     App.ModalPopup.show({
       header: Em.I18n.t('admin.highAvailability.confirmRollbackHeader'),
-      primary: Em.I18n.t('common.confirm'),
+      primary: null,
       showCloseButton: false,
       onPrimary: function () {
         App.router.get('highAvailabilityWizardController').clearTasksData();

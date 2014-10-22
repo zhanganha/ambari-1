@@ -55,8 +55,8 @@ App.MainServiceItemView = Em.View.extend({
           if (App.supports.reassignMaster && hosts > 1) {
             allMasters.forEach(function (hostComponent) {
               if (App.get('components.reassignable').contains(hostComponent)) {
-                options.push({action: 'reassignMaster', context: hostComponent, cssClass: 'icon-share-alt',
-                  'label': Em.I18n.t('services.service.actions.reassign.master').format(App.format.role(hostComponent)), disabled: false});
+//                options.push({action: 'reassignMaster', context: hostComponent, cssClass: 'icon-share-alt',
+//                  'label': Em.I18n.t('services.service.actions.reassign.master').format(App.format.role(hostComponent)), disabled: false});
               }
             })
           }

@@ -83,6 +83,7 @@ App.HostComponent = DS.Model.extend({
       case 'STORM_UI_SERVER':
       case 'DRPC_SERVER':
       case 'STORM_REST_API':
+      case 'SPARK_SERVER':
       case 'RESOURCEMANAGER':
       case 'APP_TIMELINE_SERVER':
         return true;
@@ -104,6 +105,7 @@ App.HostComponent = DS.Model.extend({
       case 'NODEMANAGER':
       case 'ZKFC':
       case 'SUPERVISOR':
+      case 'SPARK_WORKER':
         return true;
       default:
         return false;

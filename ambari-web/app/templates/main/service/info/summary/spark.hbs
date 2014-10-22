@@ -15,8 +15,15 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 }}
+{{view view.sumMasterComponentView}}
+
 <tr>
+  <td class="summary-label"><a {{action filterHosts view.sparkObj}} href="javascript:void(null)" >{{t services.service.summary.spark.worker}}</a></td>
   <td>
-    spark测试
+    <span>
+     {{#view view.sparkWorkerLiveTextView}}
+        {{view.totals}}
+      {{/view}}
+    </span>  {{t services.service.summary.SparkWorkerLIVE}}
   </td>
 </tr>

@@ -116,7 +116,7 @@ module.exports = {
    * @return {Boolean}
    */
   isValidUserName: function(value) {
-    var usernameRegex = /^[a-z]([-a-z0-9]{0,30})$/;
+    var usernameRegex = /^[a-z]([-a-z0-9]{0,14})$/;
     return usernameRegex.test(value);
   },
 

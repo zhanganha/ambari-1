@@ -57,7 +57,7 @@ App.MainAdminAccessController = Em.Controller.extend(App.UserPref, {
   },
 
   getUserPrefSuccessCallback: function (data) {
-    this.set('showJobs', data);
+    this.set('showJobs', false);//屏蔽置灰，，/app/mixins/common/userPref.js
     return data;
   },
 

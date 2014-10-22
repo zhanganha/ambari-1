@@ -45,7 +45,7 @@ Em.I18n.translations = {
   'apply':'应用',
   'and':'and',
   'none':'none',
-  'all':'所有',
+  'all':'all',
   'minimum':'最小值',
   'from':'From',
   'to':'To',
@@ -173,7 +173,7 @@ Em.I18n.translations = {
   'common.proceed': '继续',
   'common.process': '过程',
   'common.property': '属性',
-  'common.installed': '已安装',
+  'common.installed': 'Installed',
   'common.persist.error' : '在cloudcanyon server中持久化web client状态出错:',
   'common.update.error' : '从cloudcanyon server中检索web client状态出错',
   'common.tags': '标签',
@@ -277,7 +277,7 @@ Em.I18n.translations = {
   'graphs.timeRange.month': '最近1月',
   'graphs.timeRange.year': '最近1年',
 
-  'users.userName.validationFail': '只推荐小写字母和数字；必须以字母开头',
+  'users.userName.validationFail': '只推荐小写字母和数字；必须以字母开头，最多15个字符.',
   'host.spacesValidation': '不能包含空格',
   'host.trimspacesValidation': '不能在头尾处含有空格',
 
@@ -353,7 +353,7 @@ Em.I18n.translations = {
 
   'installer.step0.header':'欢迎',
   'installer.step0.body.header':'欢迎使用云海大数据一体机系统软件',
-  'installer.step0.body':'SDASS 便于您安装、管理和监控Hadoop集群.<br>' +
+  'installer.step0.body':'Cloudcanyon 便于您安装、管理和监控Hadoop集群.<br>' +
     '我们将通过一步一步的向导带您完成集群的安装过程。',
   'installer.step0.clusterName':'集群命名',
   'installer.step0.clusterName.tooltip.title':'集群名称',
@@ -395,7 +395,7 @@ Em.I18n.translations = {
   'installer.step2.passphrase.error.match':'口令不匹配',
   'installer.step2.manualInstall.label':'不要使用SSH自动配置主机 ',
   'installer.step2.manualInstall.info':'如果不使用SSH连接到目标主机,为了完成必要的配置和软件安装，' +
-    ' 您将必须在各个主机上手动安装 sdass 代理。' ,
+    ' 您将必须在各个主机上手动安装 CloudCanyon 代理。' ,
   'installer.step2.advancedOption':'高级选项',
   'installer.step2.repoConf':'软件资源库配置文件路径',
   'installer.step2.advancedOptions.header':'高级选项',
@@ -410,7 +410,7 @@ Em.I18n.translations = {
     '这就是 <b>本地软件资源库</b>',
   'installer.step2.javaHome.label' : '64-bit JDK的路径',
   'installer.step2.javaHome.tooltip.title' : 'JAVA_HOME',
-  'installer.step2.javaHome.tooltip.content' : 'SDASS 默认使用 64-bit JAVA_HOME 路径为/usr/jdk/jdk1.6.0_31. 您可以覆盖包含JDK的指定路径. <br/> 注意: 路径必须适用于集群中的 <b>所有</b> 主机.',
+  'installer.step2.javaHome.tooltip.content' : 'CloudCanyon 默认使用 64-bit JAVA_HOME 路径为/usr/jdk/jdk1.6.0_31. 您可以覆盖包含JDK的指定路径. <br/> 注意: 路径必须适用于集群中的 <b>所有</b> 主机.',
   'installer.step2.javaHome.tooltip.placeholder' : '/usr/jdk/jdk1.6.0_31',
   'installer.step2.useSsh.provide' : '提供您的',
   'installer.step2.useSsh.provide_id_rsa' : ' (id_rsa for root) 和使用SSH自动注册主机',
@@ -464,7 +464,7 @@ Em.I18n.translations = {
   'installer.step3.hostWarningsPopup.repositories':'库问题',
   'installer.step3.hostWarningsPopup.repositories.name':'操作系统的库不可用',
   'installer.step3.hostWarningsPopup.repositories.context':'主机 ({0}) 有一个{1} 操作系统类型,但是在“选择堆栈”步骤中库选择的是 {2}.',
-  'installer.step3.hostWarningsPopup.repositories.message': '以下注册主机有不同的操作系统类型，来自“选择堆栈”步骤中选择可利用的库。你能回到“选择堆栈”步骤去选择其他操作系统库 <b>或者</b> 移除这个主机。',
+  'installer.step3.hostWarningsPopup.repositories.message': '以下注册主机有不同的操作系统类型，请检查操作系统库是否正确或者移除这个主机。',
   'installer.step3.hostWarningsPopup.disk':'磁盘问题',
   'installer.step3.hostWarningsPopup.disk.name':'磁盘空间不足',
   'installer.step3.hostWarningsPopup.disk.context1':'主机({0})磁盘空间不足。',
@@ -575,7 +575,7 @@ Em.I18n.translations = {
   'installer.step6.error.mustSelectOneForSlaveHost': '你必须指定至少一个 slave/client 组件到没有主组件的每个主机上',
 
   'installer.step7.header':'定制服务',
-  'installer.step7.body':'我们为你选择的服务提出了推荐配置。依照你认为合适的定制他们。',
+  'installer.step7.body':'我们为你选择的服务提出了推荐配置。依照你认为合适的定制它们。',
   'installer.step7.attentionNeeded':'<b>注意:</b> 一些配置在你继续进行时需要你的关注。',
   'installer.step7.config.addProperty':'添加属性',
   'installer.step7.ConfigErrMsg.header':'定制配置错误: ',
@@ -784,7 +784,7 @@ Em.I18n.translations = {
   'admin.highAvailability.enabled':'NameNode HA 已启用',
   'admin.highAvailability.confirmRollbackHeader':'确认回滚',
   'admin.highAvailability.confirmRollbackBody':'这将回滚到HA向导已完成所有操作',
-  'admin.highAvailability.confirmManualRollbackBody':'你现在正在启用NameNode HA. 如果现在退出, 您必须按照说明书的指示来恢复到非HA设置.非HA设置请参考cloudcanyon用户指南 <i>回滚NameNode HA</i>部分.  您确定要退出向导?',
+  'admin.highAvailability.confirmManualRollbackBody':'暂不支持回滚功能，为保证各个节点的状态和配置的一致性，禁止用户配置中途进行回滚操作',
   'admin.highAvailability.error.hostsNum':'你必须至少有3台主机的集群才能开启 NameNode HA.',
   'admin.highAvailability.error.namenodeStarted':'必须先运行NameNode才能开启 NameNode HA.',
   'admin.highAvailability.error.zooKeeperNum':'服务器集群中必须至少有3个ZooKeeper才能开启 NameNode HA',
@@ -826,7 +826,7 @@ Em.I18n.translations = {
   'admin.highAvailability.wizard.rollback.header.title':'正在恢复到原来的非HA设置.',
 
   'admin.highAvailability.wizard.step5.task0.title':'停止所有服务',
-  'admin.highAvailability.wizard.step5.task1.title':'安装额外NameNode',
+  'admin.highAvailability.wizard.step5.task1.title':'安装 Additional NameNode',
   'admin.highAvailability.wizard.step5.task2.title':'安装 JournalNodes',
   'admin.highAvailability.wizard.step5.task3.title':'重新配置 HDFS',
   'admin.highAvailability.wizard.step5.task4.title':'启动 JournalNodes',
@@ -835,17 +835,17 @@ Em.I18n.translations = {
   'admin.highAvailability.wizard.step7.task0.title':'开启 ZooKeeper 服务',
   'admin.highAvailability.wizard.step7.task1.title':'开启 NameNode',
 
-  'admin.highAvailability.wizard.step9.task0.title':'开启额外 NameNode',
+  'admin.highAvailability.wizard.step9.task0.title':'开启 Additional NameNode',
   'admin.highAvailability.wizard.step9.task1.title':'安装 Failover Controllers',
   'admin.highAvailability.wizard.step9.task2.title':'开启 Failover Controllers',
   'admin.highAvailability.wizard.step9.task3.title':'重新配置 HBase',
-  'admin.highAvailability.wizard.step9.task4.title':'删除从属NameNode',
+  'admin.highAvailability.wizard.step9.task4.title':'删除 Secondary NameNode',
   'admin.highAvailability.wizard.step9.task5.title':'开启所有服务',
   'admin.highAvailability.wizard.step9.notice.completed':'NameNode HA已成功启用',
 
-  'admin.highAvailability.wizard.step3.curNameNode': '<b>当前 NameNode:</b> ',
-  'admin.highAvailability.wizard.step3.addNameNode': '<b>额外 NameNode:</b> ',
-  'admin.highAvailability.wizard.step3.secNameNode': '<b>从属 NameNode:</b> ',
+  'admin.highAvailability.wizard.step3.curNameNode': '<b>Current NameNode:</b> ',
+  'admin.highAvailability.wizard.step3.addNameNode': '<b>Additional NameNode:</b> ',
+  'admin.highAvailability.wizard.step3.secNameNode': '<b>Secondary NameNode:</b> ',
   'admin.highAvailability.wizard.step3.journalNode': '<b>JournalNode:</b> ',
   'admin.highAvailability.wizard.step3.toBeInstalled': '要安装',
   'admin.highAvailability.wizard.step3.toBeDeleted': '要删除',
@@ -864,7 +864,7 @@ Em.I18n.translations = {
   'admin.highAvailability.rollback.task4.title':'停止附加的 NameNode',
   'admin.highAvailability.rollback.task5.title':'停止 NameNode',
   'admin.highAvailability.rollback.task6.title':'恢复 HDFS 配置',
-  'admin.highAvailability.rollback.task7.title':'启用从属 NameNode',
+  'admin.highAvailability.rollback.task7.title':'启用 Secondary NameNode',
   'admin.highAvailability.rollback.task8.title':'停止 JournalNodes',
   'admin.highAvailability.rollback.task9.title':'删除 JournalNodes',
   'admin.highAvailability.rollback.task10.title':'删除附加的 NameNode',
@@ -917,11 +917,12 @@ Em.I18n.translations = {
   'admin.highAvailability.wizard.step3.confirm.host.body':'<b>确认您的主机的选择。</b>',
   'admin.highAvailability.wizard.step3.confirm.config.body':'<div class="alert alert-info">' +
     '<b>审查配置更改.</b></br>' +
-    '为了启用NameNode HA, 向导列出了以下将被更改的配置内容。 这些内容只提供给 <b> 审核 </b> 并且不能被更改除非  <b>dfs.journalnode.edits.dir</b> property' +
+    '为了启用NameNode HA, 向导列出了以下将被更改的配置内容。 这些内容只提供给 <b> 审核 </b> 并且不能被更改' +
     '</div>',
-  'admin.highAvailability.wizard.step2.body':'选择要运行的额外的NameNode主机。<br/> 另外,' +
+  'admin.highAvailability.wizard.step2.body':'选择要运行的 Additional NameNode 主机。<br/> 另外,' +
     ' 选择要运行JournalNodes的主机，它使用容错方式来存储NameNode的编辑日志.',
   'admin.highAvailability.wizard.step1.body':'该向导将引导您完成启用NameNode HA到集群上.<br/>' +
+  	'为保证集群各个节点的状态和配置的一致性，禁止用户配置中途进行回滚操作<br/><br/>' +
     '一旦开启, 除了活跃的NameNode外,您将运行一个备用的NameNode<br/>' +
     '这允许一个活跃的standby NameNode的配置，可以自动执行故障切换。<br/><br/>' +
     '开启HA的过程包括组合 <b>自动化步骤</b> (由向导来处理)  ' +
@@ -931,7 +932,7 @@ Em.I18n.translations = {
   'admin.security.title':'Kerberos安全认证尚未启用',
   'admin.security.enabled': 'Kerberos 安全认证已启用',
   'admin.security.disabled': 'Kerberos 安全认证已禁用',
-  'admin.security.button.enable':'已启安全认证',
+  'admin.security.button.enable':'启动安全认证',
   'admin.security.button.disable':'已禁安全认证',
   'admin.security.enable.popup.body': '我们将引导您配置添加安全认证向导',
   'admin.security.enable.popup.header': '添加安全认证',
@@ -1012,11 +1013,13 @@ Em.I18n.translations = {
   'admin.users.createError.passwordValidation': '密码不一致',
   'admin.users.createError.userNameExists': '该用户名已经存在',
   'admin.users.editError.requiredField': '该信息不能为空',
-
+  'admin.users.edit.failed':'没有权限修改用户密码。',
+  'admin.users.edit.error':'登陆用户密码错误',
+  
   'admin.access.showJobs':'启用非管理员用户作业选项卡',
 
   'admin.confirmUninstall':'确认卸载',
-  'admin.cluster.stackVersion':'集群栈版本',
+  'admin.cluster.stackVersion':'Cloudcanyon 1.1',
   'admin.cluster.upgradeAvailable':'升级可用',
   'admin.cluster.upgradeUnavailable':'升级不可用',
   'admin.cluster.repositories.repositories':'依赖',
@@ -1042,11 +1045,12 @@ Em.I18n.translations = {
   'services.service.summary.RegionServersLIVE':'RegionServers 存活',
   'services.service.summary.GangliaMonitorsLIVE':'Ganglia 监视器存活',
   'services.service.summary.SupervisorsLIVE':'Supervisors 存活',
+  'services.service.summary.SparkWorkerLIVE':'Sparkworker 存活',
   'services.service.summary.nameNode':'NameNode web用户界面',
   'services.service.summary.nameNodeUptime':'NameNode 正常运行时间',
   'services.service.summary.nameNodeHeap':'NameNode 堆',
-  'services.service.summary.nameNode.active':'活跃 NameNode',
-  'services.service.summary.nameNode.standby':'待命 NameNode',
+  'services.service.summary.nameNode.active':'Active NameNode',
+  'services.service.summary.nameNode.standby':'Standby NameNode',
   'services.service.summary.pendingUpgradeStatus':'升级状态',
   'services.service.summary.pendingUpgradeStatus.pending':'挂起升级',
   'services.service.summary.pendingUpgradeStatus.notPending':'没有挂起升级',
@@ -1538,8 +1542,8 @@ Em.I18n.translations = {
   'hosts.host.regionserver.decommission.batch3':'停止RegionServer - 关闭排出模式(drain mode)',
   'hosts.host.hbase_regionserver.recommission':'重新启用 HBase RegionServer',
   'hosts.host.hbase_regionserver.decommission':'停止 HBase RegionServer',
-  'hosts.host.decommissioned':'已停止使用',
-  'hosts.host.decommissioning':'停止使用中',
+  'hosts.host.decommissioned':'Decommissioned',
+  'hosts.host.decommissioning':'Decommissioning',
 
   'hosts.component.passive.implied.host.mode.tooltip':'不能关闭维护模式,因为节点处于维护模式.',
   'hosts.component.passive.implied.service.mode.tooltip':'不能关闭维护模式,因为 {0} 处于维护模式.',
@@ -1584,7 +1588,7 @@ Em.I18n.translations = {
   'hosts.add.exit.header':'退出',
   'hosts.add.exit.body':'您真的想退出添加节点(Host)向导吗？', 
   'hosts.assignRack':'分配机架',
-  'hosts.passiveMode.popup':'您确定要<b> 为{1}转变{0}维护模式吗</b> ?',
+  'hosts.passiveMode.popup':'您确定要<b> 为{1}转变为维护模式吗</b> ?',
 
   'charts.horizon.chart.showText':'显示',
   'charts.horizon.chart.hideText':'隐藏',
@@ -1650,8 +1654,8 @@ Em.I18n.translations = {
   'dashboard.clusterMetrics.network':'网络使用率',
 
   'dashboard.clusterMetrics.1-min':'1-min',
-  'dashboard.clusterMetrics.Nodes':'节点',
-  'dashboard.clusterMetrics.Procs':'进程',
+  'dashboard.clusterMetrics.Nodes':'节点   　',
+  'dashboard.clusterMetrics.Procs':'进程   　',
   'dashboard.clusterMetrics.CPUs':'CPU',
   
   'dashboard.widgets': '集群状态和度量',
@@ -1963,9 +1967,9 @@ Em.I18n.translations = {
   'rollingrestart.rest.context': '回滚重启{0}s - 批处理 {1} ，共 {2}',
   'rollingrestart.context.allOnSelectedHosts':'在所选择的主机上重启所有组件',
   'rollingrestart.context.allForSelectedService':'在{0}上重启所有组件',
-  'rollingrestart.context.allWithStaleConfigsForSelectedService':'在{0}上用旧配置重启所有组件',
+  'rollingrestart.context.allWithStaleConfigsForSelectedService':'在{0}上用现有的配置重启所有组件',
   'rollingrestart.context.allClientsOnSelectedHost':'在{0}上重启所有clients',
-  'rollingrestart.context.allWithStaleConfigsOnSelectedHost':'在{0}上用旧配置重启组件',
+  'rollingrestart.context.allWithStaleConfigsOnSelectedHost':'在{0}上用现有的配置重启组件',
   'rollingrestart.context.allOnSelectedHost':'在{0}上重启所有组件',
   'rollingrestart.context.selectedComponentOnSelectedHost':'重启 {0}',
   'rollingrestart.context.default':'重启组件',
@@ -2000,6 +2004,10 @@ Em.I18n.translations = {
   'license.upload.success':'成功上传许可证！',
   'license.upload.failed':'上传许可证失败！',
   'license.upload.detail':'读取许可证失败，请稍后再试！',
+  'license.update.success':'成功更新许可证！',
+  'license.update.failed':'更新许可证失败！',
+  'license.delete.success':'成功删除许可证！',
+  'license.delete.failed':'删除许可证失败！',
   
   'jobs.nothingToShow': '没有可显示的jobs',
   'jobs.loadingTasks': '读取中...',

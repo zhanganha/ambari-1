@@ -278,6 +278,8 @@ App.format = {
     'STORM_REST_API': 'Storm REST API Server',
     'STORM_SERVICE_CHECK': 'Storm Service Check',
     'STORM_UI_SERVER': 'Storm UI Server',
+    'SPARK_SERVER':'Spark Server',
+    'SPARK_WORKER':'Spark Worker',
     'SUPERVISOR': 'Supervisor',
     'TASKTRACKER': 'TaskTracker',
     'TEZ_CLIENT': 'Tez Client',

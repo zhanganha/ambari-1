@@ -27,48 +27,50 @@ App.MainAdminUserCreateView = Em.View.extend({
     var parent_controller=this.get("controller").controllers.mainAdminUserController;
     var form = this.get("userForm");
     if(form.isValid()) {
-      form.getField("userName").set('value', form.getField("userName").get('value').toLowerCase());
-      if(form.getField("admin").get('value') === "" || form.getField("admin").get('value') == true) {
-        form.getField("roles").set("value","admin,user");
-        form.getField("admin").set("value","true");
-      } else{
-        form.getField("roles").set("value","user");
-      }
-      parent_controller.sendCommandToServer('/users/' + form.getField("userName").get('value'), "POST" , {
-        Users: {
-          password: form.getField("password").get('value'),
-          roles: form.getField("roles").get('value')
-        }
-      }, function (success) {
+    	if(!form.isWarn()){ //有警告
+    	      form.getField("userName").set('value', form.getField("userName").get('value').toLowerCase());
+    	      if(form.getField("admin").get('value') === "" || form.getField("admin").get('value') == true) {
+    	        form.getField("roles").set("value","admin,user");
+    	        form.getField("admin").set("value","true");
+    	      } else{
+    	        form.getField("roles").set("value","user");
+    	      }
+    	      parent_controller.sendCommandToServer('/users/' + form.getField("userName").get('value'), "POST" , {
+    	        Users: {
+    	          password: form.getField("password").get('value'),
+    	          roles: form.getField("roles").get('value')
+    	        }
+    	      }, function (success) {
 
-        if (!success) {
-          App.ModalPopup.show({
-            header: Em.I18n.t('admin.users.addButton'),
-            body: Em.I18n.t('admin.users.createError'),
-            primary: Em.I18n.t('ok'),
-            secondary: null,
-            onPrimary: function() {
-              this.hide();
-            }
-          });
-          return;
-        }
-        App.ModalPopup.show({
-          header: Em.I18n.t('admin.users.addButton'),
-          body: Em.I18n.t('admin.users.createSuccess'),
-          primary: Em.I18n.t('ok'),
-          secondary: null,
-          onPrimary: function() {
-            this.hide();
-          }
-        });
-        var persists = App.router.get('applicationController').persistKey(form.getField("userName").get('value'));
-        App.router.get('applicationController').postUserPref(persists,true);
+    	        if (!success) {
+    	          App.ModalPopup.show({
+    	            header: Em.I18n.t('admin.users.addButton'),
+    	            body: Em.I18n.t('admin.users.createError'),
+    	            primary: Em.I18n.t('ok'),
+    	            secondary: null,
+    	            onPrimary: function() {
+    	              this.hide();
+    	            }
+    	          });
+    	          return;
+    	        }
+    	        App.ModalPopup.show({
+    	          header: Em.I18n.t('admin.users.addButton'),
+    	          body: Em.I18n.t('admin.users.createSuccess'),
+    	          primary: Em.I18n.t('ok'),
+    	          secondary: null,
+    	          onPrimary: function() {
+    	            this.hide();
+    	          }
+    	        });
+    	        var persists = App.router.get('applicationController').persistKey(form.getField("userName").get('value'));
+    	        App.router.get('applicationController').postUserPref(persists,true);
 
-        form.save();
+    	        form.save();
 
-        App.router.transitionTo("allUsers");
-      })
+    	        App.router.transitionTo("allUsers");
+    	      })
+    	}
     }
   },
 

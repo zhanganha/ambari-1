@@ -44,7 +44,7 @@ App.EditUserForm = App.Form.extend({
 
   fieldsOptions:[
     { name:"userName", displayName:"用户名："}, //或者Em.I18n.t('login.username')
-    { name:"old_password", displayName:"当前用户密码：", displayType:"password", isRequired: false },
+    { name:"old_password", displayName:"当前登陆用户密码：", displayType:"password", isRequired: false },
     { name:"new_password", displayName:"新密码：", displayType:"password",  isRequired: false },
     { name:"new_passwordRetype", displayName:"确认密码：", displayType:"password", isRequired: false },
     { name:"admin", displayName:"Admin", displayType:"checkbox", isRequired:false },

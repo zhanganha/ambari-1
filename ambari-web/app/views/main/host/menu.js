@@ -23,14 +23,14 @@ App.MainHostMenuView = Em.CollectionView.extend({
   classNames: ["nav", "nav-tabs"],
   content: function () {
     var array = [ {
-      label: 'Summary',
+      label: Em.I18n.t('services.service.info.menu.summary'),
       routing: 'summary'
     }
     /* { label:'Audit', routing:'audit'} */
     ];
     if (App.supports.hostOverridesHost) {
       array.push({
-        label: 'Configs',
+        label: Em.I18n.t('services.service.info.menu.configs'),
         routing: 'configs'
       });
     }

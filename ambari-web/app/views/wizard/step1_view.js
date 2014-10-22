@@ -28,10 +28,12 @@ App.WizardStep1View = Em.View.extend({
   stacks: function () {
     var stacks = [];
     this.get('controller.content.stacks').forEach(function (stack) {
-      stacks.pushObject(Em.Object.create({
-        name: stack.get('name').replace('-', ' '),
-        isSelected: stack.get('isSelected')
-      }));
+      if("HDP-2.1" == stack.get('name')){
+    	  stacks.pushObject(Em.Object.create({
+    	        name: 'CloudCanyon1.1',
+    	        isSelected: stack.get('isSelected')
+    	      }));
+      }	
     });
     return stacks;
   }.property('controller.content.stacks.@each.isSelected'),
@@ -129,6 +131,7 @@ App.WizardStep1View = Em.View.extend({
       this.$('.accordion-body').hide();
     }
     $("[rel=skip-validation-tooltip]").tooltip({ placement: 'right'});
+    $("#advanceSetting").show();
   },
 
   /**
@@ -148,64 +151,68 @@ App.WizardStep1View = Em.View.extend({
    * Format repo-group values and set it to <code>allRepositoriesGroup</code>
    */
   loadRepositories: function () {
-    var selectedStack = this.get('controller.content.stacks').findProperty('isSelected', true);
-    var reposGroup = [[],[],[]];
-    if (App.supports.ubuntu) reposGroup.push([]); // @todo: remove after Ubuntu support confirmation
-    var self = this;
-    if (selectedStack && selectedStack.operatingSystems) {
-      selectedStack.operatingSystems.forEach(function (os) {
-        var cur_repo = Em.Object.create({
-          baseUrl: os.baseUrl
-        });
-        switch(os.osType) {
-          case 'redhat5':
-            cur_repo.set('osType', 'Red Hat 5');
-            reposGroup[0][0] = cur_repo;
-            // set group 0 properties by redhat5 (any of the three is ok)
-            self.setGroupByOs(reposGroup[0], os, 0);
-            break;
-          case 'centos5':
-            cur_repo.set('osType', 'CentOS 5');
-            reposGroup[0][1] = cur_repo;
-            break;
-          case 'oraclelinux5':
-            cur_repo.set('osType', 'Oracle Linux 5');
-            reposGroup[0][2] = cur_repo;
-            break;
-          case 'redhat6':
-            cur_repo.set('osType', 'Red Hat 6');
-            reposGroup[1][0] = cur_repo;
-            // set group 1 properties by redhat6 (any of the three is ok)
-            self.setGroupByOs(reposGroup[1], os, 1);
-            break;
-          case 'centos6':
-            cur_repo.set('osType', 'CentOS 6');
-            reposGroup[1][1] = cur_repo;
-            break;
-          case 'oraclelinux6':
-            cur_repo.set('osType', 'Oracle Linux 6');
-            reposGroup[1][2] = cur_repo;
-            break;
-          case 'sles11':
-            cur_repo.set('osType', 'SLES 11');
-            reposGroup[2][0] = cur_repo;
-            // set group 2 properties by sles11 (any of the twe is ok)
-            self.setGroupByOs(reposGroup[2], os, 2);
-            break;
-          case 'suse11':
-            cur_repo.set('osType', 'SUSE 11');
-            reposGroup[2][1] = cur_repo;
-            break;
-          case 'ubuntu12':
-            cur_repo.set('osType','Ubuntu 12');
-            reposGroup[3][0] = cur_repo;
-            self.setGroupByOs(reposGroup[3], os, 3);
-            break;
-        }
-      });
-    }
-    this.set('allRepositoriesGroup', reposGroup);
-  }.observes('controller.content.stacks.@each.isSelected', 'controller.content.stacks.@each.reload'),
+	    var selectedStack = this.get('controller.content.stacks').findProperty('isSelected', true);
+	    var reposGroup = [[],[],[]];
+	    if (App.supports.ubuntu) reposGroup.push([]); // @todo: remove after Ubuntu support confirmation
+	    var self = this;
+	    var localUrl = "ftp://" + window.location.hostname + "/pub/ccsrvd";
+	    if (selectedStack && selectedStack.operatingSystems) {
+	      selectedStack.operatingSystems.forEach(function (os) {
+	        var cur_repo = Em.Object.create({
+	          baseUrl: os.baseUrl
+	        });
+	        switch(os.osType) {
+	          case 'redhat5':
+	              cur_repo.set('osType', 'Red Hat 5');
+	              reposGroup[0][0] = cur_repo;
+	              // set group 0 properties by redhat5 (any of the three is ok)
+	              self.setGroupByOs(reposGroup[0], os, 0);
+	              break;
+	            case 'centos5':
+	              cur_repo.set('osType', 'CentOS 5');
+	              reposGroup[0][1] = cur_repo;
+	              break;
+	            case 'oraclelinux5':
+	              cur_repo.set('osType', 'Oracle Linux 5');
+	              reposGroup[0][2] = cur_repo;
+	              break;
+	            case 'redhat6':
+	              cur_repo.set('osType', 'Red Hat 6');
+	              os.baseUrl = localUrl;
+	              reposGroup[1][0] = cur_repo;
+	              // set group 1 properties by redhat6 (any of the three is ok)
+	              self.setGroupByOs(reposGroup[1], os, 1);
+	              break;
+	            case 'centos6':
+	              cur_repo.set('osType', 'CentOS 6');
+	              os.baseUrl = localUrl;
+	              reposGroup[1][1] = cur_repo;
+	              break;
+	            case 'oraclelinux6':
+	              cur_repo.set('osType', 'Oracle Linux 6');
+	              reposGroup[1][2] = cur_repo;
+	              break;
+	            case 'sles11':
+	              cur_repo.set('osType', 'SLES 11');
+	              reposGroup[2][0] = cur_repo;
+	              // set group 2 properties by sles11 (any of the twe is ok)
+	              self.setGroupByOs(reposGroup[2], os, 2);
+	              break;
+	            case 'suse11':
+	              cur_repo.set('osType', 'SUSE 11');
+	              reposGroup[2][1] = cur_repo;
+	              break;
+	            case 'ubuntu12':
+	              cur_repo.set('osType','Ubuntu 12');
+	              reposGroup[3][0] = cur_repo;
+	              self.setGroupByOs(reposGroup[3], os, 3);
+	              break;
+	          }
+	      });
+	    }
+	    
+	    this.set('allRepositoriesGroup', reposGroup);
+	  }.observes('controller.content.stacks.@each.isSelected', 'controller.content.stacks.@each.reload'),
 
   /**
    * Set group parameters according to operation system
@@ -272,14 +279,15 @@ App.WizardStep1View = Em.View.extend({
   /**
    * Checked flags for each repo-checkbox
    * @type {bool[]}
+   * 默认值为 [true, true, true]
    */
-  allGroupsCheckbox: [true, true, true],
+  allGroupsCheckbox: [false, true, false],
 
   /**
    * Skip repo-validation
    * @type {bool}
    */
-  skipValidationChecked: false,
+  skipValidationChecked: true,
 
   /**
    * Onclick handler for undo action of each repo group

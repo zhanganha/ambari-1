@@ -67,7 +67,7 @@
             {{/if}}
         </div>
         <div>
-            <label class="ssh-user pull-left">
+            <label class="ssh-user pull-left" style="display:none">
               {{t installer.step2.sshUser}}
                 <a href="javascript:void(null)"
                    rel="popover"
@@ -75,7 +75,7 @@
                   {{t installer.step2.sshUser.link}}</a>
               {{t installer.step2.sshUser.account}}
             </label>
-          <div {{bindAttr class="sshUserError:error :control-group"}}>
+          <div {{bindAttr class="sshUserError:error :control-group"}} style="display:none">
             {{view view.textFieldView valueBinding="content.installOptions.sshUser" isEnabledBinding="content.installOptions.useSsh"}}
             {{#if sshUserError}}
                 <span class="help-inline">{{sshUserError}}</span>
@@ -84,7 +84,7 @@
         </div>
       </div>
 
-      <label class="radio">
+      <label class="radio" style="display:none">
         {{view view.manualRegistrationRadioButton}}
         {{t installer.step2.manualInstall.perform}}
           <a href="javascript:void(null)"

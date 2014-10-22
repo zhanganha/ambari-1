@@ -43,6 +43,20 @@ App.MainAdminUserEditView = Em.View.extend({
        Users:Users
       }, function (success, message) {
         if (!success) {
+          //前端判断
+          if(message.indexOf("Wrong password provided") >= 0){
+              message = Em.I18n.t('admin.users.edit.error');
+          }
+          /*if(App.db.getLoginName() == form.getField("userName").get('value')){
+        	  if(message.indexOf("Wrong password provided") >= 0){
+            	  message = Em.I18n.t('admin.users.edit.error');
+              }
+          }else{
+        	  message = Em.I18n.t('admin.users.edit.failed');
+        	  if(message.indexOf("Wrong password provided") >= 0){
+            	  message = Em.I18n.t('admin.users.edit.failed');
+              }
+          }*/
           App.ModalPopup.show({
             header: Em.I18n.t('admin.users.editButton'),
             body: message,

@@ -178,6 +178,36 @@ App.MainServiceInfoSummaryView = Em.View.extend({
     }.property('service.hostComponents.@each')
   }),
 
+  //---------------Start   spark worker的 相关显示---------------
+  /*sparkWorkerComponents: function() {
+	    return this.get('service.hostComponents').filterProperty('componentName', 'SPARK_WORKER');
+	  }.property('service.hostComponents.@each'),*/
+
+	  sparkWorkerLiveTextView: App.ComponentLiveTextView.extend({
+	    liveComponents: function () {
+	    	 var service = this.get('service');
+	         if (service.get("id") == "SPARK") {
+	           return service.get('hostComponents').filterProperty('isMaster', false).filterProperty("workStatus","STARTED").length;
+	         } else {
+	           return null;
+	         }
+//	      return this.get('sparkWorkerComponents').filterProperty('workStatus','STARTED').length;
+	    }.property('service.hostComponents.@each'),
+	    totals: function() {
+	        var result = '';
+	        var service = this.get('parentView.controller.content');
+	        if (service.get("id") == "SPARK") {
+	          var totals = service.get('hostComponents').filterProperty('isMaster', false);
+	          var liveMonitors = totals.filterProperty("workStatus","STARTED").length;
+	          if (totals.length) {
+	            result = Em.I18n.t('services.service.info.summary.hostsRunningMonitor').format(liveMonitors, totals.length);
+	          }
+	        }
+	        return result;
+	    }.property('service.hostComponents.@each')
+	  }),
+  //---------------End-------------------------
+  
   hasManyMonitors: function () {
     var service = this.get('controller.content');
     if (service.get("id") == "GANGLIA") {
@@ -208,6 +238,20 @@ App.MainServiceInfoSummaryView = Em.View.extend({
     return {};
   }.property('controller.content'),
 
+  /**
+   * spark 的跳转
+   */
+  sparkObj: function(){
+	    var service = this.get('controller.content');
+	    if (service.get("id") == "SPARK") {
+	      var monitors = service.get('hostComponents').filterProperty('isMaster', false);
+	      if (monitors.length) {
+	        return monitors[0];
+	      }
+	    }
+	    return {};
+  }.property('controller.content'),
+  
   /**
    * Property related to ZOOKEEPER service, is unused for other services
    * @return {Object}

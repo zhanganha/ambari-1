@@ -450,13 +450,17 @@ App.ChartLinearTimeView = Ember.View.extend({
       series.stroke = 'rgba(0,0,0,0.3)';
       if (this.get('isPopup')) {
         // calculate statistic data for popup legend
-        var avg = 0;
+    	var avg = 0;
         var min = Number.MAX_VALUE;
         var max = Number.MIN_VALUE;
         for (var i = 0; i < series.data.length; i++) {
-          avg += series.data[i]['y'];
+        	if(series.data[i]['y'] >= 0){
+        		avg += series.data[i]['y'];
+        	}
           if (series.data[i]['y'] < min) {
-            min = series.data[i]['y'];
+        	  if(series.data[i]['y'] >= 0){
+        		  min = series.data[i]['y'];
+        	  }
           }
           else {
             if (series.data[i]['y'] > max) {
@@ -464,13 +468,32 @@ App.ChartLinearTimeView = Ember.View.extend({
             }
           }
         }
-        series.name = string_utils.pad(series.name, 30, '&nbsp;', 2) +
+        /*series.name = string_utils.pad(series.name, 30, '&nbsp;', 2) +
                       string_utils.pad('min', 5, '&nbsp;', 3) +
                       string_utils.pad(this.get('yAxisFormatter')(min), 12, '&nbsp;', 3) +
                       string_utils.pad('avg', 5, '&nbsp;', 3) +
                       string_utils.pad(this.get('yAxisFormatter')(avg/series.data.length), 12, '&nbsp;', 3) +
                       string_utils.pad('max', 12, '&nbsp;', 3) +
-                      string_utils.pad(this.get('yAxisFormatter')(max), 5, '&nbsp;', 3);
+                      string_utils.pad(this.get('yAxisFormatter')(max), 5, '&nbsp;', 3);*/
+        var grapStyle1,grapStyle2,grapStyle3;
+        if($.browser.mozilla) {//浏览器类型判断 火狐
+        	grapStyle1 = '<label style="float:left;width:120px;margin-top:-18px;margin-left:30px">';
+        	grapStyle2 = '<label style="float:left;width:35px;margin-top:-18px">';
+        	grapStyle3 = '<label style="float:left;width:110px;margin-top:-18px">';
+        }else{//google
+        	grapStyle1 = '<label style="float:left;width:100px;margin-top:-5px;margin-left:5px">';
+        	grapStyle2 = '<label style="float:left;width:35px;margin-top:-8px;margin-left:5px">';
+        	grapStyle3 = '<label style="float:left;width:100px;margin-top:-5px;margin-left:5px">';
+        }
+        series.name = '&nbsp;&nbsp;'
+       	 				+ grapStyle1 + series.name + "</label><span>&nbsp;&nbsp;</span>" 
+       	 				+ grapStyle2 + 'min' + '</label>' 
+       	 				+ grapStyle3 + this.get('yAxisFormatter')(min) + '</label>'  
+       	 				+ grapStyle2 + 'avg' + '</label>' 
+       	 				+ grapStyle3 + this.get('yAxisFormatter')(avg/series.data.length) + '</label>' 
+       	 				+ grapStyle2 + 'max' + '</label>' 
+       	 				+ grapStyle3 + this.get('yAxisFormatter')(max) + '</label>';
+        
       }
       if (series.data.length < series_min_length) {
         series_min_length = series.data.length;
@@ -666,7 +689,6 @@ App.ChartLinearTimeView = Ember.View.extend({
     if(!this.get('hasData')) {
       return;
     }
-
     this.set('isPopup', true);
     var self = this;
 
@@ -880,7 +902,7 @@ App.ChartLinearTimeView.TimeElapsedFormatter = function (millis) {
  * @type {Function}
  */
 App.ChartLinearTimeView.DefaultFormatter = function(y) {
-  if(isNaN(y)){
+	if(isNaN(y)){
     return 0;
   }
   var value = Rickshaw.Fixtures.Number.formatKMBT(y);

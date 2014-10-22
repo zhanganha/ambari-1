@@ -18,7 +18,7 @@
 
 <div class="admin-cluster">
     <div class="header">
-      <strong>{{t admin.cluster.stackVersion}}: {{App.currentStackVersion}}
+      <strong>{{t admin.cluster.stackVersion}}<!--: {{App.currentStackVersion}} -->
         {{#if App.supports.stackUpgrade}}
           (<a href="#" {{bindAttr class="view.isUpgradeAvailable::inactive"}}{{action "upgradeStack"}}>
             {{#if view.isUpgradeAvailable}}
@@ -51,6 +51,7 @@
       </tbody>
     </table>
 
+	<!--
     <div class="header">
       <strong>{{t admin.cluster.repositories.repositories}}</strong>
     </div>
@@ -76,4 +77,5 @@
         {{/each}}
       </tbody>
     </table>
+      -->
 </div>
