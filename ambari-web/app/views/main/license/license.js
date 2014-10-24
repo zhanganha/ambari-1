@@ -34,9 +34,11 @@ App.MainLicenseView = Em.View.extend({
 	  if(items !=null && items != undefined){
 		  if(items.length > 0){
 			  var entity = items[0].Licenses;
-			  if("No License." == entity.id){
+			  if(entity.result.length > 0){
 				  $("#addOperate").show();
 				  $("#updateOperate").hide();
+				  App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.users.licenseerror'));
+				  return;
 			  }else{
 				  $("#addOperate").hide();
 				  $("#updateOperate").show();
@@ -52,15 +54,15 @@ App.MainLicenseView = Em.View.extend({
 			  } else {
 			  	$("#licenseVersion").html(Em.I18n.t('license.users.licenseVersion2'));
 			  }
-			  if (license.data == 'null' || license.data == null || license.data == '') {
-			    $("#licenseVersion").html(Em.I18n.t('license.users.licenseLimit')); 
+			  if (license.date == 'null' || license.date == null || license.date == '') {
+			    $("#licenseDate").html(Em.I18n.t('license.users.licenseLimit')); 
 			  } else {
 			  	$("#licenseDate").html(license.date);
 			  }
 			  if (license.nodes == 'null' || license.nodes == null || license.nodes == '') {
-			    $("#licenseVersion").html(Em.I18n.t('license.users.licenseLimit')); 
+			    $("#licenseNodes").html(Em.I18n.t('license.users.licenseLimit')); 
 			  } else {
-			  	$("#licenseDate").html(license.nodes);
+			  	$("#licenseNodes").html(license.nodes);
 			  }
 		  }
 	  }else{

@@ -1998,6 +1998,7 @@ Em.I18n.translations = {
   'license.users.licenseVersion2':'试用版',
   'license.users.licenseLimit':'无限制',
   'license.users.licenseModels':'模式',
+  'license.users.licenseerror':'许可证格式不正确，请重新上传！',
   'license.users.addButton':'添加证书',
   'license.users.updateButton':'更新证书',
   'license.add.header':'新证书',
