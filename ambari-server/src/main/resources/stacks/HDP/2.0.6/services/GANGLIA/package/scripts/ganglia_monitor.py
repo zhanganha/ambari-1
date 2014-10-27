@@ -271,7 +271,7 @@ class GangliaMonitor(Script):
                       owner = "root",
                       group = params.user_group)
 
-	if params.is_spark_server:
+    if params.has_spark_server:
       generate_daemon("gmond",
                       name = "HDPSpark",
                       role = "server",

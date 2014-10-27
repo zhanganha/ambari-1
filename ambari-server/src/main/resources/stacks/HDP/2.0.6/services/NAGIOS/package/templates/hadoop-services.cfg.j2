@@ -295,7 +295,7 @@ define service {
 {% if hostgroup_defs['spark-server'] %}
 # Spark Checks
 define service {
-        hostgroup_name          spark
+        hostgroup_name          spark-server
         use                     hadoop-service
         service_description     Spark::Spark process
         servicegroups           SPARK

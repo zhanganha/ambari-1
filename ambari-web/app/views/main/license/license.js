@@ -34,11 +34,9 @@ App.MainLicenseView = Em.View.extend({
 	  if(items !=null && items != undefined){
 		  if(items.length > 0){
 			  var entity = items[0].Licenses;
-			  if(entity.result.length > 0){
+			  if("No License." == entity.version){
 				  $("#addOperate").show();
 				  $("#updateOperate").hide();
-				  App.showAlertPopup(Em.I18n.t('common.information'),Em.I18n.t('license.users.licenseerror'));
-				  return;
 			  }else{
 				  $("#addOperate").hide();
 				  $("#updateOperate").show();
@@ -49,6 +47,12 @@ App.MainLicenseView = Em.View.extend({
 		  }
 		  for(var i in  items){
 			  var license = items[i].Licenses;
+			  if ((license.result != null || license.result != '') && license.result.length > 0 ) {
+			  	  $("#licenseVersion").html(Em.I18n.t('license.users.licenseerror'));
+				  $("#licenseDate").html(Em.I18n.t('license.users.licenseerror'));
+				  $("#licenseNodes").html(Em.I18n.t('license.users.licenseerror'));
+				  break;
+			  }
 			  if (license.version == '1') {
 			  	$("#licenseVersion").html(Em.I18n.t('license.users.licenseVersion1'));
 			  } else {
