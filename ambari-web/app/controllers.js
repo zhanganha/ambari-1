@@ -115,6 +115,7 @@ require('controllers/main/charts/heatmap_metrics/heatmap_metric_hbase_memstoresi
 require('controllers/main/charts/heatmap');
 require('controllers/main/apps_controller');
 require('controllers/main/jobs_controller');
+require('controllers/main/logs_controller');
 require('controllers/main/jobs/hive_job_details_controller');
 require('controllers/main/apps/item_controller');
 require('controllers/main/mirroring_controller');

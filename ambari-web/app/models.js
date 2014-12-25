@@ -42,6 +42,8 @@ require('models/license');
 require('models/host');
 require('models/rack');
 require('models/job');
+//日志管理
+require('models/log');
 require('models/run');
 require('models/app');
 require('models/background_operation');

@@ -170,6 +170,23 @@ module.exports = Em.Route.extend({
       }
     })
   }),
+  
+  logs : Em.Route.extend({
+    route : '/logs',
+    index: Ember.Route.extend({
+      route: '/',
+      connectOutlets : function(router) {
+        if (!App.get('isHadoop2Stack')) {
+          Em.run.next(function() {
+            router.transitionTo('main.dashboard');
+          });
+        } else {
+          router.get('mainLogsController').loadLogs();
+          router.get('mainController').connectOutlet('mainLogs');
+        }
+      }
+    })
+  }),
 
   mirroring: Em.Route.extend({
     route: '/mirroring',

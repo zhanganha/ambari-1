@@ -17,13 +17,14 @@
 }}
   
 <!-- 长表格样式 datatable table table-bordered table-striped -->
-<table class="table table-bordered table-striped span6">
+<div class="span6">
+<table class="table table-bordered table-striped">
   <thead>
   <tr>
-     <th style="width:50%">{{t license.users.licenseVersion}}</th>
-     <th style="width:20%">{{t license.users.licenseDate}}</th>
-     <th style="width:20%">{{t license.users.licenseNodes}}</th>
-     <th style="width:10%">{{t common.operations}}</th>
+     <th style="width:30%">{{t license.users.licenseVersion}}</th>
+     <th style="width:30%">{{t license.users.licenseDate}}</th>
+     <th style="width:25%">{{t license.users.licenseNodes}}</th>
+     <th style="width:15%">{{t common.operations}}</th>
   </tr>
   </thead>
   <tbody>
@@ -37,6 +38,7 @@
 	</tr>
   </tbody>
 </table>
+</div>
   <div class="span2" id="addOperate">
     <button class="btn" {{action addLicense}}> 
       <i class="icon-plus"></i>{{t license.users.addButton}}

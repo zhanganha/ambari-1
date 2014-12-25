@@ -47,7 +47,7 @@ App.MainLicenseView = Em.View.extend({
 		  }
 		  for(var i in  items){
 			  var license = items[i].Licenses;
-			  if ((license.result != null || license.result != '') && license.result.length > 0 ) {
+			  if (license.result != undefined && (license.result != null || license.result != '') && license.result.length > 0 ) {
 			  	  $("#licenseVersion").html(Em.I18n.t('license.users.licenseerror'));
 				  $("#licenseDate").html(Em.I18n.t('license.users.licenseerror'));
 				  $("#licenseNodes").html(Em.I18n.t('license.users.licenseerror'));
@@ -55,17 +55,15 @@ App.MainLicenseView = Em.View.extend({
 			  }
 			  if (license.version == '1') {
 			  	$("#licenseVersion").html(Em.I18n.t('license.users.licenseVersion1'));
-			  } else {
+			  	$("#licenseDate").html(Em.I18n.t('license.users.licenseLimit')); 
+			  	$("#licenseNodes").html(license.nodes);
+			  } else if (license.version == '0') {
 			  	$("#licenseVersion").html(Em.I18n.t('license.users.licenseVersion2'));
-			  }
-			  if (license.date == 'null' || license.date == null || license.date == '') {
-			    $("#licenseDate").html(Em.I18n.t('license.users.licenseLimit')); 
-			  } else {
 			  	$("#licenseDate").html(license.date);
-			  }
-			  if (license.nodes == 'null' || license.nodes == null || license.nodes == '') {
-			    $("#licenseNodes").html(Em.I18n.t('license.users.licenseLimit')); 
+			  	$("#licenseNodes").html(Em.I18n.t('license.users.licenseLimit')); 
 			  } else {
+			  	$("#licenseVersion").html(license.version);
+			  	$("#licenseDate").html(license.date);
 			  	$("#licenseNodes").html(license.nodes);
 			  }
 		  }

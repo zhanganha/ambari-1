@@ -51,6 +51,9 @@ App.MainMenuView = Em.CollectionView.extend({
     if (App.supports.views) {
       result.push({ label:Em.I18n.t('menu.item.views'), routing:'views'});
     }
+    
+    result.push({ label:Em.I18n.t('menu.item.logs'), routing:'logs'});
+    
     return result;
   }.property(),
     /**
